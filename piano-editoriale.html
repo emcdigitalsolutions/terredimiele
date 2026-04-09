@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Editoriale Social — Terre di Miele | Apicoltura La Greca</title>
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --honey-deep: #D4A017;
+            --honey-mid: #E8A317;
+            --honey-bright: #F5C518;
+            --honey-light: #FFF3C4;
+            --honey-glow: #FFF8E1;
+            --cream: #FFFEF7;
+            --cream-dark: #FAF6ED;
+            --brown-dark: #3E2723;
+            --brown-mid: #5D4037;
+            --brown-light: #6D4C41;
+            --text-primary: #2C1810;
+            --text-secondary: #5D4037;
+            --text-muted: #8D6E63;
+            --border-light: #E8D5A3;
+            --border-mid: #D4B96A;
+            --shadow-soft: 0 2px 12px rgba(212,160,23,0.08);
+            --shadow-card: 0 4px 20px rgba(212,160,23,0.12);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+
+            /* Category colors */
+            --cat-prodotto: #E67E22;
+            --cat-prodotto-bg: #FFF0E0;
+            --cat-dietro: #27AE60;
+            --cat-dietro-bg: #E8F8F0;
+            --cat-territorio: #2E86C1;
+            --cat-territorio-bg: #E3F2FD;
+            --cat-educativo: #8E44AD;
+            --cat-educativo-bg: #F3E5F5;
+            --cat-ricetta: #E74C3C;
+            --cat-ricetta-bg: #FDEDEC;
+            --cat-evento: #F39C12;
+            --cat-evento-bg: #FEF9E7;
+            --cat-tradizione: #795548;
+            --cat-tradizione-bg: #EFEBE9;
+            --cat-coinvolgimento: #00ACC1;
+            --cat-coinvolgimento-bg: #E0F7FA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--cream);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            body {
+                font-size: 11px;
+                line-height: 1.4;
+                background: white;
+            }
+            .nav-bar, .nav-toggle, .back-to-top {
+                display: none !important;
+            }
+            .hero {
+                padding: 30px 20px !important;
+                page-break-after: avoid;
+            }
+            .section {
+                page-break-inside: avoid;
+                padding: 20px !important;
+                margin: 10px 0 !important;
+                box-shadow: none !important;
+                border: 1px solid #ddd;
+            }
+            .week-block {
+                page-break-inside: avoid;
+            }
+            .post-card {
+                page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ddd;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 10px !important;
+            }
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 100%);
+            padding: 0;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+
+        .nav-brand {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--honey-bright);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .nav-brand span {
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+            font-size: 13px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 12.5px;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: rgba(245,197,24,0.15);
+            color: var(--honey-bright);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 12px 0;
+                gap: 2px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+            .nav-inner {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 40%, var(--honey-deep) 100%);
+            color: white;
+            padding: 60px 24px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245,197,24,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-bee {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h2 {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.85;
+            margin-bottom: 6px;
+        }
+
+        .hero-sub {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-bottom: 24px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 13px;
+            opacity: 0.75;
+        }
+
+        .hero-meta div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            margin: 28px 0;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-light);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--honey-light);
+        }
+
+        .section-number {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--honey-deep), var(--honey-bright));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .section-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--brown-dark);
+        }
+
+        .section-header h2 small {
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ========== STRATEGY GRID ========== */
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .strategy-card {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            border-left: 4px solid var(--honey-mid);
+        }
+
+        .strategy-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--honey-deep);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .strategy-card p, .strategy-card ul {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .strategy-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .strategy-card ul li {
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .strategy-card ul li::before {
+            content: '\25C6';
+            position: absolute;
+            left: 0;
+            color: var(--honey-mid);
+            font-size: 9px;
+            top: 7px;
+        }
+
+        .tone-box {
+            background: linear-gradient(135deg, var(--honey-glow), var(--honey-light));
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin-top: 20px;
+            border: 1px solid var(--border-light);
+        }
+
+        .tone-box h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--brown-dark);
+            margin-bottom: 8px;
+        }
+
+        .tone-box p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* ========== HASHTAG SECTION ========== */
+        .hashtag-group {
+            margin-bottom: 18px;
+        }
+
+        .hashtag-group-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--brown-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .hashtag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .hashtag {
+            background: var(--honey-glow);
+            color: var(--honey-deep);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid var(--border-light);
+            white-space: nowrap;
+        }
+
+        .hashtag-note {
+            background: var(--cream-dark);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-left: 3px solid var(--honey-mid);
+        }
+
+        /* ========== CATEGORY LEGEND ========== */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 28px;
+            padding: 18px 20px;
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .legend-title {
+            width: 100%;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+        }
+
+        /* ========== CATEGORY BADGES ========== */
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .badge-prodotto { background: var(--cat-prodotto-bg); color: var(--cat-prodotto); }
+        .badge-dietro { background: var(--cat-dietro-bg); color: var(--cat-dietro); }
+        .badge-territorio { background: var(--cat-territorio-bg); color: var(--cat-territorio); }
+        .badge-educativo { background: var(--cat-educativo-bg); color: var(--cat-educativo); }
+        .badge-ricetta { background: var(--cat-ricetta-bg); color: var(--cat-ricetta); }
+        .badge-evento { background: var(--cat-evento-bg); color: var(--cat-evento); }
+        .badge-tradizione { background: var(--cat-tradizione-bg); color: var(--cat-tradizione); }
+        .badge-coinvolgimento { background: var(--cat-coinvolgimento-bg); color: var(--cat-coinvolgimento); }
+
+        /* ========== FORMAT BADGES ========== */
+        .format-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            background: #F0F0F0;
+            color: #666;
+        }
+
+        .format-foto { background: #E3F2FD; color: #1565C0; }
+        .format-carosello { background: #F3E5F5; color: #7B1FA2; }
+        .format-reel { background: #FCE4EC; color: #C62828; }
+        .format-story { background: #FFF3E0; color: #E65100; }
+
+        /* ========== WEEK BLOCKS ========== */
+        .week-block {
+            margin-bottom: 36px;
+        }
+
+        .week-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, var(--brown-dark), var(--brown-mid));
+            border-radius: var(--radius-md);
+            color: white;
+        }
+
+        .week-number {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .week-title {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .week-dates {
+            font-size: 13px;
+            opacity: 0.65;
+            margin-left: auto;
+        }
+
+        @media (max-width: 600px) {
+            .week-header {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            .week-dates {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        /* ========== POST CARDS ========== */
+        .posts-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 22px 24px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #EFEFEF;
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .post-card:hover {
+            box-shadow: var(--shadow-card);
+        }
+
+        @media (max-width: 600px) {
+            .post-card {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        .post-date-col {
+            text-align: center;
+            padding-top: 4px;
+        }
+
+        .post-day-name {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .post-day-num {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--honey-deep);
+            line-height: 1.1;
+        }
+
+        .post-month {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .post-content {
+            min-width: 0;
+        }
+
+        .post-top-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .post-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--brown-dark);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .post-caption {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.6;
+            padding: 12px 16px;
+            background: var(--cream);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--border-mid);
+        }
+
+        .post-caption strong {
+            color: var(--brown-dark);
+        }
+
+        .post-hashtags {
+            font-size: 12px;
+            color: var(--honey-deep);
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .post-footer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #F0F0F0;
+            flex-wrap: wrap;
+        }
+
+        .post-time {
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* ========== MONTHLY TEMPLATE ========== */
+        .monthly-table-wrapper {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .monthly-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+
+        .monthly-table thead th {
+            background: linear-gradient(135deg, var(--brown-dark), var(--brown-mid));
+            color: white;
+            padding: 12px 14px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .monthly-table thead th:first-child {
+            border-radius: var(--radius-sm) 0 0 0;
+        }
+
+        .monthly-table thead th:last-child {
+            border-radius: 0 var(--radius-sm) 0 0;
+        }
+
+        .monthly-table tbody td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #F0EBE0;
+            vertical-align: top;
+        }
+
+        .monthly-table tbody tr:nth-child(even) {
+            background: var(--cream);
+        }
+
+        .monthly-table tbody tr:hover {
+            background: var(--honey-glow);
+        }
+
+        .monthly-table tbody tr:last-child td:first-child {
+            border-radius: 0 0 0 var(--radius-sm);
+        }
+
+        .monthly-table tbody tr:last-child td:last-child {
+            border-radius: 0 0 var(--radius-sm) 0;
+        }
+
+        /* ========== DISTRIBUTION CHART ========== */
+        .dist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .dist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--cream);
+            border-radius: var(--radius-sm);
+        }
+
+        .dist-count {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .dist-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .dist-freq {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* ========== NOTES BOX ========== */
+        .notes-box {
+            background: var(--honey-glow);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 22px 26px;
+            margin-top: 24px;
+        }
+
+        .notes-box h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--brown-dark);
+            margin-bottom: 12px;
+        }
+
+        .notes-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .notes-box ul li {
+            padding: 5px 0 5px 20px;
+            position: relative;
+            font-size: 13.5px;
+            color: var(--text-secondary);
+        }
+
+        .notes-box ul li::before {
+            content: '\2714';
+            position: absolute;
+            left: 0;
+            color: var(--honey-deep);
+            font-size: 12px;
+        }
+
+        /* ========== FOOTER ========== */
+        .doc-footer {
+            text-align: center;
+            padding: 40px 24px 30px;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .doc-footer p {
+            margin-bottom: 8px;
+        }
+
+        .doc-footer .confidential {
+            font-style: italic;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--honey-deep), var(--honey-bright));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(212,160,23,0.3);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            z-index: 50;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        /* ========== SAGRA HIGHLIGHT ========== */
+        .sagra-highlight {
+            background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+            border: 2px solid var(--honey-mid);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .sagra-highlight h3 {
+            font-size: 18px;
+            color: var(--brown-dark);
+            margin-bottom: 6px;
+        }
+
+        .sagra-highlight p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .sagra-highlight .sagra-date {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--honey-deep);
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav-bar" id="navBar">
+        <div class="container">
+            <div class="nav-inner">
+                <div class="nav-brand">Terre di Miele <span>— Piano Editoriale</span></div>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu navigazione">&#9776;</button>
+                <div class="nav-links" id="navLinks">
+                    <a href="#strategia">Strategia</a>
+                    <a href="#hashtag">Hashtag</a>
+                    <a href="#piano-presagra">Piano Pre-Sagra</a>
+                    <a href="#template-mensile">Template Mensile</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-bee">&#127855;</span>
+            <h1>Piano Editoriale Social Media</h1>
+            <h2>Terre di Miele — Apicoltura La Greca</h2>
+            <p class="hero-sub">Campobello di Licata (AG) &bull; C.da Giangaragano &bull; Sicilia</p>
+            <div class="hero-meta">
+                <div>&#128197; Aprile &ndash; Maggio 2026</div>
+                <div>&#128241; Facebook + Instagram</div>
+                <div>&#128100; Salvatore La Greca</div>
+                <div>&#128336; 3 post / settimana</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ========== SECTION 1: STRATEGIA ========== -->
+        <section class="section" id="strategia">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2>Strategia Social Media <small>Linee guida e approccio editoriale</small></h2>
+            </div>
+
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h3>Obiettivo</h3>
+                    <ul>
+                        <li>Attirare nuovi clienti nel raggio di 20-30 km</li>
+                        <li>Avviare la vendita online dei prodotti</li>
+                        <li>Aumentare le visite al sito web terredimiele.it</li>
+                        <li>Costruire una community attiva e fedele</li>
+                        <li>Amplificare il passaparola attraverso i canali digitali</li>
+                    </ul>
+                </div>
+                <div class="strategy-card">
+                    <h3>Piattaforme</h3>
+                    <ul>
+                        <li>Facebook &mdash; pagina aziendale</li>
+                        <li>Instagram &mdash; profilo business</li>
+                        <li>Post simultanei su entrambe le piattaforme</li>
+                        <li>Stories aggiuntive su Instagram nei giorni evento</li>
+                    </ul>
+                </div>
+                <div class="strategy-card">
+                    <h3>Frequenza &amp; Orari</h3>
+                    <ul>
+                        <li><strong>3 post a settimana:</strong> Marted&igrave;, Gioved&igrave;, Sabato</li>
+                        <li><strong>Fascia pranzo:</strong> 12:00 &ndash; 13:00</li>
+                        <li><strong>Fascia sera:</strong> 19:00 &ndash; 21:00</li>
+                        <li>Stories: quotidiane nei periodi evento</li>
+                    </ul>
+                </div>
+                <div class="strategy-card">
+                    <h3>Formato Contenuti</h3>
+                    <ul>
+                        <li><strong>60%</strong> Foto singole (prodotto, territorio)</li>
+                        <li><strong>20%</strong> Caroselli (educativi, ricette)</li>
+                        <li><strong>20%</strong> Reels brevi (dietro le quinte, processo)</li>
+                        <li>Stories per copertura live eventi</li>
+                    </ul>
+                </div>
+                <div class="strategy-card">
+                    <h3>Workflow &amp; Approvazione</h3>
+                    <ul>
+                        <li><strong>Approvazione:</strong> ogni post viene inviato al cliente per approvazione prima della pubblicazione</li>
+                        <li><strong>Community management:</strong> gestione completa di commenti e messaggi da parte di EMC</li>
+                        <li><strong>Materiale fotografico:</strong> il cliente invia foto/video 1-2 volte al mese via WhatsApp</li>
+                        <li><strong>Comunicazione:</strong> WhatsApp + Email come canali preferiti</li>
+                        <li><strong>Ads:</strong> per ora solo gestione organica, campagne a pagamento valutabili in futuro</li>
+                    </ul>
+                </div>
+                <div class="strategy-card">
+                    <h3>Tipologie di Contenuto Richieste</h3>
+                    <ul>
+                        <li>Foto dettagliate dei prodotti finiti</li>
+                        <li>Il processo di lavorazione step by step</li>
+                        <li>La storia dell&rsquo;artigiano e della bottega</li>
+                        <li>Mercatini, fiere ed esposizioni</li>
+                        <li>Recensioni clienti e consegne</li>
+                        <li>Il laboratorio e il processo produttivo</li>
+                        <li>Curiosit&agrave; sul mestiere e sulle tecniche</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tone-box">
+                <h3>Tono di Voce</h3>
+                <p><strong>Emozionale, coinvolgente, autentico.</strong> Parliamo come parleremmo al mercato, guardando negli occhi il cliente. Raccontiamo la fatica e la passione di oltre 15 anni di apicoltura, la terra e il sole di Sicilia. Il brand &egrave; Professionale, Affidabile, Innovativo, Di qualit&agrave;, Unico e Del territorio. Ogni tanto inseriamo espressioni tipiche del dialetto siciliano per dare quel tocco di autenticit&agrave; in pi&ugrave;. Niente linguaggio aziendale freddo: ogni post deve suonare come le parole di Salvatore mentre mostra il suo miele a un amico.</p>
+            </div>
+        </section>
+
+        <!-- ========== SECTION 2: HASHTAG ========== -->
+        <section class="section" id="hashtag">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2>Strategia Hashtag <small>Set di hashtag organizzati per categoria</small></h2>
+            </div>
+
+            <div class="hashtag-group">
+                <div class="hashtag-group-title">Brand</div>
+                <div class="hashtag-list">
+                    <span class="hashtag">#TerreDiMiele</span>
+                    <span class="hashtag">#ApicolturaLaGreca</span>
+                    <span class="hashtag">#MieleSiciliano</span>
+                </div>
+            </div>
+
+            <div class="hashtag-group">
+                <div class="hashtag-group-title">Prodotto</div>
+                <div class="hashtag-list">
+                    <span class="hashtag">#MieleItaliano</span>
+                    <span class="hashtag">#MieleArtigianale</span>
+                    <span class="hashtag">#MieleMillefiori</span>
+                    <span class="hashtag">#MieleDiSulla</span>
+                    <span class="hashtag">#Polline</span>
+                    <span class="hashtag">#MielePuro</span>
+                    <span class="hashtag">#MieleNaturale</span>
+                    <span class="hashtag">#FavoNaturale</span>
+                </div>
+            </div>
+
+            <div class="hashtag-group">
+                <div class="hashtag-group-title">Territorio</div>
+                <div class="hashtag-list">
+                    <span class="hashtag">#CampobelloDiLicata</span>
+                    <span class="hashtag">#Sicilia</span>
+                    <span class="hashtag">#TerraDiSicilia</span>
+                    <span class="hashtag">#MadeInSicily</span>
+                    <span class="hashtag">#Agrigento</span>
+                    <span class="hashtag">#CampagnaSiciliana</span>
+                </div>
+            </div>
+
+            <div class="hashtag-group">
+                <div class="hashtag-group-title">Settore</div>
+                <div class="hashtag-list">
+                    <span class="hashtag">#Apicoltura</span>
+                    <span class="hashtag">#Apicoltore</span>
+                    <span class="hashtag">#Api</span>
+                    <span class="hashtag">#Beekeeping</span>
+                    <span class="hashtag">#HoneyLover</span>
+                    <span class="hashtag">#RawHoney</span>
+                    <span class="hashtag">#BeeKeeper</span>
+                    <span class="hashtag">#SaveTheBees</span>
+                </div>
+            </div>
+
+            <div class="hashtag-group">
+                <div class="hashtag-group-title">Evento</div>
+                <div class="hashtag-list">
+                    <span class="hashtag">#SagraMpurnatuMpanata</span>
+                    <span class="hashtag">#Sagra2026</span>
+                    <span class="hashtag">#SagraCampobello</span>
+                    <span class="hashtag">#SagraSicilia</span>
+                </div>
+            </div>
+
+            <div class="hashtag-note">
+                <strong>Regola:</strong> Utilizzare 15&ndash;20 hashtag per post. Alternare i set per evitare ripetizioni e penalizzazioni algoritmiche. Includere sempre i 3 hashtag brand + una selezione delle altre categorie in base al tema del post. Miscelare hashtag italiani e inglesi per ampliare la portata.
+            </div>
+        </section>
+
+        <!-- ========== SECTION 3: PIANO PRE-SAGRA ========== -->
+        <section class="section" id="piano-presagra">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2>Piano Editoriale Pre-Sagra <small>5 settimane &mdash; 8 Aprile &rarr; 10 Maggio 2026</small></h2>
+            </div>
+
+            <!-- Sagra highlight -->
+            <div class="sagra-highlight">
+                <h3>13&ordf; Sagra 'Mpurnatu &amp; 'Mpanata</h3>
+                <div class="sagra-date">8 &bull; 9 &bull; 10 Maggio 2026</div>
+                <p>Campobello di Licata (AG) &mdash; Tutto il piano converge verso questo evento</p>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-title">Categorie</div>
+                <div class="legend-item"><span class="badge badge-prodotto">Prodotto</span></div>
+                <div class="legend-item"><span class="badge badge-dietro">Dietro le Quinte</span></div>
+                <div class="legend-item"><span class="badge badge-territorio">Territorio</span></div>
+                <div class="legend-item"><span class="badge badge-educativo">Educativo</span></div>
+                <div class="legend-item"><span class="badge badge-ricetta">Ricetta</span></div>
+                <div class="legend-item"><span class="badge badge-evento">Evento</span></div>
+                <div class="legend-item"><span class="badge badge-tradizione">Tradizione</span></div>
+                <div class="legend-item"><span class="badge badge-coinvolgimento">Coinvolgimento</span></div>
+            </div>
+
+            <!-- ===== WEEK 1 ===== -->
+            <div class="week-block">
+                <div class="week-header">
+                    <div>
+                        <div class="week-number">Settimana 1</div>
+                        <div class="week-title">&ldquo;Chi Siamo&rdquo;</div>
+                    </div>
+                    <div class="week-dates">8 &ndash; 12 Aprile 2026</div>
+                </div>
+                <div class="posts-grid">
+
+                    <!-- Post 1 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Marted&igrave;</div>
+                            <div class="post-day-num">8</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-prodotto">Prodotto</span>
+                                <span class="format-badge format-foto">Foto</span>
+                            </div>
+                            <div class="post-title">Il nostro Miele Millefiori: un bouquet di fiori siciliani in ogni cucchiaio</div>
+                            <div class="post-caption">
+                                Ogni barattolo di Millefiori racchiude i profumi della campagna di Campobello di Licata. Le nostre api raccolgono nettare da centinaia di fiori diversi, e il risultato &egrave; un miele ricco, dorato, dal sapore unico. Provalo su una fetta di pane caldo: la colazione diventa un viaggio in Sicilia.
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #MieleSiciliano #MieleMillefiori #MieleArtigianale #MieleItaliano #MielePuro #CampobelloDiLicata #Sicilia #MadeInSicily #Apicoltura #Api #HoneyLover #RawHoney #CampagnaSiciliana #MieleNaturale
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128247; Foto barattolo millefiori con sfondo campagna</span>
+                                <span class="post-time">&#128336; Ore 12:30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Gioved&igrave;</div>
+                            <div class="post-day-num">10</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-dietro">Dietro le Quinte</span>
+                                <span class="format-badge format-reel">Reel</span>
+                            </div>
+                            <div class="post-title">Una giornata nell'apiario: le nostre api al lavoro tra i fiori di primavera</div>
+                            <div class="post-caption">
+                                Questa mattina siamo andati a controllare le arnie in C.da Giangaragano. Le api sono in piena attivit&agrave;, la primavera siciliana le rende instancabili. Guardate quanta vita c'&egrave; tra questi telai! Ogni giorno &egrave; una scoperta, ogni visita all'apiario &egrave; un privilegio.
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #MieleSiciliano #Apicoltura #Apicoltore #Api #Beekeeping #BeeKeeper #SaveTheBees #DietroLeQuinte #CampobelloDiLicata #Sicilia #TerraDiSicilia #VitaDaApicoltore #CampagnaSiciliana
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#127909; Video/Reel Salvatore tra le arnie</span>
+                                <span class="post-time">&#128336; Ore 19:30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 3 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Sabato</div>
+                            <div class="post-day-num">12</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-territorio">Territorio</span>
+                                <span class="format-badge format-foto">Foto</span>
+                            </div>
+                            <div class="post-title">C.da Giangaragano: dove nascono le nostre api e il nostro miele</div>
+                            <div class="post-caption">
+                                La campagna di Campobello di Licata, con i suoi ulivi, i fiori selvatici e il sole che scalda la terra tutto l'anno. &Egrave; qui, in C.da Giangaragano, che le nostre api trovano il loro paradiso. Il territorio fa la differenza: un miele buono nasce da una terra buona.
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #CampobelloDiLicata #Sicilia #TerraDiSicilia #MadeInSicily #Agrigento #CampagnaSiciliana #MieleSiciliano #Apicoltura #NaturaSicilia #PaesaggioSiciliano #ItalianCountryside
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128247; Panoramica apiario e campagna</span>
+                                <span class="post-time">&#128336; Ore 12:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== WEEK 2 ===== -->
+            <div class="week-block">
+                <div class="week-header">
+                    <div>
+                        <div class="week-number">Settimana 2</div>
+                        <div class="week-title">&ldquo;I Nostri Prodotti&rdquo;</div>
+                    </div>
+                    <div class="week-dates">14 &ndash; 19 Aprile 2026</div>
+                </div>
+                <div class="posts-grid">
+
+                    <!-- Post 4 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Marted&igrave;</div>
+                            <div class="post-day-num">15</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-prodotto">Prodotto</span>
+                                <span class="format-badge format-foto">Foto</span>
+                            </div>
+                            <div class="post-title">Miele di Sulla: dolce, delicato, dal colore chiaro. Il preferito per la colazione</div>
+                            <div class="post-caption">
+                                Il Miele di Sulla &egrave; il pi&ugrave; delicato dei nostri mieli. Color ambra chiaro, quasi bianco quando cristallizza, con un sapore dolce e floreale che conquista al primo assaggio. Perfetto spalmato sul pane caldo o sciolto nel latte la mattina. Un miele che sa di primavera.
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #MieleDiSulla #MieleSiciliano #MieleArtigianale #MieleItaliano #MielePuro #CampobelloDiLicata #Sicilia #MadeInSicily #HoneyLover #RawHoney #ColazioneSana #MieleNaturale #Apicoltura
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128247; Barattolo Sulla + pane con miele</span>
+                                <span class="post-time">&#128336; Ore 12:30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 5 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Gioved&igrave;</div>
+                            <div class="post-day-num">17</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-educativo">Educativo</span>
+                                <span class="format-badge format-carosello">Carosello</span>
+                            </div>
+                            <div class="post-title">Apicoltura a scuola: ieri abbiamo portato le api tra i banchi!</div>
+                            <div class="post-caption">
+                                Ieri siamo stati a Licata, invitati dalla scuola elementare per una dimostrazione di apicoltura alla classe 3B. Che emozione vedere gli occhi dei bambini spalancarsi davanti ai telai e alla tuta dell&rsquo;apicoltore! Abbiamo parlato del ciclo di vita delle api, dell&rsquo;importanza dell&rsquo;impollinazione e di come nasce il miele. Educare le nuove generazioni al rispetto della natura &egrave; una delle nostre missioni pi&ugrave; belle.
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #ScuolaDidattica #ApicolturaaScuola #Educazione #Licata #Sicilia #Api #Apicoltura #SaveTheBees #Beekeeping #CampobelloDiLicata #EducazioneAmbientale #NaturaPerBambini #MieleSiciliano
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128248; Carosello foto bambini + dimostrazione (4 slide)</span>
+                                <span class="post-time">&#128336; Ore 19:30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 6 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Sabato</div>
+                            <div class="post-day-num">19</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-ricetta">Ricetta</span>
+                                <span class="format-badge format-foto">Foto</span>
+                            </div>
+                            <div class="post-title">Bruschetta con ricotta fresca e miele millefiori: semplicit&agrave; siciliana</div>
+                            <div class="post-caption">
+                                Pane casereccio tostato, un velo generoso di ricotta fresca e un filo del nostro Miele Millefiori. Tre ingredienti, zero complicazioni, un sapore che &egrave; pura Sicilia. Provatela come merenda o come antipasto: non tornerete pi&ugrave; indietro. Avete altre ricette col miele? Scrivetecele nei commenti!
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #MieleSiciliano #MieleMillefiori #RicettaConMiele #CucinaSiciliana #Bruschetta #RicottaEMiele #FoodSicily #MadeInSicily #CampobelloDiLicata #Sicilia #MieleArtigianale #ItalianFood #HoneyRecipe
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128247; Foto piatto bruschetta dall'alto</span>
+                                <span class="post-time">&#128336; Ore 12:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== WEEK 3 ===== -->
+            <div class="week-block">
+                <div class="week-header">
+                    <div>
+                        <div class="week-number">Settimana 3</div>
+                        <div class="week-title">&ldquo;Tradizione &amp; Passione&rdquo;</div>
+                    </div>
+                    <div class="week-dates">21 &ndash; 26 Aprile 2026</div>
+                </div>
+                <div class="posts-grid">
+
+                    <!-- Post 7 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Marted&igrave;</div>
+                            <div class="post-day-num">22</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-dietro">Dietro le Quinte</span>
+                                <span class="format-badge format-reel">Reel</span>
+                            </div>
+                            <div class="post-title">La smielatura: dal favo al barattolo, tutto fatto a mano</div>
+                            <div class="post-caption">
+                                Vi portiamo dentro il nostro laboratorio. La smielatura &egrave; il momento magico: i telai vengono disopercolati a mano, il miele scorre nello smielatore e poi viene filtrato e invasettato. Nessuna fretta, nessuna scorciatoia. Come si faceva una volta, come facciamo ancora oggi.
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #Smielatura #MieleSiciliano #MieleArtigianale #DietroLeQuinte #Apicoltura #Apicoltore #Beekeeping #FattoAMano #Handmade #CampobelloDiLicata #Sicilia #MieleNaturale #DalProduttore #RawHoney
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#127909; Reel processo di smielatura</span>
+                                <span class="post-time">&#128336; Ore 19:30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 8 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Gioved&igrave;</div>
+                            <div class="post-day-num">24</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-ricetta">Ricetta</span>
+                                <span class="format-badge format-reel">Reel</span>
+                            </div>
+                            <div class="post-title">Il nostro miele nelle mani di Chef Leonardo Massaro</div>
+                            <div class="post-caption">
+                                Siamo orgogliosi delle nostre collaborazioni con Chef Leonardo Massaro, che utilizza il nostro miele nelle sue creazioni culinarie. Dal miele di eucalipto nelle marinature di pesce, al millefiori nei dessert, al castagno abbinato ai formaggi stagionati siciliani: ogni ricetta esalta le caratteristiche uniche delle nostre variet&agrave;. Quando un grande chef sceglie il tuo miele, sai di aver fatto un buon lavoro. Grazie Chef!
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #ChefLeonardoMassaro #MieleSiciliano #MieleInCucina #CucinaSiciliana #AltaCucina #MieleArtigianale #FoodSicily #MadeInSicily #CampobelloDiLicata #Sicilia #Collaborazione #RicettaConMiele #ChefItaliano
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#127909; Reel Chef Massaro in azione con il nostro miele</span>
+                                <span class="post-time">&#128336; Ore 20:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 9 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Sabato</div>
+                            <div class="post-day-num">26</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-evento">Evento</span>
+                                <span class="format-badge format-foto">Foto</span>
+                            </div>
+                            <div class="post-title">Mancano 12 giorni alla Sagra 'Mpurnatu &amp; 'Mpanata! Vi aspettiamo</div>
+                            <div class="post-caption">
+                                Il conto alla rovescia &egrave; iniziato! L'8, 9 e 10 Maggio torna la 13&ordf; edizione della Sagra 'Mpurnatu &amp; 'Mpanata a Campobello di Licata. E noi saremo l&igrave;, con il nostro stand pieno di miele fresco, assaggi gratuiti e tanta voglia di farvi scoprire i sapori della nostra terra. Segnatevi la data!
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #SagraMpurnatuMpanata #Sagra2026 #SagraCampobello #CampobelloDiLicata #Sicilia #SagraSicilia #MieleSiciliano #EventiSicilia #Agrigento #FoodFestival #StreetFood #Countdown
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128247; Grafica countdown + foto stand edizione precedente</span>
+                                <span class="post-time">&#128336; Ore 12:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== WEEK 4 ===== -->
+            <div class="week-block">
+                <div class="week-header">
+                    <div>
+                        <div class="week-number">Settimana 4</div>
+                        <div class="week-title">&ldquo;Countdown Sagra&rdquo;</div>
+                    </div>
+                    <div class="week-dates">28 Aprile &ndash; 3 Maggio 2026</div>
+                </div>
+                <div class="posts-grid">
+
+                    <!-- Post 10 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Marted&igrave;</div>
+                            <div class="post-day-num">29</div>
+                            <div class="post-month">Aprile</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-prodotto">Prodotto</span>
+                                <span class="format-badge format-carosello">Carosello</span>
+                            </div>
+                            <div class="post-title">Polline d'api: un superfood naturale dal nostro apiario</div>
+                            <div class="post-caption">
+                                <strong>Slide 1:</strong> Il polline &egrave; uno degli alimenti pi&ugrave; completi che la natura ci offre.<br>
+                                <strong>Slide 2:</strong> Ricco di proteine, vitamine e minerali &mdash; un cucchiaino al giorno nello yogurt o nel frullato.<br>
+                                <strong>Slide 3:</strong> Il nostro polline viene raccolto con trappole delicate che non danneggiano le api.<br>
+                                <strong>Slide 4:</strong> Disponibile in barattolo &mdash; chiedetecelo direttamente o trovatelo alla Sagra!
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #Polline #PollineDApi #Superfood #MieleSiciliano #AlimentoNaturale #Apicoltura #Api #BeeProducts #CampobelloDiLicata #Sicilia #MadeInSicily #BenessereNaturale #HoneyLover #RawHoney
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128444; Carosello 4 slide polline + benefici</span>
+                                <span class="post-time">&#128336; Ore 12:30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 11 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Gioved&igrave;</div>
+                            <div class="post-day-num">1</div>
+                            <div class="post-month">Maggio</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-evento">Evento</span>
+                                <span class="format-badge format-foto">Foto</span>
+                            </div>
+                            <div class="post-title">Buon Primo Maggio! Oggi siamo a Ravanusa per la Festa della Pace</div>
+                            <div class="post-caption">
+                                Oggi &egrave; un giorno speciale, non solo per la Festa dei Lavoratori! Siamo alla rotonda del campo sportivo di Ravanusa per la Festa della Pace, un evento organizzato da Alessandro Grifasi contro le guerre e in segno di unione. Al nostro stand potrete assaggiare tutti i nostri mieli con pagamento alla consumazione. Un&rsquo;occasione per unire i sapori della nostra terra ai valori della pace e della comunit&agrave;. E tra una settimana... la Sagra 'Mpurnatu &amp; 'Mpanata! Passate a trovarci!
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #PrimoMaggio #1Maggio #FestaDellaPace #Ravanusa #Sicilia #MieleSiciliano #Apicoltura #PaceNonGuerra #EventiSicilia #Agrigento #AssaggiMiele #Comunit&agrave; #SagraMpurnatuMpanata
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128248; Foto stand + pubblico alla festa</span>
+                                <span class="post-time">&#128336; Ore 12:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 12 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Sabato</div>
+                            <div class="post-day-num">3</div>
+                            <div class="post-month">Maggio</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-evento">Evento</span>
+                                <span class="format-badge format-carosello">Carosello</span>
+                            </div>
+                            <div class="post-title">5 giorni alla Sagra! Ecco cosa troverete al nostro stand</div>
+                            <div class="post-caption">
+                                <strong>Slide 1:</strong> Assaggi gratuiti di tutti i nostri mieli: Eucalipto, Balsamico, Castagno, Millefiori, Sulla e Favo.<br>
+                                <strong>Slide 2:</strong> Barattoli da 1000g, 500g e formati pi&ugrave; piccoli &mdash; per tutti i gusti.<br>
+                                <strong>Slide 3:</strong> Polline fresco e favo naturale &mdash; le specialit&agrave; che non trovate al supermercato.<br>
+                                <strong>Slide 4:</strong> Vi aspettiamo l'8, 9 e 10 Maggio a Campobello di Licata!
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #SagraMpurnatuMpanata #Sagra2026 #SagraCampobello #CampobelloDiLicata #MieleSiciliano #MieleMillefiori #MieleDiSulla #Polline #FavoNaturale #Sicilia #EventiSicilia #FoodFestival #Assaggi
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128444; Carosello 4 slide prodotti + info evento</span>
+                                <span class="post-time">&#128336; Ore 19:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== WEEK 5 ===== -->
+            <div class="week-block">
+                <div class="week-header">
+                    <div>
+                        <div class="week-number">Settimana 5</div>
+                        <div class="week-title">&ldquo;Settimana della Sagra&rdquo;</div>
+                    </div>
+                    <div class="week-dates">5 &ndash; 10 Maggio 2026</div>
+                </div>
+                <div class="posts-grid">
+
+                    <!-- Post 13 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Marted&igrave;</div>
+                            <div class="post-day-num">6</div>
+                            <div class="post-month">Maggio</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-evento">Evento</span>
+                                <span class="format-badge format-foto">Foto</span>
+                            </div>
+                            <div class="post-title">Ci siamo quasi! Gioved&igrave; inizia la 13&ordf; Sagra 'Mpurnatu &amp; 'Mpanata</div>
+                            <div class="post-caption">
+                                Mancano solo 2 giorni! Lo stand &egrave; quasi pronto, i barattoli sono tutti etichettati e le api hanno lavorato sodo per regalarvi il miele pi&ugrave; fresco dell'anno. Vi aspettiamo a Campobello di Licata: venite a trovarci, assaggiate e portate a casa un pezzo di Sicilia autentica.
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #SagraMpurnatuMpanata #Sagra2026 #SagraCampobello #CampobelloDiLicata #Sicilia #MieleSiciliano #EventiSicilia #Agrigento #FoodFestival #SagraSicilia #CiSiamoQuasi #Countdown
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128247; Foto stand allestito + mappa posizione</span>
+                                <span class="post-time">&#128336; Ore 12:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 14 -->
+                    <div class="post-card" style="border: 2px solid var(--cat-evento); background: var(--cat-evento-bg);">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Gioved&igrave;</div>
+                            <div class="post-day-num">8</div>
+                            <div class="post-month">Maggio</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-evento">Evento Live</span>
+                                <span class="format-badge format-reel">Reel</span>
+                                <span class="format-badge format-story">Stories</span>
+                            </div>
+                            <div class="post-title">Si parte! Primo giorno di Sagra. Vi aspettiamo!</div>
+                            <div class="post-caption">
+                                La 13&ordf; Sagra 'Mpurnatu &amp; 'Mpanata &egrave; ufficialmente iniziata! Siamo al nostro stand con miele fresco, polline, favo e tanta voglia di farvi assaggiare i sapori della nostra terra. Passate a trovarci &mdash; vi aspettiamo con un cucchiaio di miele pronto per voi!<br><br>
+                                <strong>+ Stories durante tutta la giornata:</strong> live dallo stand, assaggi, incontri con i visitatori, atmosfera della sagra.
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #SagraMpurnatuMpanata #Sagra2026 #SagraCampobello #CampobelloDiLicata #Sicilia #MieleSiciliano #EventiSicilia #Live #Sagra #FoodFestival #SagraSicilia #Agrigento #StreetFood
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#127909; Reel apertura + Stories continue</span>
+                                <span class="post-time">&#128336; Mattina + aggiornamenti tutto il giorno</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 15 -->
+                    <div class="post-card">
+                        <div class="post-date-col">
+                            <div class="post-day-name">Sabato</div>
+                            <div class="post-day-num">10</div>
+                            <div class="post-month">Maggio</div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-top-row">
+                                <span class="badge badge-evento">Evento Recap</span>
+                                <span class="format-badge format-carosello">Carosello</span>
+                            </div>
+                            <div class="post-title">Grazie a tutti! 3 giorni indimenticabili alla Sagra</div>
+                            <div class="post-caption">
+                                Che emozione! La 13&ordf; Sagra 'Mpurnatu &amp; 'Mpanata &egrave; stata un successo. Abbiamo incontrato tante persone meravigliose, fatto assaggiare il nostro miele e raccontato la nostra passione. Grazie a tutti quelli che sono passati dal nostro stand. Ci vediamo l'anno prossimo &mdash; ma nel frattempo, il nostro miele &egrave; sempre disponibile. Scriveteci!
+                            </div>
+                            <div class="post-hashtags">
+                                #TerreDiMiele #ApicolturaLaGreca #SagraMpurnatuMpanata #Sagra2026 #CampobelloDiLicata #Sicilia #Grazie #MieleSiciliano #EventiSicilia #Recap #FoodFestival #Agrigento #SagraSicilia #ComunitaSiciliana #ThankYou
+                            </div>
+                            <div class="post-footer">
+                                <span class="post-time">&#128444; Carosello momenti migliori dell'evento</span>
+                                <span class="post-time">&#128336; Ore 19:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="notes-box">
+                <h3>Note operative per il periodo pre-sagra</h3>
+                <ul>
+                    <li>Pubblicare Stories aggiuntive (Instagram) nei giorni della Sagra: almeno 5-8 stories/giorno con contenuti live</li>
+                    <li>Rispondere a TUTTI i commenti e messaggi entro 2-4 ore &mdash; l'interazione aumenta la portata organica</li>
+                    <li>Scattare foto e girare video con luce naturale, preferibilmente nelle ore dorate (mattina presto o tardo pomeriggio)</li>
+                    <li>Preparare le grafiche countdown con anticipo usando i colori brand (toni ambra/miele)</li>
+                    <li>Salvare tutti i contenuti della Sagra (foto, video, stories) per riutilizzarli nei mesi successivi</li>
+                    <li>Taggare la pagina ufficiale della Sagra e del Comune di Campobello di Licata in ogni post evento</li>
+                    <li>Invitare chi visita lo stand a seguire le pagine social e a lasciare una recensione</li>
+                    <li>Documentare l&rsquo;evento Scuola Didattica a Licata (16 Aprile) con foto e video per i social</li>
+                    <li>Copertura live dalla Festa della Pace a Ravanusa (1 Maggio) con Stories Instagram</li>
+                    <li>Contenuti con Chef Leonardo Massaro: coordinare per foto/video delle preparazioni con il miele</li>
+                    <li>Ogni post va inviato al cliente per approvazione via WhatsApp prima della pubblicazione</li>
+                    <li>Il cliente fornir&agrave; materiale fotografico/video 1-2 volte al mese &mdash; integrare con grafiche e contenuti editoriali</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========== SECTION 4: TEMPLATE MENSILE ========== -->
+        <section class="section" id="template-mensile">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2>Piano Editoriale Mensile <small>Template generico per i mesi successivi alla Sagra</small></h2>
+            </div>
+
+            <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">
+                Questo schema mensile prevede <strong>12 post al mese</strong> (3 a settimana: Marted&igrave;, Gioved&igrave;, Sabato). Le categorie vengono distribuite in modo equilibrato per garantire variet&agrave; e copertura di tutti gli argomenti. Adattare i contenuti alla stagionalit&agrave;: fioritura primaverile, smielatura estiva, preparazione invernale delle arnie.
+            </p>
+
+            <!-- Distribution -->
+            <div class="dist-grid">
+                <div class="dist-item">
+                    <div class="dist-count" style="background: var(--cat-prodotto);">4</div>
+                    <div>
+                        <div class="dist-label">Prodotto</div>
+                        <div class="dist-freq">1 a settimana</div>
+                    </div>
+                </div>
+                <div class="dist-item">
+                    <div class="dist-count" style="background: var(--cat-dietro);">3</div>
+                    <div>
+                        <div class="dist-label">Dietro le Quinte</div>
+                        <div class="dist-freq">~1 a settimana</div>
+                    </div>
+                </div>
+                <div class="dist-item">
+                    <div class="dist-count" style="background: var(--cat-educativo);">2</div>
+                    <div>
+                        <div class="dist-label">Educativo</div>
+                        <div class="dist-freq">1 ogni 2 settimane</div>
+                    </div>
+                </div>
+                <div class="dist-item">
+                    <div class="dist-count" style="background: var(--cat-ricetta);">1</div>
+                    <div>
+                        <div class="dist-label">Ricetta / Abbinamento</div>
+                        <div class="dist-freq">1 al mese</div>
+                    </div>
+                </div>
+                <div class="dist-item">
+                    <div class="dist-count" style="background: var(--cat-territorio);">1</div>
+                    <div>
+                        <div class="dist-label">Territorio</div>
+                        <div class="dist-freq">1 al mese</div>
+                    </div>
+                </div>
+                <div class="dist-item">
+                    <div class="dist-count" style="background: var(--cat-coinvolgimento);">1</div>
+                    <div>
+                        <div class="dist-label">Coinvolgimento</div>
+                        <div class="dist-freq">1 al mese</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly table -->
+            <div class="monthly-table-wrapper">
+                <table class="monthly-table">
+                    <thead>
+                        <tr>
+                            <th>Sett.</th>
+                            <th>Giorno</th>
+                            <th>Categoria</th>
+                            <th>Tema / Spunto</th>
+                            <th>Formato</th>
+                            <th>Orario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Week 1 -->
+                        <tr>
+                            <td rowspan="3" style="font-weight:700; text-align:center; vertical-align:middle;">1</td>
+                            <td>Marted&igrave;</td>
+                            <td><span class="badge badge-prodotto">Prodotto</span></td>
+                            <td>Focus su un prodotto specifico (eucalipto, balsamico, castagno, millefiori, sulla, polline o favo). Descrizione sensoriale, abbinamenti suggeriti</td>
+                            <td><span class="format-badge format-foto">Foto</span></td>
+                            <td>12:30</td>
+                        </tr>
+                        <tr>
+                            <td>Gioved&igrave;</td>
+                            <td><span class="badge badge-dietro">Dietro le Quinte</span></td>
+                            <td>Vita quotidiana in apiario: controllo arnie, gestione sciami, manutenzione. Salvatore al lavoro</td>
+                            <td><span class="format-badge format-reel">Reel</span></td>
+                            <td>19:30</td>
+                        </tr>
+                        <tr>
+                            <td>Sabato</td>
+                            <td><span class="badge badge-educativo">Educativo</span></td>
+                            <td>Curiosit&agrave; sulle api, differenze tra tipi di miele, propriet&agrave; benefiche, stagionalit&agrave;</td>
+                            <td><span class="format-badge format-carosello">Carosello</span></td>
+                            <td>12:00</td>
+                        </tr>
+                        <!-- Week 2 -->
+                        <tr>
+                            <td rowspan="3" style="font-weight:700; text-align:center; vertical-align:middle;">2</td>
+                            <td>Marted&igrave;</td>
+                            <td><span class="badge badge-prodotto">Prodotto</span></td>
+                            <td>Secondo prodotto del mese. Close-up barattolo, consistenza del miele, packaging artigianale</td>
+                            <td><span class="format-badge format-foto">Foto</span></td>
+                            <td>12:30</td>
+                        </tr>
+                        <tr>
+                            <td>Gioved&igrave;</td>
+                            <td><span class="badge badge-territorio">Territorio</span></td>
+                            <td>Paesaggio siciliano, flora locale, stagione in corso. Connessione tra terra e qualit&agrave; del miele</td>
+                            <td><span class="format-badge format-foto">Foto</span></td>
+                            <td>19:30</td>
+                        </tr>
+                        <tr>
+                            <td>Sabato</td>
+                            <td><span class="badge badge-dietro">Dietro le Quinte</span></td>
+                            <td>Processo produttivo: invasettamento, etichettatura, stoccaggio. Il lavoro &ldquo;invisibile&rdquo; dietro ogni barattolo</td>
+                            <td><span class="format-badge format-reel">Reel</span></td>
+                            <td>12:00</td>
+                        </tr>
+                        <!-- Week 3 -->
+                        <tr>
+                            <td rowspan="3" style="font-weight:700; text-align:center; vertical-align:middle;">3</td>
+                            <td>Marted&igrave;</td>
+                            <td><span class="badge badge-prodotto">Prodotto</span></td>
+                            <td>Focus formati e confezioni. Barattoli da 1000g, 500g, piccoli formati. Confronto, consigli d'acquisto</td>
+                            <td><span class="format-badge format-foto">Foto</span></td>
+                            <td>12:30</td>
+                        </tr>
+                        <tr>
+                            <td>Gioved&igrave;</td>
+                            <td><span class="badge badge-ricetta">Ricetta</span></td>
+                            <td>Ricetta stagionale con miele: dolci, tisane, marinature, abbinamenti con formaggi locali</td>
+                            <td><span class="format-badge format-carosello">Carosello</span></td>
+                            <td>20:00</td>
+                        </tr>
+                        <tr>
+                            <td>Sabato</td>
+                            <td><span class="badge badge-dietro">Dietro le Quinte</span></td>
+                            <td>Momento personale: Salvatore racconta un aneddoto, una sfida superata, un ricordo legato alle api</td>
+                            <td><span class="format-badge format-foto">Foto</span></td>
+                            <td>12:00</td>
+                        </tr>
+                        <!-- Week 4 -->
+                        <tr>
+                            <td rowspan="3" style="font-weight:700; text-align:center; vertical-align:middle;">4</td>
+                            <td>Marted&igrave;</td>
+                            <td><span class="badge badge-prodotto">Prodotto</span></td>
+                            <td>Prodotto del mese in azione: miele versato su una pietanza, polline nel frullato, favo tagliato</td>
+                            <td><span class="format-badge format-reel">Reel</span></td>
+                            <td>12:30</td>
+                        </tr>
+                        <tr>
+                            <td>Gioved&igrave;</td>
+                            <td><span class="badge badge-educativo">Educativo</span></td>
+                            <td>Secondo contenuto educativo: conservazione del miele, cristallizzazione, impollinazione, biodiversit&agrave;</td>
+                            <td><span class="format-badge format-carosello">Carosello</span></td>
+                            <td>20:00</td>
+                        </tr>
+                        <tr>
+                            <td>Sabato</td>
+                            <td><span class="badge badge-coinvolgimento">Coinvolgimento</span></td>
+                            <td>Domanda ai followers, sondaggio, &ldquo;Lo sapevi?&rdquo;, invito a condividere foto/ricette con i nostri prodotti</td>
+                            <td><span class="format-badge format-foto">Foto</span></td>
+                            <td>12:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Seasonal notes -->
+            <div class="notes-box">
+                <h3>Adattamenti stagionali</h3>
+                <ul>
+                    <li><strong>Primavera (Mar-Mag):</strong> Fioritura, api al lavoro, raccolta polline. Temi legati alla rinascita e alla natura</li>
+                    <li><strong>Estate (Giu-Ago):</strong> Smielatura, prodotto fresco, ricette estive (granite, gelati col miele). Turismo e sagre</li>
+                    <li><strong>Autunno (Set-Nov):</strong> Preparazione arnie per l'inverno, miele come rimedio naturale, tisane con miele</li>
+                    <li><strong>Inverno (Dic-Feb):</strong> Miele come regalo natalizio, confezioni regalo, ricette invernali, il riposo delle api</li>
+                    <li>Sostituire la categoria &ldquo;Coinvolgimento&rdquo; con &ldquo;Evento&rdquo; durante le settimane di sagre, fiere o mercatini</li>
+                    <li>Inserire contenuti legati a festivit&agrave; locali: Natale, Pasqua, Ferragosto, feste patronali</li>
+                    <li>Aggiungere la categoria &ldquo;Tradizione&rdquo; (1/mese) alternandola con Coinvolgimento o Territorio</li>
+                </ul>
+            </div>
+
+            <!-- Content ideas bank -->
+            <div class="notes-box" style="background: white; border: 1px solid var(--border-light);">
+                <h3>Banca idee &mdash; Spunti per contenuti futuri</h3>
+                <ul>
+                    <li>&ldquo;5 modi per usare il miele che non conoscevi&rdquo; (carosello educativo)</li>
+                    <li>&ldquo;5 mieli, 5 caratteri: eucalipto, balsamico, castagno, millefiori e sulla a confronto&rdquo; (carosello comparativo)</li>
+                    <li>&ldquo;Perch&eacute; il miele non scade mai?&rdquo; (reel educativo breve)</li>
+                    <li>&ldquo;Un giorno nella vita di un'ape&rdquo; (reel storytelling)</li>
+                    <li>&ldquo;Il nostro miele in cucina: 3 ricette veloci&rdquo; (carosello ricette)</li>
+                    <li>&ldquo;Chi c'&egrave; dietro Terre di Miele: la storia di Salvatore&rdquo; (post storytelling)</li>
+                    <li>&ldquo;Il miele fa bene alla pelle? S&igrave;, ecco perch&eacute;&rdquo; (carosello benessere)</li>
+                    <li>&ldquo;Favo naturale: il modo pi&ugrave; antico di gustare il miele&rdquo; (reel prodotto)</li>
+                    <li>&ldquo;Miele e formaggi siciliani: gli abbinamenti perfetti&rdquo; (foto/carosello)</li>
+                    <li>&ldquo;Le api stanno scomparendo: cosa possiamo fare&rdquo; (post sensibilizzazione)</li>
+                    <li>&ldquo;Dalla campagna alla tavola: la tracciabilit&agrave; del nostro miele&rdquo; (carosello)</li>
+                    <li>&ldquo;Confezione regalo: il miele perfetto da regalare&rdquo; (foto natalizia/festiva)</li>
+                    <li>&ldquo;Apicoltura didattica: portare le api nelle scuole&rdquo; (carosello educativo)</li>
+                    <li>&ldquo;Le nostre collaborazioni: Chef Leonardo Massaro e il miele in cucina&rdquo; (reel/carosello)</li>
+                    <li>&ldquo;Terre di Miele agli eventi: Ravanusa, Licata e i mercatini del territorio&rdquo; (foto raccolta)</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="doc-footer">
+        <p><strong>Piano Editoriale Social Media</strong> &mdash; Terre di Miele / Apicoltura La Greca</p>
+        <p>Documento redatto ad Aprile 2026</p>
+        <p class="confidential">Documento riservato &mdash; Ad uso esclusivo del cliente</p>
+        <a href="https://www.emcdigitalsolutions.it" target="_blank" rel="noopener" title="Progettato e Sviluppato da EMC Digital Solutions" style="margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:6px;opacity:0.4;font-size:11px;text-decoration:none;color:inherit;"><span>Progettato e Sviluppato da</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="18"><defs><linearGradient id="emcG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4A017"/><stop offset="45%" stop-color="#E8A317"/><stop offset="100%" stop-color="#F5C518"/></linearGradient><linearGradient id="emcIG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4A017"/><stop offset="100%" stop-color="#E8A317"/></linearGradient></defs><path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#emcIG)"/><path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#emcIG)" opacity="0.85"/><path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#emcIG)"/><text x="46" y="27" font-family="'Space Grotesk','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#emcG)" letter-spacing="3">EMC</text></svg></a>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop" aria-label="Torna in cima">&#8593;</button>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

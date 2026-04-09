@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, follow">
+<title>Privacy Policy | Terre di Miele - Apicoltura La Greca</title>
+<meta name="description" content="Informativa sulla Privacy ai sensi del Regolamento UE 2016/679 (GDPR) - Terre di Miele, Apicoltura La Greca di Salvatore La Greca.">
+<meta name="author" content="Apicoltura La Greca - Terre di Miele">
+<meta property="og:title" content="Privacy Policy | Terre di Miele">
+<meta property="og:description" content="Informativa sulla Privacy ai sensi del Regolamento UE 2016/679 (GDPR) - Terre di Miele.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.terredimiele.it/privacy-policy.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Terre di Miele">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='%23F5C518' stroke='%23D4A017' stroke-width='3'/%3E%3Ctext x='50' y='62' text-anchor='middle' font-size='36' font-weight='bold' fill='%230C0806' font-family='serif'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://www.terredimiele.it/privacy-policy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#1A0F08;--bg-primary:#2C1810;--bg-card:#3A2218;--bg-card-alt:#2E1A10;
+  --gold:#F5C518;--gold-dark:#D4A017;--amber:#E8A317;--honey:#B8860B;
+  --cream:#FFF8E7;--cream-dim:#E8D5B7;--cream-muted:#B8996F;
+  --surface:rgba(255,248,231,0.05);--surface-hover:rgba(255,248,231,0.09);
+  --border:rgba(245,197,24,0.15);--border-hover:rgba(245,197,24,0.3);
+  --wa-green:#25D366;
+  --font-heading:'Playfair Display',Georgia,'Times New Roman',serif;
+  --font-body:'DM Sans','Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --nav-height:52px;
+  --section-py:clamp(80px,12vh,140px);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--font-body);color:var(--cream);
+  background:var(--bg-deep);line-height:1.7;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--gold);text-decoration:none;transition:color .3s}
+a:hover{color:var(--cream)}
+ul{list-style:none}
+h1,h2,h3,h4,h5{font-family:var(--font-heading);font-weight:600;line-height:1.2}
+button{font-family:var(--font-body);cursor:pointer;border:none;outline:none}
+::selection{background:var(--gold);color:var(--bg-deep)}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg-deep)}
+::-webkit-scrollbar-thumb{background:var(--honey);border-radius:4px}
+
+/* ========== UTILITY ========== */
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ========== ANIM ========== */
+.anim{opacity:0;transition:opacity .7s ease,transform .7s ease}
+.anim.visible{opacity:1;transform:none!important}
+.anim-up{transform:translateY(40px)}
+
+/* ========== GRADIENT MESH BG ========== */
+.gradient-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.gradient-bg .blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.12;animation:blobDrift 20s ease-in-out infinite alternate}
+.gradient-bg .blob:nth-child(1){width:500px;height:500px;background:var(--gold);top:-10%;left:-10%;animation-duration:22s}
+.gradient-bg .blob:nth-child(2){width:400px;height:400px;background:var(--amber);bottom:-15%;right:-5%;animation-delay:3s;animation-duration:25s}
+.gradient-bg .blob:nth-child(3){width:300px;height:300px;background:var(--honey);top:50%;left:50%;animation-delay:6s;animation-duration:18s}
+@keyframes blobDrift{0%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.08)}66%{transform:translate(-20px,30px) scale(.95)}100%{transform:translate(15px,15px) scale(1.03)}}
+
+/* ========== NAVBAR ========== */
+.navbar-slim{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--nav-height);
+  background:rgba(26,15,8,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(245,197,24,.08);
+  box-shadow:0 4px 30px rgba(0,0,0,.4);
+}
+.navbar-slim .container{display:flex;align-items:center;justify-content:space-between;height:100%}
+.nav-brand{
+  font-family:var(--font-heading);font-size:1.35rem;font-weight:700;
+  color:var(--cream);letter-spacing:1px;
+}
+.nav-brand em{
+  font-style:italic;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--cream) 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{
+  color:var(--cream-dim);font-size:.9rem;font-weight:500;
+  letter-spacing:.5px;position:relative;transition:color .3s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+  background:var(--gold);transition:width .3s ease;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  padding:8px 24px;background:linear-gradient(135deg,var(--gold),var(--amber));
+  color:var(--bg-deep);font-weight:600;font-size:.82rem;border-radius:50px;
+  border:none;transition:all .3s;letter-spacing:.5px;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(245,197,24,.3);color:var(--bg-deep)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001}
+.hamburger span{display:block;width:24px;height:2px;background:var(--cream);transition:all .3s ease;border-radius:2px}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* ========== PAGE HERO ========== */
+.page-hero{
+  padding-top:calc(var(--nav-height) + 80px);
+  padding-bottom:80px;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 120%,rgba(212,160,23,.08) 0%,transparent 60%),var(--bg-deep);
+  text-align:center;
+}
+.page-hero h1{
+  font-size:clamp(2.4rem,6vw,4rem);color:var(--gold);
+  margin-bottom:16px;font-weight:700;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--cream) 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .hero-subtitle{
+  font-family:var(--font-heading);font-size:clamp(1rem,2vw,1.3rem);
+  color:var(--cream-dim);font-weight:400;font-style:italic;
+  max-width:600px;margin:0 auto 16px;
+}
+.page-hero .hero-meta{
+  font-size:.9rem;color:var(--cream-muted);margin-top:8px;
+}
+.gold-line{
+  width:80px;height:3px;margin:20px auto;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:2px;
+}
+
+/* ========== PRIVACY CONTENT ========== */
+.privacy-content{
+  padding:var(--section-py) 0;position:relative;
+  background:linear-gradient(180deg,var(--bg-deep) 0%,var(--bg-primary) 50%,var(--bg-deep) 100%);
+}
+.privacy-wrapper{
+  max-width:860px;margin:0 auto;
+}
+.privacy-section{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:40px;margin-bottom:28px;
+  transition:border-color .3s ease;
+}
+.privacy-section:hover{border-color:var(--border-hover)}
+.privacy-section h2{
+  font-size:clamp(1.3rem,3vw,1.6rem);color:var(--gold);
+  margin-bottom:20px;display:flex;align-items:center;gap:12px;
+}
+.privacy-section h2 .section-number{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:rgba(245,197,24,.1);border:1px solid var(--border);
+  font-family:var(--font-body);font-size:.85rem;font-weight:700;
+  color:var(--gold);
+}
+.privacy-section h3{
+  font-size:1.1rem;color:var(--cream);margin:20px 0 12px;
+}
+.privacy-section p{
+  color:var(--cream-dim);font-size:.95rem;line-height:1.85;margin-bottom:14px;
+}
+.privacy-section p:last-child{margin-bottom:0}
+.privacy-section ul{
+  list-style:none;margin:12px 0 16px;padding:0;
+}
+.privacy-section ul li{
+  position:relative;padding-left:24px;margin-bottom:10px;
+  color:var(--cream-dim);font-size:.95rem;line-height:1.75;
+}
+.privacy-section ul li::before{
+  content:'';position:absolute;left:0;top:10px;
+  width:8px;height:8px;
+  background:var(--gold);
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+}
+.privacy-section strong{color:var(--cream);font-weight:600}
+.privacy-section a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+.privacy-section a:hover{color:var(--cream)}
+.contact-highlight{
+  background:rgba(245,197,24,.06);border:1px solid var(--border);
+  border-radius:10px;padding:20px 24px;margin:16px 0;
+}
+.contact-highlight p{margin-bottom:6px}
+.contact-highlight p:last-child{margin-bottom:0}
+
+/* ========== FOOTER ========== */
+.footer{
+  padding:60px 0 0;background:var(--bg-card);
+  border-top:1px solid var(--border);
+}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding-bottom:40px}
+.footer-brand h3{font-family:var(--font-heading);font-size:1.4rem;color:var(--gold);margin-bottom:12px}
+.footer-brand p{color:var(--cream-muted);font-size:.9rem;line-height:1.7;margin-bottom:8px}
+.footer-brand .piva{font-size:.8rem;color:var(--cream-muted);opacity:.7}
+.footer h4{
+  font-family:var(--font-heading);font-size:1rem;color:var(--cream);
+  margin-bottom:16px;padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.footer-links a{display:block;color:var(--cream-muted);font-size:.9rem;padding:4px 0;transition:color .3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-contact p{
+  color:var(--cream-muted);font-size:.9rem;margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.footer-contact p svg{width:16px;height:16px;flex-shrink:0}
+.footer-bottom{
+  border-top:1px solid var(--border);padding:20px 0;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:.8rem;color:var(--cream-muted)}
+.footer-bottom-links{display:flex;gap:16px}
+.footer-bottom-links a{font-size:.8rem;color:var(--cream-muted)}
+.footer-bottom-links a:hover{color:var(--gold)}
+.footer-emc{
+  padding:16px 0;display:flex;justify-content:center;
+  border-top:1px solid rgba(255,255,255,.03);
+}
+
+/* ========== FLOATING ELEMENTS ========== */
+.floating-wa{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:60px;height:60px;border-radius:50%;background:var(--wa-green);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(37,211,102,.35);
+  transition:all .3s ease;animation:waPulse 2s ease-in-out infinite;
+}
+.floating-wa:hover{transform:scale(1.1);box-shadow:0 8px 30px rgba(37,211,102,.45)}
+.floating-wa svg{width:30px;height:30px;fill:#fff}
+@keyframes waPulse{
+  0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.35)}
+  50%{box-shadow:0 6px 24px rgba(37,211,102,.55),0 0 0 10px rgba(37,211,102,.1)}
+}
+
+.back-to-top{
+  position:fixed;bottom:100px;right:32px;z-index:998;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(245,197,24,.15);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:all .3s ease;
+}
+.back-to-top.visible{opacity:1;pointer-events:auto}
+.back-to-top:hover{background:rgba(245,197,24,.25);border-color:var(--gold)}
+.back-to-top svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2.5}
+
+/* ========== COOKIE BANNER ========== */
+.cookie-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  background:rgba(44,24,16,.97);backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);padding:20px 0;
+  transform:translateY(100%);transition:transform .5s ease;
+}
+.cookie-banner.show{transform:translateY(0)}
+.cookie-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.cookie-text{flex:1;font-size:.88rem;color:var(--cream-muted);line-height:1.6}
+.cookie-text a{color:var(--gold);text-decoration:underline}
+.cookie-buttons{display:flex;gap:10px;flex-shrink:0}
+.cookie-btn{
+  padding:10px 22px;border-radius:50px;font-size:.85rem;
+  font-weight:600;border:none;cursor:pointer;transition:all .3s;
+}
+.cookie-btn.accept{background:var(--gold);color:var(--bg-deep)}
+.cookie-btn.accept:hover{background:var(--amber)}
+.cookie-btn.necessary{background:transparent;color:var(--cream-muted);border:1px solid var(--border)}
+.cookie-btn.necessary:hover{border-color:var(--cream-muted);color:var(--cream)}
+
+/* ========== MOBILE NAV OVERLAY ========== */
+.mobile-nav{
+  position:fixed;inset:0;z-index:999;background:rgba(26,15,8,.98);
+  backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .4s ease;
+}
+.mobile-nav.open{opacity:1;pointer-events:auto}
+.mobile-nav-links{text-align:center;display:flex;flex-direction:column;gap:28px}
+.mobile-nav-links a{
+  font-family:var(--font-heading);font-size:1.8rem;color:var(--cream);
+  font-weight:500;transition:color .3s;
+}
+.mobile-nav-links a:hover{color:var(--gold)}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:992px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  :root{--nav-height:48px}
+  .nav-links{display:none}
+  .nav-cta{padding:6px 18px;font-size:.78rem}
+  .hamburger{display:flex}
+  .privacy-section{padding:28px 20px}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .page-hero{padding-top:calc(var(--nav-height) + 50px);padding-bottom:50px}
+}
+@media(max-width:480px){
+  .container{padding:0 16px}
+  .cookie-inner{flex-direction:column;text-align:center}
+  .cookie-buttons{width:100%;justify-content:center}
+  .privacy-section h2{font-size:1.15rem;gap:10px}
+  .privacy-section h2 .section-number{width:30px;height:30px;font-size:.75rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar-slim" role="navigation" aria-label="Navigazione principale">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Terre di Miele - Homepage">Terre <em>di Miele</em></a>
+    <div class="nav-links" role="menubar">
+      <a href="index.html#chi-siamo" role="menuitem">Chi Siamo</a>
+      <a href="prodotti.html" role="menuitem">Prodotti</a>
+      <a href="news.html" role="menuitem">News</a>
+      <a href="index.html#galleria" role="menuitem">Galleria</a>
+      <a href="index.html#contatti" role="menuitem">Contatti</a>
+    </div>
+    <a href="prodotti.html" class="nav-cta">Ordina</a>
+    <button class="hamburger" id="hamburger" aria-label="Apri menu di navigazione" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Menu di navigazione mobile">
+  <div class="mobile-nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#chi-siamo">Chi Siamo</a>
+    <a href="prodotti.html">Prodotti</a>
+    <a href="news.html">News</a>
+    <a href="index.html#galleria">Galleria</a>
+    <a href="index.html#contatti">Contatti</a>
+  </div>
+</div>
+
+<!-- ========== PAGE HERO ========== -->
+<section class="page-hero">
+  <div class="gradient-bg" aria-hidden="true"><div class="blob"></div><div class="blob"></div><div class="blob"></div></div>
+  <div class="container" style="position:relative;z-index:1">
+    <h1>Privacy Policy</h1>
+    <p class="hero-subtitle">Informativa sulla Privacy ai sensi del Regolamento UE 2016/679</p>
+    <div class="gold-line"></div>
+    <p class="hero-meta">Ultimo aggiornamento: Aprile 2026</p>
+  </div>
+</section>
+
+<!-- ========== PRIVACY CONTENT ========== -->
+<section class="privacy-content">
+  <div class="container">
+    <div class="privacy-wrapper">
+
+      <!-- 1. Titolare del trattamento -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">1</span> Titolare del Trattamento</h2>
+        <p>Il Titolare del trattamento dei dati personali raccolti attraverso il presente sito web <strong>www.terredimiele.it</strong> è:</p>
+        <div class="contact-highlight">
+          <p><strong>Apicoltura La Greca di Salvatore La Greca</strong></p>
+          <p>Sede: C.da Giangaragano, 92023 Campobello di Licata (AG)</p>
+          <p>Partita IVA: 02957500842</p>
+          <p>Email: <a href="mailto:info@terredimiele.it">info@terredimiele.it</a></p>
+          <p>Telefono: <a href="tel:+393270477030">+39 327 047 7030</a></p>
+        </div>
+        <p>Il Titolare del trattamento è responsabile della protezione dei Suoi dati personali e si impegna a rispettare la normativa vigente in materia di protezione dei dati, in particolare il Regolamento (UE) 2016/679 (di seguito "GDPR") e il D.Lgs. 196/2003 (Codice Privacy), come modificato dal D.Lgs. 101/2018.</p>
+      </div>
+
+      <!-- 2. Dati raccolti -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">2</span> Dati Personali Raccolti</h2>
+        <p>Il presente sito web può raccogliere le seguenti categorie di dati personali:</p>
+
+        <h3>Dati forniti volontariamente dall'utente</h3>
+        <p>Attraverso il modulo di contatto presente sul sito, l'utente può fornire volontariamente i seguenti dati:</p>
+        <ul>
+          <li><strong>Nome e Cognome</strong> - per identificare l'interessato e personalizzare la comunicazione</li>
+          <li><strong>Indirizzo email</strong> - per poter rispondere alla richiesta di contatto</li>
+          <li><strong>Numero di telefono</strong> - per eventuale contatto telefonico, se fornito</li>
+          <li><strong>Messaggio</strong> - il contenuto della comunicazione inviata dall'utente</li>
+        </ul>
+
+        <h3>Dati di navigazione</h3>
+        <p>I sistemi informatici e le procedure software preposte al funzionamento di questo sito acquisiscono, nel corso del loro normale esercizio, alcuni dati personali la cui trasmissione è implicita nell'uso dei protocolli di comunicazione Internet. Si tratta di informazioni che non sono raccolte per essere associate a interessati identificati, ma che per loro stessa natura potrebbero, attraverso elaborazioni ed associazioni con dati detenuti da terzi, permettere di identificare gli utenti. In questa categoria rientrano gli indirizzi IP, i nomi a dominio dei computer utilizzati, gli indirizzi URI (Uniform Resource Identifier), l'orario della richiesta, il metodo utilizzato nel sottoporre la richiesta al server, la dimensione del file ottenuto in risposta ed altri parametri relativi al sistema operativo e all'ambiente informatico dell'utente.</p>
+
+        <h3>Cookie</h3>
+        <p>Il sito utilizza cookie tecnici strettamente necessari al funzionamento. Per maggiori informazioni, si prega di consultare la nostra <a href="cookie-policy.html">Cookie Policy</a>.</p>
+      </div>
+
+      <!-- 3. Finalità del trattamento -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">3</span> Finalità del Trattamento</h2>
+        <p>I dati personali raccolti vengono trattati per le seguenti finalità:</p>
+        <ul>
+          <li><strong>Risposta alle richieste di contatto:</strong> i dati forniti tramite il modulo di contatto vengono utilizzati esclusivamente per rispondere alle richieste dell'utente, fornire informazioni sui prodotti e gestire le comunicazioni commerciali</li>
+          <li><strong>Gestione degli ordini:</strong> in caso di richiesta di acquisto tramite WhatsApp o altri canali, i dati potranno essere trattati per la gestione e l'evasione dell'ordine</li>
+          <li><strong>Adempimento di obblighi di legge:</strong> il trattamento può essere necessario per adempiere a obblighi previsti dalla normativa vigente, da regolamenti e dalla legislazione comunitaria</li>
+          <li><strong>Funzionamento del sito web:</strong> i dati di navigazione sono necessari per garantire il corretto funzionamento tecnico del sito</li>
+        </ul>
+        <p>I dati personali <strong>non verranno utilizzati</strong> per finalità di profilazione, marketing automatizzato o cessione a terzi per scopi commerciali.</p>
+      </div>
+
+      <!-- 4. Base giuridica -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">4</span> Base Giuridica del Trattamento</h2>
+        <p>Il trattamento dei dati personali si fonda sulle seguenti basi giuridiche, ai sensi dell'art. 6 del GDPR:</p>
+        <ul>
+          <li><strong>Consenso dell'interessato (art. 6, par. 1, lett. a):</strong> l'utente presta il proprio consenso al trattamento dei dati personali compilando e inviando il modulo di contatto. Il consenso può essere revocato in qualsiasi momento</li>
+          <li><strong>Esecuzione di un contratto o misure precontrattuali (art. 6, par. 1, lett. b):</strong> il trattamento è necessario per rispondere alle richieste dell'utente e per la gestione di eventuali ordini</li>
+          <li><strong>Obbligo legale (art. 6, par. 1, lett. c):</strong> il trattamento è necessario per adempiere a obblighi di legge a cui e soggetto il Titolare</li>
+          <li><strong>Interesse legittimo (art. 6, par. 1, lett. f):</strong> il trattamento dei dati di navigazione è necessario per garantire la sicurezza e il corretto funzionamento del sito web</li>
+        </ul>
+      </div>
+
+      <!-- 5. Modalità di trattamento -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">5</span> Modalità di Trattamento</h2>
+        <p>Il trattamento dei dati personali viene effettuato mediante strumenti informatici e/o telematici, con modalità organizzative e logiche strettamente correlate alle finalità sopra indicate, e comunque in modo da garantirne la sicurezza, l'integrita e la riservatezza dei dati, in conformita a quanto previsto dal GDPR.</p>
+        <p>In particolare, sono adottate misure tecniche e organizzative adeguate per proteggere i dati personali da accessi non autorizzati, perdita, distruzione o alterazione, tra cui:</p>
+        <ul>
+          <li>Utilizzo del protocollo HTTPS per la trasmissione sicura dei dati</li>
+          <li>Accesso ai dati limitato al solo Titolare del trattamento</li>
+          <li>Conservazione sicura dei dati ricevuti tramite il modulo di contatto</li>
+        </ul>
+        <p>I dati personali non saranno oggetto di diffusione né di comunicazione a terzi non autorizzati. Potranno essere comunicati a soggetti terzi solo nei casi previsti dalla legge o su richiesta dell'autorità giudiziaria.</p>
+      </div>
+
+      <!-- 6. Periodo di conservazione -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">6</span> Periodo di Conservazione</h2>
+        <p>I dati personali raccolti vengono conservati per il tempo strettamente necessario al raggiungimento delle finalità per cui sono stati raccolti, nel rispetto del principio di minimizzazione di cui all'art. 5, par. 1, lett. e) del GDPR.</p>
+        <p>In particolare:</p>
+        <ul>
+          <li><strong>Dati del modulo di contatto:</strong> conservati per un periodo massimo di <strong>24 mesi</strong> dalla data di raccolta, salvo richiesta di cancellazione anticipata da parte dell'interessato</li>
+          <li><strong>Dati di navigazione:</strong> conservati per il tempo strettamente necessario alla gestione tecnica del sito e comunque non oltre <strong>12 mesi</strong></li>
+          <li><strong>Dati relativi a ordini:</strong> conservati per il periodo previsto dalla normativa fiscale e tributaria vigente (attualmente <strong>10 anni</strong> ai sensi dell'art. 2220 del Codice Civile)</li>
+        </ul>
+        <p>Trascorsi i periodi di conservazione indicati, i dati verranno cancellati o resi anonimi in modo irreversibile.</p>
+      </div>
+
+      <!-- 7. Diritti dell'interessato -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">7</span> Diritti dell'Interessato</h2>
+        <p>Ai sensi degli articoli da 15 a 22 del GDPR, l'interessato ha il diritto di esercitare in qualsiasi momento i seguenti diritti:</p>
+        <ul>
+          <li><strong>Diritto di accesso (art. 15):</strong> ottenere conferma dell'esistenza di un trattamento di dati personali che lo riguardano, accedere ai propri dati e ricevere informazioni sulle finalità del trattamento, le categorie di dati trattati, i destinatari e il periodo di conservazione</li>
+          <li><strong>Diritto di rettifica (art. 16):</strong> ottenere la correzione dei dati personali inesatti o l'integrazione dei dati incompleti</li>
+          <li><strong>Diritto alla cancellazione (art. 17):</strong> ottenere la cancellazione dei propri dati personali quando non sono più necessari rispetto alle finalità per cui sono stati raccolti, quando l'interessato revoca il consenso, o quando i dati sono stati trattati illecitamente</li>
+          <li><strong>Diritto alla limitazione del trattamento (art. 18):</strong> ottenere la limitazione del trattamento quando l'interessato contesta l'esattezza dei dati, quando il trattamento è illecito ma l'interessato si oppone alla cancellazione, o quando il Titolare non ha più bisogno dei dati ma questi sono necessari all'interessato per l'accertamento di diritti in sede giudiziaria</li>
+          <li><strong>Diritto alla portabilità dei dati (art. 20):</strong> ricevere i dati personali forniti al Titolare in un formato strutturato, di uso comune e leggibile da dispositivo automatico, e di trasmetterli a un altro titolare del trattamento senza impedimenti</li>
+          <li><strong>Diritto di opposizione (art. 21):</strong> opporsi in qualsiasi momento al trattamento dei propri dati personali per motivi connessi alla propria situazione particolare</li>
+        </ul>
+        <p>L'interessato ha inoltre il diritto di proporre reclamo all'autorità di controllo competente (<strong>Garante per la Protezione dei Dati Personali</strong> - <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>) qualora ritenga che il trattamento dei propri dati personali avvenga in violazione del GDPR.</p>
+      </div>
+
+      <!-- 8. Cookie -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">8</span> Cookie</h2>
+        <p>Il presente sito web utilizza cookie tecnici strettamente necessari al corretto funzionamento del sito e per migliorare l'esperienza di navigazione dell'utente.</p>
+        <p>Per informazioni dettagliate sui cookie utilizzati, sulle modalità di gestione e disattivazione degli stessi, si rimanda alla <a href="cookie-policy.html"><strong>Cookie Policy</strong></a> completa, accessibile dall'apposito link presente in ogni pagina del sito.</p>
+      </div>
+
+      <!-- 9. Modifiche alla privacy policy -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">9</span> Modifiche alla Privacy Policy</h2>
+        <p>Il Titolare del trattamento si riserva il diritto di apportare modifiche alla presente informativa in qualsiasi momento, dandone pubblicità agli utenti attraverso la pubblicazione della versione aggiornata su questa pagina del sito.</p>
+        <p>Si consiglia pertanto di consultare periodicamente la presente pagina per prendere visione di eventuali aggiornamenti. In caso di modifiche sostanziali, l'utente sarà informato attraverso un avviso ben visibile sul sito web.</p>
+        <p>La presente informativa è aggiornata alla data indicata in cima alla pagina.</p>
+      </div>
+
+      <!-- 10. Come esercitare i diritti -->
+      <div class="privacy-section anim anim-up">
+        <h2><span class="section-number">10</span> Come Esercitare i Propri Diritti</h2>
+        <p>Per esercitare i diritti sopra elencati, o per qualsiasi domanda o chiarimento relativo al trattamento dei Suoi dati personali, può contattare il Titolare del trattamento ai seguenti recapiti:</p>
+        <div class="contact-highlight">
+          <p><strong>Apicoltura La Greca di Salvatore La Greca</strong></p>
+          <p>Email: <a href="mailto:info@terredimiele.it">info@terredimiele.it</a></p>
+          <p>Telefono: <a href="tel:+393270477030">+39 327 047 7030</a></p>
+          <p>Indirizzo: C.da Giangaragano, 92023 Campobello di Licata (AG)</p>
+        </div>
+        <p>La richiesta sarà processata nel più breve tempo possibile e comunque entro <strong>30 giorni</strong> dal ricevimento, come previsto dall'art. 12 del GDPR. In casi di particolare complessità, tale termine potrà essere prorogato di ulteriori 60 giorni, previa comunicazione all'interessato.</p>
+        <p>Per garantire la sicurezza dei dati, il Titolare potrebbe richiedere all'interessato di verificare la propria identità prima di dare seguito alla richiesta.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Terre di Miele</h3>
+        <p>Miele siciliano artigianale dalla campagna di Campobello di Licata. Ogni vasetto racconta la storia del nostro territorio e della passione per l'apicoltura.</p>
+        <p class="piva">Apicoltura La Greca di Salvatore La Greca<br>P.IVA: 02957500842</p>
+      </div>
+      <div>
+        <h4>Link Rapidi</h4>
+        <div class="footer-links">
+          <a href="index.html#chi-siamo">Chi Siamo</a>
+          <a href="prodotti.html">Prodotti</a>
+          <a href="news.html">News</a>
+          <a href="index.html#galleria">Galleria</a>
+          <a href="index.html#contatti">Contatti</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="cookie-policy.html">Cookie Policy</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contatti</h4>
+        <div class="footer-contact">
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +39 327 047 7030
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
+            info@terredimiele.it
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            C.da Giangaragano, 92023<br>Campobello di Licata (AG)
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Terre di Miele - Apicoltura La Greca. Tutti i diritti riservati.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-emc">
+      <a href="https://www.emcdigitalsolutions.it" target="_blank" rel="noopener" title="Progettato e Sviluppato da EMC Digital Solutions" style="margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;opacity:0.4;font-size:11px;text-decoration:none;color:inherit;">
+        <span>Progettato e Sviluppato da</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="18">
+          <defs>
+            <linearGradient id="emcG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#D4A017"/>
+              <stop offset="45%" stop-color="#F5C518"/>
+              <stop offset="100%" stop-color="#FFF8E7"/>
+            </linearGradient>
+            <linearGradient id="emcIG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#D4A017"/>
+              <stop offset="100%" stop-color="#F5C518"/>
+            </linearGradient>
+          </defs>
+          <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#emcIG)"/>
+          <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#emcIG)" opacity="0.85"/>
+          <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#emcIG)"/>
+          <text x="46" y="27" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#emcG)" letter-spacing="3">EMC</text>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== FLOATING WHATSAPP ========== -->
+<a href="https://wa.me/393270477030?text=Ciao%2C%20vorrei%20informazioni%20sui%20vostri%20prodotti.%20Grazie!" target="_blank" rel="noopener" class="floating-wa" aria-label="Contattaci su WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top" id="backToTop" aria-label="Torna su">
+  <svg viewBox="0 0 24 24"><polyline points="18,15 12,9 6,15"/></svg>
+</button>
+
+<!-- ========== COOKIE BANNER ========== -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consenso cookie">
+  <div class="container">
+    <div class="cookie-inner">
+      <p class="cookie-text">
+        Questo sito utilizza cookie tecnici e, previo tuo consenso, cookie di profilazione per migliorare la tua esperienza di navigazione.
+        Per saperne di più consulta la nostra <a href="cookie-policy.html">Cookie Policy</a>.
+      </p>
+      <div class="cookie-buttons">
+        <button class="cookie-btn accept" id="cookieAccept">Accetta tutti</button>
+        <button class="cookie-btn necessary" id="cookieNecessary">Solo necessari</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ===== Hamburger menu ===== */
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', function(){
+    var isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  var mobileLinks = mobileNav.querySelectorAll('a');
+  mobileLinks.forEach(function(link){
+    link.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ===== Anim on scroll (IntersectionObserver) ===== */
+  var anims = document.querySelectorAll('.anim');
+  if('IntersectionObserver' in window){
+    var animObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          animObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    anims.forEach(function(el){ animObserver.observe(el); });
+  } else {
+    anims.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  /* ===== Back to top ===== */
+  var backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', function(){
+    if(window.pageYOffset > 500){
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }, {passive:true});
+  backToTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ===== Cookie banner ===== */
+  var cookieBanner = document.getElementById('cookieBanner');
+  var cookieAccept = document.getElementById('cookieAccept');
+  var cookieNecessary = document.getElementById('cookieNecessary');
+
+  if(!localStorage.getItem('tdm_cookie_consent')){
+    setTimeout(function(){ cookieBanner.classList.add('show'); }, 1500);
+  }
+  cookieAccept.addEventListener('click', function(){
+    localStorage.setItem('tdm_cookie_consent', 'all');
+    cookieBanner.classList.remove('show');
+  });
+  cookieNecessary.addEventListener('click', function(){
+    localStorage.setItem('tdm_cookie_consent', 'necessary');
+    cookieBanner.classList.remove('show');
+  });
+
+})();
+</script>
+
+</body>
+</html>

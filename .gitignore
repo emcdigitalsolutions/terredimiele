@@ -1,0 +1,7 @@
+# Questionario (dati privati cliente)
+questionario/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
