@@ -310,21 +310,120 @@ input,textarea,select{font-family:var(--font-body)}
 .honey-drip path{fill:var(--bg-primary)}
 
 /* ========== MARQUEE TICKER ========== */
-.ticker{
-  background:linear-gradient(90deg,var(--gold),var(--amber),var(--gold));
-  padding:10px 0;overflow:hidden;position:relative;z-index:3;
+/* ========== EVENTS BANNER (prossimi eventi cliccabili) ========== */
+.events-banner{
+  padding:56px 0 40px;position:relative;z-index:3;
+  background:linear-gradient(180deg,var(--bg-primary) 0%,var(--bg-deep) 100%);
+  border-top:1px solid rgba(245,197,24,.08);
+  border-bottom:1px solid rgba(245,197,24,.08);
 }
-.ticker-track{
-  display:flex;gap:60px;animation:ticker 30s linear infinite;width:max-content;
+.events-banner::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(245,197,24,.06) 0%,transparent 60%),
+    radial-gradient(circle at 80% 70%,rgba(232,163,23,.05) 0%,transparent 60%);
+  pointer-events:none;
 }
-.ticker-track span{
-  font-size:.85rem;font-weight:700;color:var(--bg-deep);
-  white-space:nowrap;display:flex;align-items:center;gap:10px;letter-spacing:.5px;
+.events-banner-head{
+  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;
+  gap:16px;margin-bottom:28px;position:relative;z-index:1;
 }
-.ticker-track span::before{
-  content:'';width:6px;height:6px;background:var(--bg-deep);border-radius:50%;opacity:.5;flex-shrink:0;
+.events-banner-head .label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);
 }
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.events-banner-head .label::before{
+  content:'';width:30px;height:1px;background:var(--gold);
+}
+.events-banner-head h2{
+  font-size:clamp(1.5rem,2.8vw,2.1rem);color:var(--cream);margin-top:6px;
+}
+.events-banner-head p{
+  font-size:.92rem;color:var(--cream-muted);margin-top:4px;
+}
+.events-banner-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+  position:relative;z-index:1;
+}
+.event-card{
+  display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;
+  padding:24px 26px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(58,34,24,.85) 0%,rgba(44,24,16,.85) 100%);
+  border:1px solid var(--border);
+  text-decoration:none;color:inherit;
+  transition:all .4s cubic-bezier(.2,.8,.3,1);
+  position:relative;overflow:hidden;
+}
+.event-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(245,197,24,.08) 0%,transparent 60%);
+  opacity:0;transition:opacity .4s;
+}
+.event-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  box-shadow:0 18px 50px rgba(245,197,24,.15),0 4px 14px rgba(0,0,0,.3);
+}
+.event-card:hover::before{opacity:1}
+.event-card:hover .event-cta{background:var(--gold);color:var(--bg-deep);transform:translateX(4px)}
+.event-date{
+  flex-shrink:0;text-align:center;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--amber) 100%);
+  color:var(--bg-deep);padding:14px 20px;border-radius:14px;min-width:84px;
+  position:relative;z-index:1;
+  box-shadow:0 8px 24px rgba(245,197,24,.2);
+}
+.event-date .day{
+  display:block;font-family:var(--font-heading);font-size:1.9rem;font-weight:700;line-height:1;
+}
+.event-date .month{
+  display:block;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  margin-top:4px;opacity:.85;
+}
+.event-body{position:relative;z-index:1;min-width:0}
+.event-tag{
+  display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--amber);margin-bottom:6px;
+}
+.event-body h3{
+  font-family:var(--font-heading);font-size:1.25rem;color:var(--cream);
+  margin-bottom:4px;line-height:1.2;
+}
+.event-location{
+  font-size:.82rem;color:var(--cream-dim);margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+}
+.event-location svg{width:13px;height:13px;flex-shrink:0;opacity:.7}
+.event-countdown{
+  display:inline-flex;align-items:baseline;gap:6px;
+  padding:4px 12px;border-radius:20px;
+  background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.25);
+}
+.event-countdown .cd-val{
+  font-family:var(--font-heading);font-size:1rem;font-weight:700;color:var(--gold);line-height:1;
+}
+.event-countdown .cd-lbl{
+  font-size:.72rem;color:var(--cream-dim);letter-spacing:.3px;
+}
+.event-countdown.cd-live{
+  background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.4);
+  animation:cdPulse 2s ease-in-out infinite;
+}
+.event-countdown.cd-live .cd-val{color:#25D366}
+.event-countdown.cd-past{opacity:.5}
+@keyframes cdPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}
+  50%{box-shadow:0 0 0 6px rgba(37,211,102,0)}
+}
+.event-cta{
+  flex-shrink:0;position:relative;z-index:1;
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(245,197,24,.1);border:1px solid var(--border);
+  color:var(--gold);transition:all .3s;
+}
+.event-cta svg{width:18px;height:18px;stroke-width:2.5;fill:none;stroke:currentColor}
 
 /* ========== CHI SIAMO — BENTO GRID ========== */
 .chi-siamo{padding:var(--section-py) 0;position:relative;background:var(--bg-primary)}
@@ -469,6 +568,57 @@ input,textarea,select{font-family:var(--font-body)}
   display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;color:var(--gold);transition:gap .3s,color .3s;
 }
 .news-card-body .news-link:hover{gap:12px;color:var(--cream)}
+
+/* ========== TESTIMONIANZE ========== */
+.testimonials-section{
+  padding:var(--section-py) 0;position:relative;background:var(--bg-primary);overflow:hidden;
+}
+.testimonials-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;margin-top:16px;
+}
+.testimonial-card{
+  position:relative;background:var(--bg-card);border:1px solid var(--border);
+  border-radius:20px;padding:32px 26px 26px;
+  transition:transform .4s,border-color .4s,box-shadow .4s;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.testimonial-card::before{
+  content:'"';position:absolute;top:-10px;right:18px;
+  font-family:var(--font-heading);font-size:7rem;color:var(--gold);
+  opacity:.12;line-height:1;pointer-events:none;font-weight:700;
+}
+.testimonial-card:hover{
+  transform:translateY(-6px);border-color:var(--border-hover);
+  box-shadow:0 20px 50px -20px rgba(245,197,24,.18);
+}
+.testimonial-stars{
+  display:flex;gap:3px;margin-bottom:14px;color:var(--gold);
+}
+.testimonial-stars svg{width:16px;height:16px;fill:var(--gold)}
+.testimonial-text{
+  font-size:.95rem;color:var(--cream-dim);line-height:1.7;
+  font-style:italic;margin-bottom:22px;flex:1;position:relative;z-index:1;
+}
+.testimonial-author{
+  display:flex;align-items:center;gap:14px;padding-top:18px;
+  border-top:1px solid var(--border);
+}
+.testimonial-avatar{
+  width:46px;height:46px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--bg-deep);font-weight:700;font-size:1.05rem;
+  font-family:var(--font-heading);
+}
+.testimonial-name{
+  font-family:var(--font-heading);font-size:1rem;color:var(--cream);
+  font-weight:600;line-height:1.2;margin-bottom:3px;
+}
+.testimonial-meta{
+  font-size:.75rem;color:var(--cream-muted);
+  text-transform:uppercase;letter-spacing:1px;
+}
 
 /* ========== GALLERY CAROUSEL ========== */
 .gallery-section{padding:var(--section-py) 0;position:relative;background:var(--bg-deep);overflow:hidden}
@@ -741,6 +891,7 @@ input,textarea,select{font-family:var(--font-body)}
       <a href="prodotti.html" role="menuitem">Prodotti</a>
       <a href="news.html" role="menuitem">News</a>
       <a href="#galleria" role="menuitem">Galleria</a>
+      <a href="#testimonianze" role="menuitem">Recensioni</a>
       <a href="#contatti" role="menuitem">Contatti</a>
     </div>
     <a href="prodotti.html" class="nav-cta">Ordina</a>
@@ -757,6 +908,7 @@ input,textarea,select{font-family:var(--font-body)}
   <a href="#prodotti" data-label="Prodotti" aria-label="Prodotti"></a>
   <a href="#news" data-label="News" aria-label="News"></a>
   <a href="#galleria" data-label="Galleria" aria-label="Galleria"></a>
+  <a href="#testimonianze" data-label="Recensioni" aria-label="Recensioni"></a>
   <a href="#contatti" data-label="Contatti" aria-label="Contatti"></a>
 </nav>
 
@@ -768,6 +920,7 @@ input,textarea,select{font-family:var(--font-body)}
     <a href="prodotti.html">Prodotti</a>
     <a href="news.html">News</a>
     <a href="#galleria">Galleria</a>
+    <a href="#testimonianze">Recensioni</a>
     <a href="#contatti">Contatti</a>
   </div>
 </div>
@@ -804,27 +957,66 @@ input,textarea,select{font-family:var(--font-body)}
   <path d="M0,0 L1440,0 L1440,40 Q1350,40 1300,55 Q1260,68 1230,50 Q1200,35 1160,40 Q1100,50 1060,60 Q1020,72 980,55 Q940,38 900,45 Q860,52 820,65 Q780,78 740,58 Q700,38 660,42 Q600,50 540,62 Q480,75 420,55 Q360,35 300,48 Q240,60 180,52 Q120,44 60,58 Q30,65 0,55 Z"/>
 </svg>
 
-<!-- ========== MARQUEE TICKER ========== -->
-<div class="ticker" aria-label="Annunci in evidenza">
-  <div class="ticker-track" id="tickerTrack">
-    <span>Sagra 'Mpurnatu & 'Mpanata — 8-9-10 Maggio 2026</span>
-    <span id="tickerCountdown">Mancano XX giorni!</span>
-    <span>Miele 100% Siciliano</span>
-    <span>Dal Produttore a Te</span>
-    <span>Apicoltura Artigianale dal cuore della Sicilia</span>
-    <span>Scuola Didattica a Licata — 16 Aprile 2026</span>
-    <span>Festa della Pace a Ravanusa — 1&deg; Maggio 2026</span>
-    <span>Collaborazioni con Chef Leonardo Massaro</span>
-    <span>Sagra 'Mpurnatu & 'Mpanata — 8-9-10 Maggio 2026</span>
-    <span class="ticker-countdown-dup">Mancano XX giorni!</span>
-    <span>Miele 100% Siciliano</span>
-    <span>Dal Produttore a Te</span>
-    <span>Apicoltura Artigianale dal cuore della Sicilia</span>
-    <span>Scuola Didattica a Licata — 16 Aprile 2026</span>
-    <span>Festa della Pace a Ravanusa — 1&deg; Maggio 2026</span>
-    <span>Collaborazioni con Chef Leonardo Massaro</span>
+<!-- ========== EVENTS BANNER — Prossimi eventi cliccabili ========== -->
+<section class="events-banner" aria-label="Prossimi eventi Terre di Miele">
+  <div class="container">
+    <div class="events-banner-head anim anim-up">
+      <div>
+        <span class="label">Agenda</span>
+        <h2>Dove trovarci</h2>
+        <p>Segna in calendario i nostri prossimi appuntamenti</p>
+      </div>
+    </div>
+
+    <div class="events-banner-grid">
+      <!-- EVENTO 1: 1 Maggio — Accordi di Pace -->
+      <a href="news.html#festa-pace-ravanusa-2026" class="event-card anim anim-up" style="--stagger:1">
+        <div class="event-date">
+          <span class="day">1</span>
+          <span class="month">Mag</span>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Festa musicale</span>
+          <h3>Accordi di Pace</h3>
+          <p class="event-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ravanusa &middot; Rotonda del Saraceno
+          </p>
+          <div class="event-countdown" data-event-date="2026-05-01T11:30:00">
+            <span class="cd-val">--</span>
+            <span class="cd-lbl">al via</span>
+          </div>
+        </div>
+        <div class="event-cta" aria-label="Scopri di pi&ugrave;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <!-- EVENTO 2: 8-10 Maggio — Sagra 'Mpurnatu & 'Mpanata -->
+      <a href="news.html#sagra-maggio-2026" class="event-card anim anim-up" style="--stagger:2">
+        <div class="event-date">
+          <span class="day">8-10</span>
+          <span class="month">Mag</span>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Sagra locale &middot; 13&ordf; ed.</span>
+          <h3>'Mpurnatu &amp; 'Mpanata</h3>
+          <p class="event-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Campobello di Licata
+          </p>
+          <div class="event-countdown" data-event-date="2026-05-08T18:00:00" data-event-end="2026-05-10T23:59:00">
+            <span class="cd-val">--</span>
+            <span class="cd-lbl">al via</span>
+          </div>
+        </div>
+        <div class="event-cta" aria-label="Scopri di pi&ugrave;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- ========== CHI SIAMO — BENTO ========== -->
 <section class="chi-siamo" id="chi-siamo">
@@ -1064,12 +1256,12 @@ input,textarea,select{font-family:var(--font-body)}
       </div>
       <div class="news-card anim anim-scale" style="--stagger:2">
         <div class="news-card-img">
-          <img src="images/stand.jpg" alt="Festa della Pace a Ravanusa - 1 Maggio 2026" onerror="this.style.display='none'">
+          <img src="images/1maggio.jpg" alt="Accordi di Pace - Ravanusa 1 Maggio 2026" onerror="this.style.display='none'">
         </div>
         <div class="news-card-body">
           <span class="news-date">9 Aprile 2026</span>
-          <h3>Festa della Pace a Ravanusa</h3>
-          <p>Il 1&deg; Maggio 2026 parteciperemo alla Festa della Pace a Ravanusa con degustazioni e il nostro stand di miele artigianale.</p>
+          <h3>Accordi di Pace &mdash; Ravanusa</h3>
+          <p>Il 1&deg; Maggio 2026 Terre di Miele sar&agrave; alla Rotonda del Saraceno con il proprio stand di miele siciliano. Musica dal vivo dalle 11:30 fino a sera, ingresso gratuito.</p>
           <a href="news.html#festa-pace-ravanusa-2026" class="news-link">Leggi tutto <span aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
@@ -1202,6 +1394,147 @@ input,textarea,select{font-family:var(--font-body)}
   <div class="lightbox-counter"><span id="lightboxCurrentNum">1</span> / 11</div>
 </div>
 
+<!-- ========== TESTIMONIANZE ========== -->
+<!-- TODO: Sostituire queste testimonianze con recensioni reali raccolte dal cliente o dalla pagina Facebook ufficiale quando disponibili -->
+<section class="testimonials-section" id="testimonianze">
+  <div class="container">
+    <div class="section-header anim anim-slide-left">
+      <span class="section-num">05</span>
+      <h2>Dicono di Noi</h2>
+      <p class="section-sub">Le parole di chi ha gi&agrave; assaggiato il nostro miele</p>
+    </div>
+    <div class="testimonials-grid">
+
+      <!-- Testimonianza 1 -->
+      <div class="testimonial-card anim anim-up" style="--stagger:1">
+        <div class="testimonial-stars" aria-label="5 stelle su 5">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="testimonial-text">
+          &ldquo;Il miele di eucalipto di Terre di Miele &egrave; semplicemente eccezionale. Lo uso ogni mattina nel t&egrave; e si sente che &egrave; un prodotto autentico, lavorato con cura. Salvatore trasmette una passione vera per quello che fa.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">GR</div>
+          <div>
+            <div class="testimonial-name">Giuseppe R.</div>
+            <div class="testimonial-meta">Campobello di Licata</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonianza 2 -->
+      <div class="testimonial-card anim anim-up" style="--stagger:2">
+        <div class="testimonial-stars" aria-label="5 stelle su 5">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="testimonial-text">
+          &ldquo;Ho ordinato il millefiori e il castagno per un regalo: confezionati benissimo e di qualit&agrave; superiore a quelli del supermercato. Il castagno in particolare ha un profumo intenso e una complessit&agrave; rara. Consigliatissimi!&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MC</div>
+          <div>
+            <div class="testimonial-name">Maria C.</div>
+            <div class="testimonial-meta">Agrigento</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonianza 3 -->
+      <div class="testimonial-card anim anim-up" style="--stagger:3">
+        <div class="testimonial-stars" aria-label="5 stelle su 5">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="testimonial-text">
+          &ldquo;Ho conosciuto Terre di Miele a una sagra locale e sono rimasta conquistata dagli assaggi. Il miele di sulla &egrave; una rivelazione: delicato, profumato, perfetto sulla ricotta. Da allora lo ordino regolarmente.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">FV</div>
+          <div>
+            <div class="testimonial-name">Francesca V.</div>
+            <div class="testimonial-meta">Licata</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonianza 4 -->
+      <div class="testimonial-card anim anim-up" style="--stagger:4">
+        <div class="testimonial-stars" aria-label="5 stelle su 5">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="testimonial-text">
+          &ldquo;Come chef utilizzo il miele di Terre di Miele nei miei piatti da oltre un anno. La qualit&agrave; &egrave; costante e ogni variet&agrave; ha un carattere distinto che valorizza le preparazioni. Un prodotto che racconta davvero il territorio.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">LM</div>
+          <div>
+            <div class="testimonial-name">Leonardo M.</div>
+            <div class="testimonial-meta">Chef &middot; Agrigento</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonianza 5 -->
+      <div class="testimonial-card anim anim-up" style="--stagger:5">
+        <div class="testimonial-stars" aria-label="5 stelle su 5">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="testimonial-text">
+          &ldquo;Un'esperienza fantastica: ho visitato l'apiario con i miei figli e Salvatore ci ha spiegato tutto con grande disponibilit&agrave;. I bambini si sono divertiti e abbiamo imparato tanto. Il miele &egrave; buonissimo, si percepisce la cura artigianale.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AS</div>
+          <div>
+            <div class="testimonial-name">Antonio S.</div>
+            <div class="testimonial-meta">Ravanusa</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonianza 6 -->
+      <div class="testimonial-card anim anim-up" style="--stagger:6">
+        <div class="testimonial-stars" aria-label="5 stelle su 5">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <p class="testimonial-text">
+          &ldquo;Acquisto il polline d'api da Terre di Miele per l'intera famiglia: &egrave; freschissimo e si sente la differenza rispetto a quello che si trova in erboristeria. Servizio impeccabile e consegna puntuale anche nei paesi vicini.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RP</div>
+          <div>
+            <div class="testimonial-name">Rosalia P.</div>
+            <div class="testimonial-meta">Naro</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- Wave Divider -->
 <svg class="wave-top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
   <path d="M0,0 Q180,50 360,30 Q540,10 720,35 Q900,60 1080,25 Q1260,0 1440,20 L1440,60 L0,60Z"/>
@@ -1214,7 +1547,7 @@ input,textarea,select{font-family:var(--font-body)}
   </div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header anim anim-slide-left">
-      <span class="section-num">05</span>
+      <span class="section-num">06</span>
       <h2>Contattaci</h2>
       <p class="section-sub">Scrivici per informazioni, ordini o semplicemente per salutarci</p>
     </div>
@@ -1286,6 +1619,7 @@ input,textarea,select{font-family:var(--font-body)}
           <a href="prodotti.html">Prodotti</a>
           <a href="#news">News</a>
           <a href="#galleria">Galleria</a>
+          <a href="#testimonianze">Recensioni</a>
           <a href="#contatti">Contatti</a>
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="cookie-policy.html">Cookie Policy</a>
@@ -1418,20 +1752,55 @@ input,textarea,select{font-family:var(--font-body)}
     }
   }
 
-  /* ===== Ticker countdown ===== */
-  function updateCountdown(){
-    var sagra = new Date('2026-05-08T00:00:00');
+  /* ===== Events banner countdown ===== */
+  function updateEventsCountdown(){
+    var items = document.querySelectorAll('.event-countdown[data-event-date]');
     var now = new Date();
-    var diff = sagra - now;
-    if(diff <= 0) return;
-    var days = Math.ceil(diff / (1000*60*60*24));
-    var txt = 'Mancano ' + days + ' giorni!';
-    var el = document.getElementById('tickerCountdown');
-    if(el) el.textContent = txt;
-    var dup = document.querySelector('.ticker-countdown-dup');
-    if(dup) dup.textContent = txt;
+    items.forEach(function(item){
+      var start = new Date(item.getAttribute('data-event-date'));
+      var endAttr = item.getAttribute('data-event-end');
+      var end = endAttr ? new Date(endAttr) : null;
+      var valEl = item.querySelector('.cd-val');
+      var lblEl = item.querySelector('.cd-lbl');
+      if(!valEl || !lblEl) return;
+
+      item.classList.remove('cd-live','cd-past');
+
+      if(end && now >= start && now <= end){
+        // Evento in corso
+        item.classList.add('cd-live');
+        valEl.textContent = 'LIVE';
+        lblEl.textContent = 'in corso ora';
+        return;
+      }
+
+      var target = end || start;
+      if(now > target){
+        // Evento passato
+        item.classList.add('cd-past');
+        valEl.textContent = '—';
+        lblEl.textContent = 'concluso';
+        return;
+      }
+
+      // Evento futuro
+      var diff = start - now;
+      var days = Math.ceil(diff / (1000*60*60*24));
+      if(days <= 0){
+        valEl.textContent = 'Oggi';
+        lblEl.textContent = 'si parte!';
+      } else if(days === 1){
+        valEl.textContent = '1';
+        lblEl.textContent = 'giorno al via';
+      } else {
+        valEl.textContent = days;
+        lblEl.textContent = 'giorni al via';
+      }
+    });
   }
-  updateCountdown();
+  updateEventsCountdown();
+  // Aggiorna ogni ora per mantenere il countdown accurato
+  setInterval(updateEventsCountdown, 60*60*1000);
 
   /* ===== Navbar scroll ===== */
   var navbar = document.getElementById('navbar');
