@@ -310,120 +310,28 @@ input,textarea,select{font-family:var(--font-body)}
 .honey-drip path{fill:var(--bg-primary)}
 
 /* ========== MARQUEE TICKER ========== */
-/* ========== EVENTS BANNER (prossimi eventi cliccabili) ========== */
-.events-banner{
-  padding:56px 0 40px;position:relative;z-index:3;
-  background:linear-gradient(180deg,var(--bg-primary) 0%,var(--bg-deep) 100%);
-  border-top:1px solid rgba(245,197,24,.08);
-  border-bottom:1px solid rgba(245,197,24,.08);
+.ticker{
+  background:linear-gradient(90deg,var(--gold),var(--amber),var(--gold));
+  padding:10px 0;overflow:hidden;position:relative;z-index:3;
 }
-.events-banner::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 20% 30%,rgba(245,197,24,.06) 0%,transparent 60%),
-    radial-gradient(circle at 80% 70%,rgba(232,163,23,.05) 0%,transparent 60%);
-  pointer-events:none;
+.ticker-track{
+  display:flex;gap:60px;animation:ticker 30s linear infinite;width:max-content;
 }
-.events-banner-head{
-  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;
-  gap:16px;margin-bottom:28px;position:relative;z-index:1;
-}
-.events-banner-head .label{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--gold);
-}
-.events-banner-head .label::before{
-  content:'';width:30px;height:1px;background:var(--gold);
-}
-.events-banner-head h2{
-  font-size:clamp(1.5rem,2.8vw,2.1rem);color:var(--cream);margin-top:6px;
-}
-.events-banner-head p{
-  font-size:.92rem;color:var(--cream-muted);margin-top:4px;
-}
-.events-banner-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
-  position:relative;z-index:1;
-}
-.event-card{
-  display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;
-  padding:24px 26px;border-radius:18px;
-  background:linear-gradient(135deg,rgba(58,34,24,.85) 0%,rgba(44,24,16,.85) 100%);
-  border:1px solid var(--border);
+.ticker-track a{
   text-decoration:none;color:inherit;
-  transition:all .4s cubic-bezier(.2,.8,.3,1);
-  position:relative;overflow:hidden;
 }
-.event-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(245,197,24,.08) 0%,transparent 60%);
-  opacity:0;transition:opacity .4s;
+.ticker-track span{
+  font-size:.85rem;font-weight:700;color:var(--bg-deep);
+  white-space:nowrap;display:flex;align-items:center;gap:10px;letter-spacing:.5px;
 }
-.event-card:hover{
-  transform:translateY(-4px);
-  border-color:var(--gold);
-  box-shadow:0 18px 50px rgba(245,197,24,.15),0 4px 14px rgba(0,0,0,.3);
+.ticker-track a > span{
+  transition:opacity .2s;
 }
-.event-card:hover::before{opacity:1}
-.event-card:hover .event-cta{background:var(--gold);color:var(--bg-deep);transform:translateX(4px)}
-.event-date{
-  flex-shrink:0;text-align:center;
-  background:linear-gradient(135deg,var(--gold) 0%,var(--amber) 100%);
-  color:var(--bg-deep);padding:14px 20px;border-radius:14px;min-width:84px;
-  position:relative;z-index:1;
-  box-shadow:0 8px 24px rgba(245,197,24,.2);
+.ticker-track a:hover > span{opacity:.7}
+.ticker-track span::before{
+  content:'';width:6px;height:6px;background:var(--bg-deep);border-radius:50%;opacity:.5;flex-shrink:0;
 }
-.event-date .day{
-  display:block;font-family:var(--font-heading);font-size:1.9rem;font-weight:700;line-height:1;
-}
-.event-date .month{
-  display:block;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  margin-top:4px;opacity:.85;
-}
-.event-body{position:relative;z-index:1;min-width:0}
-.event-tag{
-  display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--amber);margin-bottom:6px;
-}
-.event-body h3{
-  font-family:var(--font-heading);font-size:1.25rem;color:var(--cream);
-  margin-bottom:4px;line-height:1.2;
-}
-.event-location{
-  font-size:.82rem;color:var(--cream-dim);margin-bottom:10px;
-  display:flex;align-items:center;gap:6px;
-}
-.event-location svg{width:13px;height:13px;flex-shrink:0;opacity:.7}
-.event-countdown{
-  display:inline-flex;align-items:baseline;gap:6px;
-  padding:4px 12px;border-radius:20px;
-  background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.25);
-}
-.event-countdown .cd-val{
-  font-family:var(--font-heading);font-size:1rem;font-weight:700;color:var(--gold);line-height:1;
-}
-.event-countdown .cd-lbl{
-  font-size:.72rem;color:var(--cream-dim);letter-spacing:.3px;
-}
-.event-countdown.cd-live{
-  background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.4);
-  animation:cdPulse 2s ease-in-out infinite;
-}
-.event-countdown.cd-live .cd-val{color:#25D366}
-.event-countdown.cd-past{opacity:.5}
-@keyframes cdPulse{
-  0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}
-  50%{box-shadow:0 0 0 6px rgba(37,211,102,0)}
-}
-.event-cta{
-  flex-shrink:0;position:relative;z-index:1;
-  width:44px;height:44px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(245,197,24,.1);border:1px solid var(--border);
-  color:var(--gold);transition:all .3s;
-}
-.event-cta svg{width:18px;height:18px;stroke-width:2.5;fill:none;stroke:currentColor}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ========== CHI SIAMO — BENTO GRID ========== */
 .chi-siamo{padding:var(--section-py) 0;position:relative;background:var(--bg-primary)}
@@ -957,66 +865,30 @@ input,textarea,select{font-family:var(--font-body)}
   <path d="M0,0 L1440,0 L1440,40 Q1350,40 1300,55 Q1260,68 1230,50 Q1200,35 1160,40 Q1100,50 1060,60 Q1020,72 980,55 Q940,38 900,45 Q860,52 820,65 Q780,78 740,58 Q700,38 660,42 Q600,50 540,62 Q480,75 420,55 Q360,35 300,48 Q240,60 180,52 Q120,44 60,58 Q30,65 0,55 Z"/>
 </svg>
 
-<!-- ========== EVENTS BANNER — Prossimi eventi cliccabili ========== -->
-<section class="events-banner" aria-label="Prossimi eventi Terre di Miele">
-  <div class="container">
-    <div class="events-banner-head anim anim-up">
-      <div>
-        <span class="label">Agenda</span>
-        <h2>Dove trovarci</h2>
-        <p>Segna in calendario i nostri prossimi appuntamenti</p>
-      </div>
-    </div>
+<!-- ========== MARQUEE TICKER ========== -->
+<div class="ticker" aria-label="Annunci in evidenza">
+  <div class="ticker-track" id="tickerTrack">
+    <a href="news.html#festa-pace-ravanusa-2026"><span>Accordi di Pace &mdash; Ravanusa, 1&deg; Maggio 2026</span></a>
+    <span id="tickerCountdown1">&mdash;</span>
+    <a href="news.html#sagra-maggio-2026"><span>Sagra 'Mpurnatu &amp; 'Mpanata &mdash; 8-9-10 Maggio 2026</span></a>
+    <span id="tickerCountdown2">&mdash;</span>
+    <span>Miele 100% Siciliano</span>
+    <span>Dal Produttore a Te</span>
+    <span>Apicoltura Artigianale dal cuore della Sicilia</span>
+    <a href="news.html#scuola-didattica-licata-2026"><span>Scuola Didattica a Licata &mdash; 16 Aprile 2026</span></a>
+    <a href="news.html#chef-massaro-2026"><span>Collaborazione con Chef Leonardo Massaro</span></a>
 
-    <div class="events-banner-grid">
-      <!-- EVENTO 1: 1 Maggio — Accordi di Pace -->
-      <a href="news.html#festa-pace-ravanusa-2026" class="event-card anim anim-up" style="--stagger:1">
-        <div class="event-date">
-          <span class="day">1</span>
-          <span class="month">Mag</span>
-        </div>
-        <div class="event-body">
-          <span class="event-tag">Festa musicale</span>
-          <h3>Accordi di Pace</h3>
-          <p class="event-location">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Ravanusa &middot; Rotonda del Saraceno
-          </p>
-          <div class="event-countdown" data-event-date="2026-05-01T11:30:00">
-            <span class="cd-val">--</span>
-            <span class="cd-lbl">al via</span>
-          </div>
-        </div>
-        <div class="event-cta" aria-label="Scopri di pi&ugrave;">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
-      </a>
-
-      <!-- EVENTO 2: 8-10 Maggio — Sagra 'Mpurnatu & 'Mpanata -->
-      <a href="news.html#sagra-maggio-2026" class="event-card anim anim-up" style="--stagger:2">
-        <div class="event-date">
-          <span class="day">8-10</span>
-          <span class="month">Mag</span>
-        </div>
-        <div class="event-body">
-          <span class="event-tag">Sagra locale &middot; 13&ordf; ed.</span>
-          <h3>'Mpurnatu &amp; 'Mpanata</h3>
-          <p class="event-location">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Campobello di Licata
-          </p>
-          <div class="event-countdown" data-event-date="2026-05-08T18:00:00" data-event-end="2026-05-10T23:59:00">
-            <span class="cd-val">--</span>
-            <span class="cd-lbl">al via</span>
-          </div>
-        </div>
-        <div class="event-cta" aria-label="Scopri di pi&ugrave;">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
-      </a>
-    </div>
+    <a href="news.html#festa-pace-ravanusa-2026"><span>Accordi di Pace &mdash; Ravanusa, 1&deg; Maggio 2026</span></a>
+    <span class="ticker-countdown-dup1">&mdash;</span>
+    <a href="news.html#sagra-maggio-2026"><span>Sagra 'Mpurnatu &amp; 'Mpanata &mdash; 8-9-10 Maggio 2026</span></a>
+    <span class="ticker-countdown-dup2">&mdash;</span>
+    <span>Miele 100% Siciliano</span>
+    <span>Dal Produttore a Te</span>
+    <span>Apicoltura Artigianale dal cuore della Sicilia</span>
+    <a href="news.html#scuola-didattica-licata-2026"><span>Scuola Didattica a Licata &mdash; 16 Aprile 2026</span></a>
+    <a href="news.html#chef-massaro-2026"><span>Collaborazione con Chef Leonardo Massaro</span></a>
   </div>
-</section>
+</div>
 
 <!-- ========== CHI SIAMO — BENTO ========== -->
 <section class="chi-siamo" id="chi-siamo">
@@ -1752,55 +1624,43 @@ input,textarea,select{font-family:var(--font-body)}
     }
   }
 
-  /* ===== Events banner countdown ===== */
-  function updateEventsCountdown(){
-    var items = document.querySelectorAll('.event-countdown[data-event-date]');
+  /* ===== Ticker countdown multi-evento ===== */
+  function computeCountdownText(startDate, endDate, label){
     var now = new Date();
-    items.forEach(function(item){
-      var start = new Date(item.getAttribute('data-event-date'));
-      var endAttr = item.getAttribute('data-event-end');
-      var end = endAttr ? new Date(endAttr) : null;
-      var valEl = item.querySelector('.cd-val');
-      var lblEl = item.querySelector('.cd-lbl');
-      if(!valEl || !lblEl) return;
-
-      item.classList.remove('cd-live','cd-past');
-
-      if(end && now >= start && now <= end){
-        // Evento in corso
-        item.classList.add('cd-live');
-        valEl.textContent = 'LIVE';
-        lblEl.textContent = 'in corso ora';
-        return;
-      }
-
-      var target = end || start;
-      if(now > target){
-        // Evento passato
-        item.classList.add('cd-past');
-        valEl.textContent = '—';
-        lblEl.textContent = 'concluso';
-        return;
-      }
-
-      // Evento futuro
-      var diff = start - now;
-      var days = Math.ceil(diff / (1000*60*60*24));
-      if(days <= 0){
-        valEl.textContent = 'Oggi';
-        lblEl.textContent = 'si parte!';
-      } else if(days === 1){
-        valEl.textContent = '1';
-        lblEl.textContent = 'giorno al via';
-      } else {
-        valEl.textContent = days;
-        lblEl.textContent = 'giorni al via';
-      }
-    });
+    if(endDate && now >= startDate && now <= endDate){
+      return label + ': IN CORSO!';
+    }
+    var target = endDate || startDate;
+    if(now > target){
+      return label + ': concluso';
+    }
+    var diff = startDate - now;
+    var days = Math.ceil(diff / (1000*60*60*24));
+    if(days <= 0) return label + ': oggi!';
+    if(days === 1) return label + ': manca 1 giorno!';
+    return label + ': mancano ' + days + ' giorni!';
   }
-  updateEventsCountdown();
-  // Aggiorna ogni ora per mantenere il countdown accurato
-  setInterval(updateEventsCountdown, 60*60*1000);
+
+  function updateCountdown(){
+    var pace = new Date('2026-05-01T11:30:00');
+    var sagraStart = new Date('2026-05-08T18:00:00');
+    var sagraEnd = new Date('2026-05-10T23:59:00');
+
+    var txt1 = computeCountdownText(pace, null, 'Accordi di Pace');
+    var txt2 = computeCountdownText(sagraStart, sagraEnd, 'Sagra');
+
+    var el1 = document.getElementById('tickerCountdown1');
+    if(el1) el1.textContent = txt1;
+    var dup1 = document.querySelector('.ticker-countdown-dup1');
+    if(dup1) dup1.textContent = txt1;
+
+    var el2 = document.getElementById('tickerCountdown2');
+    if(el2) el2.textContent = txt2;
+    var dup2 = document.querySelector('.ticker-countdown-dup2');
+    if(dup2) dup2.textContent = txt2;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60*60*1000);
 
   /* ===== Navbar scroll ===== */
   var navbar = document.getElementById('navbar');
