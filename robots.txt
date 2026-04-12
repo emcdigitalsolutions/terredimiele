@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /questionario/
+Disallow: /proposta-commerciale.html
+Disallow: /piano-editoriale.html
+
+Sitemap: https://www.terredimiele.it/sitemap.xml
