@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>La Nostra Storia | Terre di Miele - Apicoltura La Greca</title>
+<meta name="description" content="La storia di Terre di Miele: dalla passione di un padre alla nascita di un'azienda apistica. Salvatore La Greca racconta 15 anni di apicoltura a Campobello di Licata.">
+<meta name="keywords" content="storia apicoltura, Salvatore La Greca, apicoltura siciliana, Campobello di Licata, miele artigianale, passione api">
+<meta name="author" content="Apicoltura La Greca - Terre di Miele">
+<meta property="og:title" content="La Nostra Storia | Terre di Miele">
+<meta property="og:description" content="Dalla passione di un padre alla nascita di un'azienda apistica. La storia di Salvatore La Greca e Terre di Miele.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.terredimiele.it/storia.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Terre di Miele">
+<meta property="og:image" content="https://www.terredimiele.it/images/barattoli.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La Nostra Storia | Terre di Miele">
+<meta name="twitter:description" content="Dalla passione di un padre alla nascita di un'azienda apistica. La storia di Salvatore La Greca e Terre di Miele.">
+<meta name="twitter:image" content="https://www.terredimiele.it/images/barattoli.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5' fill='%23F5C518' stroke='%23D4A017' stroke-width='3'/%3E%3Ctext x='50' y='62' text-anchor='middle' font-size='36' font-weight='bold' fill='%230C0806' font-family='serif'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://www.terredimiele.it/storia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#1A0F08;--bg-primary:#2C1810;--bg-card:#3A2218;--bg-card-alt:#2E1A10;
+  --gold:#F5C518;--gold-dark:#D4A017;--amber:#E8A317;--honey:#B8860B;--honey-bright:#FFD700;
+  --cream:#FFF8E7;--cream-dim:#E8D5B7;--cream-muted:#B8996F;
+  --surface:rgba(255,248,231,0.05);--surface-hover:rgba(255,248,231,0.09);
+  --border:rgba(245,197,24,0.15);--border-hover:rgba(245,197,24,0.3);
+  --wa-green:#25D366;
+  --font-heading:'Playfair Display',Georgia,'Times New Roman',serif;
+  --font-body:'DM Sans','Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --nav-height:52px;
+  --section-py:clamp(80px,12vh,140px);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--font-body);color:var(--cream);
+  background:var(--bg-deep);line-height:1.7;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--gold);text-decoration:none;transition:color .3s}
+a:hover{color:var(--cream)}
+ul{list-style:none}
+h1,h2,h3,h4,h5{font-family:var(--font-heading);font-weight:600;line-height:1.2}
+button{font-family:var(--font-body);cursor:pointer;border:none;outline:none}
+::selection{background:var(--gold);color:var(--bg-deep)}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg-deep)}
+::-webkit-scrollbar-thumb{background:var(--honey);border-radius:4px}
+
+/* ========== UTILITY ========== */
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ========== ANIMATIONS ========== */
+.anim{opacity:0;transition:opacity .7s ease,transform .7s ease,filter .7s ease}
+.anim.visible{opacity:1;transform:none!important;filter:none!important}
+.anim-up{transform:translateY(40px)}
+.anim-slide-left{transform:translateX(-60px)}
+.anim-scale{transform:scale(0.85)}
+[style*="--stagger"]{transition-delay:calc(var(--stagger) * 0.12s)}
+
+/* ========== GRADIENT MESH BG ========== */
+.gradient-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.gradient-bg .blob{
+  position:absolute;border-radius:50%;filter:blur(100px);opacity:.12;
+  animation:blobDrift 20s ease-in-out infinite alternate;
+}
+.gradient-bg .blob:nth-child(1){width:500px;height:500px;background:var(--gold);top:-10%;left:-10%;animation-duration:22s}
+.gradient-bg .blob:nth-child(2){width:400px;height:400px;background:var(--amber);bottom:-15%;right:-5%;animation-delay:3s;animation-duration:25s}
+.gradient-bg .blob:nth-child(3){width:300px;height:300px;background:var(--honey);top:50%;left:50%;animation-delay:6s;animation-duration:18s}
+@keyframes blobDrift{
+  0%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(30px,-20px) scale(1.08)}
+  66%{transform:translate(-20px,30px) scale(.95)}
+  100%{transform:translate(15px,15px) scale(1.03)}
+}
+
+/* ========== NAVBAR SLIM ========== */
+.navbar-slim{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--nav-height);
+  background:rgba(26,15,8,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(245,197,24,.08);
+  box-shadow:0 4px 30px rgba(0,0,0,.4);
+}
+.navbar-slim .container{display:flex;align-items:center;justify-content:space-between;height:100%}
+.nav-brand{
+  font-family:var(--font-heading);font-size:1.35rem;font-weight:700;
+  color:var(--cream);letter-spacing:1px;
+}
+.nav-brand em{
+  font-style:italic;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--cream) 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{
+  color:var(--cream-dim);font-size:.85rem;font-weight:500;
+  letter-spacing:.5px;position:relative;transition:color .3s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+  background:var(--gold);transition:width .3s ease;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:var(--gold)}
+.nav-links a.active::after{width:100%}
+.nav-cta{
+  padding:8px 24px;background:linear-gradient(135deg,var(--gold),var(--amber));
+  color:var(--bg-deep);font-weight:600;font-size:.82rem;border-radius:50px;
+  border:none;transition:all .3s;letter-spacing:.5px;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(245,197,24,.3);color:var(--bg-deep)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:1001}
+.hamburger span{display:block;width:22px;height:2px;background:var(--cream);transition:all .3s ease;border-radius:2px}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile Nav */
+.mobile-nav{
+  position:fixed;inset:0;z-index:999;background:rgba(26,15,8,.98);
+  backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .4s ease;
+}
+.mobile-nav.open{opacity:1;pointer-events:auto}
+.mobile-nav-links{text-align:center;display:flex;flex-direction:column;gap:28px}
+.mobile-nav-links a{
+  font-family:var(--font-heading);font-size:1.6rem;color:var(--cream);
+  font-weight:500;transition:color .3s;
+}
+.mobile-nav-links a:hover{color:var(--gold)}
+
+/* ========== PAGE HERO ========== */
+.page-hero{
+  padding-top:calc(var(--nav-height) + 48px);
+  padding-bottom:48px;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 120%,rgba(212,160,23,.1) 0%,transparent 50%),var(--bg-deep);
+}
+.page-hero .breadcrumb{
+  font-size:.82rem;color:var(--cream-muted);margin-bottom:20px;
+}
+.page-hero .breadcrumb a{color:var(--gold)}
+.page-hero .breadcrumb span{margin:0 8px;opacity:.5}
+.page-hero h1{
+  font-size:clamp(2.2rem,5vw,3.4rem);color:var(--cream);
+  margin-bottom:12px;font-weight:700;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--cream) 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.page-hero .hero-sub{
+  font-family:var(--font-heading);font-size:clamp(.95rem,2vw,1.2rem);
+  color:var(--cream-muted);font-style:italic;
+}
+
+/* ========== INTRO ========== */
+.story-intro{
+  padding:var(--section-py) 0 60px;position:relative;
+  background:linear-gradient(180deg,var(--bg-deep) 0%,var(--bg-primary) 100%);
+}
+.story-intro-inner{
+  max-width:760px;margin:0 auto;text-align:center;
+}
+.story-intro-inner .intro-quote{
+  font-family:var(--font-heading);font-style:italic;
+  font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--cream);
+  line-height:1.6;margin-bottom:24px;position:relative;
+  padding:0 20px;
+}
+.story-intro-inner .intro-quote::before,
+.story-intro-inner .intro-quote::after{
+  font-size:3rem;color:var(--gold);opacity:.4;
+  font-family:var(--font-heading);line-height:1;
+  position:absolute;
+}
+.story-intro-inner .intro-quote::before{content:'\201C';top:-10px;left:-5px}
+.story-intro-inner .intro-quote::after{content:'\201D';bottom:-20px;right:-5px}
+.story-intro-inner .intro-author{
+  font-size:.9rem;color:var(--cream-muted);letter-spacing:1px;text-transform:uppercase;
+}
+
+/* ========== TIMELINE ========== */
+.story-section{
+  padding:60px 0 var(--section-py);position:relative;
+  background:linear-gradient(180deg,var(--bg-primary) 0%,var(--bg-deep) 40%,var(--bg-primary) 70%,var(--bg-deep) 100%);
+}
+.timeline{
+  position:relative;max-width:900px;margin:0 auto;
+  padding:0 20px;
+}
+.timeline::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;
+  width:2px;background:linear-gradient(180deg,transparent 0%,var(--gold) 5%,var(--gold) 95%,transparent 100%);
+  opacity:.25;transform:translateX(-50%);
+}
+
+.timeline-item{
+  position:relative;display:flex;align-items:flex-start;
+  margin-bottom:80px;
+}
+.timeline-item:last-child{margin-bottom:0}
+
+.timeline-item .tl-dot{
+  position:absolute;left:50%;top:24px;width:16px;height:16px;
+  background:var(--bg-deep);border:2px solid var(--gold);border-radius:50%;
+  transform:translateX(-50%);z-index:2;transition:all .4s;
+}
+.timeline-item.visible .tl-dot{
+  background:var(--gold);box-shadow:0 0 20px rgba(245,197,24,.3);
+}
+
+.timeline-item .tl-content{
+  width:calc(50% - 40px);
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:32px;transition:all .4s;
+}
+.timeline-item .tl-content:hover{
+  border-color:var(--border-hover);background:var(--surface-hover);
+}
+.timeline-item:nth-child(odd) .tl-content{margin-right:auto}
+.timeline-item:nth-child(even) .tl-content{margin-left:auto}
+
+.tl-period{
+  display:inline-block;font-size:.75rem;font-weight:600;
+  color:var(--bg-deep);background:linear-gradient(135deg,var(--gold),var(--amber));
+  padding:4px 14px;border-radius:20px;margin-bottom:14px;
+  letter-spacing:.5px;text-transform:uppercase;
+}
+.tl-content h3{
+  font-size:clamp(1.1rem,2vw,1.35rem);color:var(--cream);margin-bottom:12px;
+}
+.tl-content p{
+  font-size:.92rem;color:var(--cream-dim);line-height:1.8;margin-bottom:10px;
+}
+.tl-content p:last-child{margin-bottom:0}
+
+.tl-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:48px;height:48px;border-radius:12px;margin-bottom:16px;
+  background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.15);
+}
+.tl-icon svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.5}
+
+/* ========== THANKS ========== */
+.thanks-section{
+  padding:var(--section-py) 0;position:relative;
+  background:linear-gradient(180deg,var(--bg-deep) 0%,var(--bg-primary) 50%,var(--bg-deep) 100%);
+}
+.thanks-header{text-align:center;margin-bottom:60px}
+.thanks-header h2{
+  font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--cream);margin-bottom:12px;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--cream) 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.thanks-header p{color:var(--cream-muted);font-size:1rem;font-style:italic;font-family:var(--font-heading)}
+.thanks-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px;margin:0 auto;
+}
+.thanks-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:40px 32px;text-align:center;transition:all .4s;
+}
+.thanks-card:hover{border-color:var(--border-hover);transform:translateY(-4px)}
+.thanks-card .thanks-icon{
+  width:64px;height:64px;margin:0 auto 20px;border-radius:50%;
+  background:rgba(245,197,24,.1);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+}
+.thanks-card .thanks-icon svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.thanks-card h3{font-size:1.2rem;color:var(--cream);margin-bottom:6px}
+.thanks-card .thanks-role{font-size:.82rem;color:var(--gold);margin-bottom:16px;letter-spacing:.5px}
+.thanks-card p{font-size:.9rem;color:var(--cream-dim);line-height:1.7}
+
+/* ========== CTA ========== */
+.story-cta{
+  text-align:center;padding:60px 0 0;
+}
+.story-cta .btn-gold{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 36px;background:linear-gradient(135deg,var(--gold),var(--amber));
+  color:var(--bg-deep);font-weight:600;font-size:.95rem;border-radius:50px;
+  transition:all .35s ease;letter-spacing:.5px;border:none;
+}
+.story-cta .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,197,24,.35);color:var(--bg-deep)}
+
+/* ========== FOOTER ========== */
+.footer{
+  padding:60px 0 0;background:var(--bg-card);
+  border-top:1px solid var(--border);
+}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding-bottom:40px}
+.footer-brand h3{font-family:var(--font-heading);font-size:1.4rem;color:var(--gold);margin-bottom:12px}
+.footer-brand p{color:var(--cream-muted);font-size:.9rem;line-height:1.7;margin-bottom:8px}
+.footer-brand .piva{font-size:.8rem;color:var(--cream-muted);opacity:.7}
+.footer h4{
+  font-family:var(--font-heading);font-size:1rem;color:var(--cream);
+  margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);
+}
+.footer-links a{display:block;color:var(--cream-muted);font-size:.9rem;padding:4px 0;transition:color .3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-contact p{
+  color:var(--cream-muted);font-size:.9rem;margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.footer-contact p svg{width:16px;height:16px;flex-shrink:0}
+.footer-bottom{
+  border-top:1px solid var(--border);padding:20px 0;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:.8rem;color:var(--cream-muted)}
+.footer-bottom-links{display:flex;gap:16px}
+.footer-bottom-links a{font-size:.8rem;color:var(--cream-muted)}
+.footer-bottom-links a:hover{color:var(--gold)}
+.footer-emc{
+  padding:16px 0;display:flex;justify-content:center;
+  border-top:1px solid rgba(255,255,255,.03);
+}
+
+/* ========== FLOATING ========== */
+.floating-wa{
+  position:fixed;bottom:28px;right:28px;z-index:997;
+  width:60px;height:60px;border-radius:50%;background:var(--wa-green);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(37,211,102,.35);
+  transition:all .3s ease;animation:waPulse 2s ease-in-out infinite;
+}
+.floating-wa:hover{transform:scale(1.1);box-shadow:0 8px 30px rgba(37,211,102,.45)}
+.floating-wa svg{width:30px;height:30px;fill:#fff}
+@keyframes waPulse{
+  0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.35)}
+  50%{box-shadow:0 6px 24px rgba(37,211,102,.55),0 0 0 10px rgba(37,211,102,.1)}
+}
+.back-to-top{
+  position:fixed;bottom:100px;right:32px;z-index:996;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(245,197,24,.15);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:all .3s ease;
+}
+.back-to-top.visible{opacity:1;pointer-events:auto}
+.back-to-top:hover{background:rgba(245,197,24,.25);border-color:var(--gold)}
+.back-to-top svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2.5}
+
+/* ========== COOKIE ========== */
+.cookie-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  background:rgba(44,24,16,.97);backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);padding:20px 0;
+  transform:translateY(100%);transition:transform .5s ease;
+}
+.cookie-banner.show{transform:translateY(0)}
+.cookie-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cookie-text{flex:1;font-size:.88rem;color:var(--cream-muted);line-height:1.6}
+.cookie-text a{color:var(--gold);text-decoration:underline}
+.cookie-buttons{display:flex;gap:10px;flex-shrink:0}
+.cookie-btn{padding:10px 22px;border-radius:50px;font-size:.85rem;font-weight:600;border:none;cursor:pointer;transition:all .3s}
+.cookie-btn.accept{background:var(--gold);color:var(--bg-deep)}
+.cookie-btn.accept:hover{background:var(--amber)}
+.cookie-btn.necessary{background:transparent;color:var(--cream-muted);border:1px solid var(--border)}
+.cookie-btn.necessary:hover{border-color:var(--cream-muted);color:var(--cream)}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+  :root{--nav-height:48px}
+  .nav-links{display:none}
+  .nav-cta{padding:6px 18px;font-size:.78rem}
+  .hamburger{display:flex}
+  .timeline::before{left:20px}
+  .timeline-item .tl-dot{left:20px;top:16px}
+  .timeline-item .tl-content,
+  .timeline-item:nth-child(odd) .tl-content,
+  .timeline-item:nth-child(even) .tl-content{
+    width:calc(100% - 52px);margin-left:auto;margin-right:0;
+  }
+  .thanks-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .container{padding:0 16px}
+  .tl-content{padding:24px 20px!important}
+  .cookie-inner{flex-direction:column;text-align:center}
+  .cookie-buttons{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar-slim" role="navigation" aria-label="Navigazione principale">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Terre di Miele - Homepage">Terre <em>di Miele</em></a>
+    <div class="nav-links" role="menubar">
+      <a href="index.html#chi-siamo" role="menuitem" class="active">Chi Siamo</a>
+      <a href="prodotti.html" role="menuitem">Prodotti</a>
+      <a href="news.html" role="menuitem">News</a>
+      <a href="index.html#galleria" role="menuitem">Galleria</a>
+      <a href="index.html#testimonianze" role="menuitem">Recensioni</a>
+      <a href="index.html#contatti" role="menuitem">Contatti</a>
+    </div>
+    <a href="prodotti.html" class="nav-cta">Ordina</a>
+    <button class="hamburger" id="hamburger" aria-label="Apri menu di navigazione" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Menu mobile">
+  <div class="mobile-nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#chi-siamo">Chi Siamo</a>
+    <a href="prodotti.html">Prodotti</a>
+    <a href="news.html">News</a>
+    <a href="index.html#galleria">Galleria</a>
+    <a href="index.html#testimonianze">Recensioni</a>
+    <a href="index.html#contatti">Contatti</a>
+  </div>
+</div>
+
+<!-- ========== PAGE HERO ========== -->
+<section class="page-hero">
+  <div class="gradient-bg" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div>
+  </div>
+  <div class="container" style="position:relative;z-index:1">
+    <p class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="index.html#chi-siamo">Chi Siamo</a><span>/</span>La Nostra Storia</p>
+    <h1>La Mia Storia</h1>
+    <p class="hero-sub">Racconto di Salvatore La Greca</p>
+  </div>
+</section>
+
+<!-- ========== INTRO QUOTE ========== -->
+<section class="story-intro">
+  <div class="container">
+    <div class="story-intro-inner anim anim-up">
+      <p class="intro-quote">Se sono arrivato fin qui &egrave; perch&eacute; qualcuno mi ha dato la spinta giusta al momento giusto. E io non lo dimentico.</p>
+      <p class="intro-author">&mdash; Salvatore La Greca</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TIMELINE ========== -->
+<section class="story-section">
+  <div class="container">
+    <div class="timeline">
+
+      <!-- 1. Le origini -->
+      <div class="timeline-item anim anim-up">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          </div>
+          <span class="tl-period">Le origini</span>
+          <h3>Le api di mio padre</h3>
+          <p>Mio padre <strong>Angelo</strong> aveva gi&agrave; le api quando io ero piccolo. Ne teneva sei, sette famiglie in campagna, massimo una decina. Le recuperava dove lo chiamavano &mdash; gente che trovava uno sciame e lo cercava &mdash; e le portava nella nostra terra.</p>
+          <p>Non era uno che ci stava dietro con le tecniche, i trattamenti, le attenzioni. Le lasciava l&igrave; e facevano tutto da sole. Tirava su 40, 50 chili di miele all'anno, lo vendeva, e quando finiva era finito. Ma senza saperlo, con quelle poche arnie, mi stava gi&agrave; insegnando tutto. <strong>Devo tutto a lui!</strong></p>
+        </div>
+      </div>
+
+      <!-- 2. La passione che nasce -->
+      <div class="timeline-item anim anim-up" style="--stagger:1">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <span class="tl-period">L'infanzia</span>
+          <h3>La campagna, le api, e quel qualcosa che scatta</h3>
+          <p>Io sono cresciuto immerso nella natura. I conigli, le galline, gli alberi &mdash; la campagna era il mio mondo. Per&ograve; le api erano un'altra cosa. Le guardavo e mi incuriosivano, mi affascinavano. A un certo punto ho voluto provarci anch'io.</p>
+          <p>E da l&igrave; si &egrave; accesa una passione che non si &egrave; pi&ugrave; spenta. Non saprei spiegarvi esattamente quando &egrave; successo, ma so che da quel momento le api sono diventate parte della mia vita.</p>
+        </div>
+      </div>
+
+      <!-- 3. Il diploma -->
+      <div class="timeline-item anim anim-up" style="--stagger:2">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+          </div>
+          <span class="tl-period">La formazione</span>
+          <h3>Il diploma in Agraria</h3>
+          <p>Mi sono iscritto all'<strong>Istituto di Agraria di Canicatt&igrave;</strong> perch&eacute; volevo restare in questo settore. Era il mio obiettivo. Mi sono diplomato, e quel diploma si &egrave; rivelato pi&ugrave; importante di quanto pensassi: portava gi&agrave; dentro l'abilitazione a <strong>imprenditore agricolo</strong>.</p>
+          <p>Quando sono andato al Centro Polivalente per iscrivermi al corso, hanno guardato le mie carte e mi hanno detto: <em>&ldquo;Tu sei gi&agrave; a posto. Con questo diploma hai gi&agrave; le carte in regola per diventare un grande imprenditore agricolo.&rdquo;</em> L&igrave; ho capito che la strada era quella giusta.</p>
+        </div>
+      </div>
+
+      <!-- 4. L'incontro con Lillo Casà -->
+      <div class="timeline-item anim anim-up" style="--stagger:3">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <span class="tl-period">La svolta</span>
+          <h3>Lillo Cas&agrave;</h3>
+          <p>Con l'agronomo <strong>Lillo Cas&agrave;</strong> abbiamo intrapreso la strada per fare le cose per bene. Mi ha spinto a fare il <strong>primo livello di apicoltura</strong>, mi ha seguito passo passo nella burocrazia, ed &egrave; stato presente nei momenti necessari.</p>
+          <p>Devo tanto a Lillo. Poi la vita ci ha portato su strade diverse. Ma il rispetto e la riconoscenza che ho per lui non cambiano. Certe cose non si dimenticano.</p>
+        </div>
+      </div>
+
+      <!-- 5. La fondazione -->
+      <div class="timeline-item anim anim-up" style="--stagger:4">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <span class="tl-period">La fondazione</span>
+          <h3>Nasce l'azienda</h3>
+          <p>Fondare l'azienda &egrave; stata dura. Per avere i fondi del PSR prima dovevi spendere tu: comprare tutto, presentare le fatture, e poi aspettare i rimborsi. Io e mio padre abbiamo investito i nostri soldi, ci siamo messi in gioco.</p>
+          <p>Sono stati <strong>tre anni</strong> di tira e molla. Momenti in cui ti chiedi se ne vale la pena. Ma mio padre non ha mai mollato, ci ha creduto quanto me. Alla fine abbiamo chiuso il progetto: il laboratorio in campagna, le attrezzature... Senza il sacrificio e il sostegno di mio padre non ce l'avrei fatta.</p>
+        </div>
+      </div>
+
+      <!-- 6. L'autonomia -->
+      <div class="timeline-item anim anim-up" style="--stagger:5">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>
+          </div>
+          <span class="tl-period">18 anni</span>
+          <h3>Camminare con le proprie gambe</h3>
+          <p>A 18 anni ero gi&agrave; avviato da solo. Ma se devo essere onesto, dobbiamo aggiungere almeno altri cinque anni prima &mdash; quelli dell'infanzia, quando ho iniziato a provarci, a crederci. Pi&ugrave; di <strong>20 anni</strong> con le api, se faccio i conti.</p>
+          <p>Non &egrave; stato un percorso facile, ma ogni passo mi ha portato dove sono oggi. E se mi guardo indietro, vedo che le persone che mi hanno dato fiducia hanno fatto la differenza.</p>
+        </div>
+      </div>
+
+      <!-- 7. Oggi -->
+      <div class="timeline-item anim anim-up" style="--stagger:6">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <span class="tl-period">Oggi</span>
+          <h3>Terre di Miele, oggi</h3>
+          <p>Col tempo ho conosciuto nuovi apicoltori, nuovi agronomi specializzati in apicoltura, e sono nati nuovi progetti. La strada che &egrave; iniziata con le poche arnie di mio padre mi ha portato a costruire qualcosa di concreto, radicato in questa terra.</p>
+          <p><strong>Terre di Miele</strong> &egrave; la campagna di <strong>Campobello di Licata</strong>, il profumo degli eucalipti e della sulla, il lavoro paziente delle api. &Egrave; il risultato dei sacrifici fatti, delle persone che hanno creduto in me, e di una passione che dopo tutti questi anni &egrave; ancora intatta.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== RINGRAZIAMENTI ========== -->
+<section class="thanks-section">
+  <div class="container">
+    <div class="thanks-header anim anim-up">
+      <h2>Grazie</h2>
+      <p>A chi ha reso possibile tutto questo</p>
+    </div>
+    <div class="thanks-grid">
+      <div class="thanks-card anim anim-up" style="--stagger:1">
+        <div class="thanks-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Angelo La Greca</h3>
+        <p class="thanks-role">Mio padre</p>
+        <p>Senza di lui non esisterebbe niente di tutto questo. Mi ha fatto vedere le api per la prima volta, mi ha lasciato provare, e quando ho deciso di farne un'azienda ci ha messo i soldi e la fiducia. Tre anni di sacrifici insieme, senza mai tirarsi indietro. Grazie, pap&agrave;.</p>
+      </div>
+      <div class="thanks-card anim anim-up" style="--stagger:2">
+        <div class="thanks-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+        </div>
+        <h3>Lillo Cas&agrave;</h3>
+        <p class="thanks-role">Agronomo</p>
+        <p>Ha creduto nel mio progetto e ha lavorato tanto per farmelo vincere. Mi ha spinto a formarmi, mi ha seguito nei controlli, mi ha aperto la strada. Anche se oggi le nostre strade professionali si sono separate, la stima e la gratitudine restano. Grazie, Lillo.</p>
+      </div>
+    </div>
+
+    <div class="story-cta anim anim-up" style="--stagger:3">
+      <a href="prodotti.html" class="btn-gold">Scopri i nostri prodotti &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Terre di Miele</h3>
+        <p>Miele siciliano artigianale dalla campagna di Campobello di Licata. Ogni vasetto racconta la storia del nostro territorio e della passione per l'apicoltura.</p>
+        <p class="piva">Apicoltura La Greca di Salvatore La Greca<br>P.IVA: 02957500842</p>
+      </div>
+      <div>
+        <h4>Link Rapidi</h4>
+        <div class="footer-links">
+          <a href="index.html#chi-siamo">Chi Siamo</a>
+          <a href="storia.html">La Nostra Storia</a>
+          <a href="prodotti.html">Prodotti</a>
+          <a href="news.html">News</a>
+          <a href="index.html#galleria">Galleria</a>
+          <a href="index.html#contatti">Contatti</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="cookie-policy.html">Cookie Policy</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contatti</h4>
+        <div class="footer-contact">
+          <p><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+39 327 047 7030</p>
+          <p><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>info@terredimiele.it</p>
+          <p><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>C.da Giangaragano, 92023<br>Campobello di Licata (AG)</p>
+          <p><svg viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg><a href="https://www.facebook.com/share/1E3VaVaxVB/" target="_blank" rel="noopener">Facebook</a></p>
+          <p><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--gold)" stroke="none"/></svg><a href="https://www.instagram.com/salvatore.la.greca/" target="_blank" rel="noopener">Instagram</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <script>document.write(new Date().getFullYear())</script> Terre di Miele - Apicoltura La Greca. Tutti i diritti riservati.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-emc">
+      <a href="https://www.emcdigitalsolutions.it" target="_blank" rel="noopener" title="Progettato e Sviluppato da EMC Digital Solutions" style="margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;opacity:0.4;font-size:11px;text-decoration:none;color:inherit;">
+        <span>Progettato e Sviluppato da</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="18">
+          <defs>
+            <linearGradient id="emcG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4A017"/><stop offset="45%" stop-color="#F5C518"/><stop offset="100%" stop-color="#FFF8E7"/></linearGradient>
+            <linearGradient id="emcIG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4A017"/><stop offset="100%" stop-color="#F5C518"/></linearGradient>
+          </defs>
+          <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#emcIG)"/>
+          <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#emcIG)" opacity="0.85"/>
+          <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#emcIG)"/>
+          <text x="46" y="27" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#emcG)" letter-spacing="3">EMC</text>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/393270477030?text=Ciao%2C%20vorrei%20informazioni%20sui%20vostri%20prodotti.%20Grazie!" target="_blank" rel="noopener" class="floating-wa" aria-label="Contattaci su WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<button class="back-to-top" id="backToTop" aria-label="Torna su">
+  <svg viewBox="0 0 24 24"><polyline points="18,15 12,9 6,15"/></svg>
+</button>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consenso cookie">
+  <div class="container">
+    <div class="cookie-inner">
+      <p class="cookie-text">Questo sito utilizza cookie tecnici per migliorare la tua esperienza. <a href="cookie-policy.html">Cookie Policy</a>.</p>
+      <div class="cookie-buttons">
+        <button class="cookie-btn accept" id="cookieAccept">Accetta tutti</button>
+        <button class="cookie-btn necessary" id="cookieNecessary">Solo necessari</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* Hamburger */
+  var hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobileNav');
+  hamburger.addEventListener('click',function(){
+    var o=mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded',o);
+    document.body.style.overflow=o?'hidden':'';
+  });
+  mobileNav.querySelectorAll('a').forEach(function(l){
+    l.addEventListener('click',function(){mobileNav.classList.remove('open');hamburger.classList.remove('active');document.body.style.overflow='';});
+  });
+
+  /* Animations */
+  var anims=document.querySelectorAll('.anim');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          /* Activate timeline dot */
+          if(e.target.classList.contains('timeline-item')){e.target.classList.add('visible');}
+          obs.unobserve(e.target);
+        }
+      });
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    anims.forEach(function(el){obs.observe(el);});
+    /* Also observe timeline items for dot activation */
+    document.querySelectorAll('.timeline-item').forEach(function(el){obs.observe(el);});
+  } else {
+    anims.forEach(function(el){el.classList.add('visible');});
+    document.querySelectorAll('.timeline-item').forEach(function(el){el.classList.add('visible');});
+  }
+
+  /* Back to top */
+  var btt=document.getElementById('backToTop');
+  window.addEventListener('scroll',function(){btt.classList.toggle('visible',window.pageYOffset>500);},{passive:true});
+  btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* Cookie */
+  var cb=document.getElementById('cookieBanner');
+  if(!localStorage.getItem('tdm_cookie_consent')) setTimeout(function(){cb.classList.add('show');},1500);
+  document.getElementById('cookieAccept').addEventListener('click',function(){localStorage.setItem('tdm_cookie_consent','all');cb.classList.remove('show');});
+  document.getElementById('cookieNecessary').addEventListener('click',function(){localStorage.setItem('tdm_cookie_consent','necessary');cb.classList.remove('show');});
+})();
+</script>
+
+</body>
+</html>
