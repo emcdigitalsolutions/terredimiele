@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terre di Miele - Biglietto da Visita (Fronte)</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #c8c8c8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .label {
+            color: #666;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .card {
+            width: 85mm;
+            height: 55mm;
+            background: linear-gradient(155deg, #110d08 0%, #1a1209 45%, #0e0a05 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.12),
+                0 4px 12px rgba(0,0,0,0.15),
+                0 12px 40px rgba(0,0,0,0.25);
+            border-radius: 2.5mm;
+        }
+
+        /* Ambient warm glow - top left */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(ellipse, rgba(212,160,23,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Ambient warm glow - bottom right */
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            right: -10%;
+            width: 55%;
+            height: 55%;
+            background: radial-gradient(ellipse, rgba(245,197,24,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Bottom accent gradient line */
+        .accent-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1.2mm;
+            background: linear-gradient(90deg, #8B6914, #D4A017, #F5C518, #D4A017, #8B6914);
+        }
+
+        /* Top-right decorative corner */
+        .decor-corner {
+            position: absolute;
+            top: 3mm;
+            right: 3mm;
+            width: 8mm;
+            height: 8mm;
+            border-top: 0.2mm solid rgba(212,160,23,0.15);
+            border-right: 0.2mm solid rgba(212,160,23,0.15);
+            border-radius: 0 1mm 0 0;
+            pointer-events: none;
+        }
+
+        /* Bottom-left decorative corner */
+        .decor-corner-bl {
+            position: absolute;
+            bottom: 3.5mm;
+            left: 3mm;
+            width: 8mm;
+            height: 8mm;
+            border-bottom: 0.2mm solid rgba(245,197,24,0.1);
+            border-left: 0.2mm solid rgba(245,197,24,0.1);
+            border-radius: 0 0 0 1mm;
+            pointer-events: none;
+        }
+
+        /* Honeycomb decorative pattern - subtle background */
+        .honeycomb-deco {
+            position: absolute;
+            top: 50%;
+            right: -2mm;
+            transform: translateY(-50%);
+            opacity: 0.035;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 7mm;
+            font-weight: 600;
+            background: linear-gradient(135deg, #D4A017 0%, #F5C518 40%, #FFD95A 60%, #D4A017 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.8mm;
+            line-height: 1;
+            margin-bottom: 1.5mm;
+        }
+
+        .brand-sub {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 2.4mm;
+            font-weight: 400;
+            color: #9e8a68;
+            letter-spacing: 1.2mm;
+            text-transform: uppercase;
+        }
+
+        .separator {
+            width: 22mm;
+            height: 0.25mm;
+            background: linear-gradient(90deg, transparent 0%, rgba(212,160,23,0.6) 30%, #D4A017 50%, rgba(212,160,23,0.6) 70%, transparent 100%);
+            margin: 3.5mm 0;
+        }
+
+        .person-name {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 3.2mm;
+            font-weight: 600;
+            color: #FFF8E7;
+            letter-spacing: 0.4mm;
+            margin-bottom: 1.2mm;
+        }
+
+        .person-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 2.1mm;
+            font-weight: 300;
+            color: #7a6d55;
+            letter-spacing: 0.4mm;
+        }
+
+        /* Tiny bee icon between brand and person */
+        .bee-icon {
+            width: 3mm;
+            height: 3mm;
+            opacity: 0.25;
+            margin-bottom: 0.5mm;
+        }
+
+        @media print {
+            body {
+                background: none !important;
+                min-height: auto;
+                padding: 0;
+            }
+            .label { display: none; }
+            .card {
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="label">FRONTE</div>
+    <div class="card">
+        <div class="decor-corner"></div>
+        <div class="decor-corner-bl"></div>
+
+        <!-- Subtle honeycomb background decoration -->
+        <svg class="honeycomb-deco" width="80" height="140" viewBox="0 0 80 140" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,5 35,13 35,28 20,36 5,28 5,13" fill="none" stroke="#D4A017" stroke-width="1"/>
+            <polygon points="20,38 35,46 35,61 20,69 5,61 5,46" fill="none" stroke="#D4A017" stroke-width="1"/>
+            <polygon points="20,71 35,79 35,94 20,102 5,94 5,79" fill="none" stroke="#D4A017" stroke-width="1"/>
+            <polygon points="20,104 35,112 35,127 20,135 5,127 5,112" fill="none" stroke="#D4A017" stroke-width="1"/>
+            <polygon points="50,22 65,30 65,45 50,53 35,45 35,30" fill="none" stroke="#D4A017" stroke-width="1"/>
+            <polygon points="50,55 65,63 65,78 50,86 35,78 35,63" fill="none" stroke="#D4A017" stroke-width="1"/>
+            <polygon points="50,88 65,96 65,111 50,119 35,111 35,96" fill="none" stroke="#D4A017" stroke-width="1"/>
+        </svg>
+
+        <div class="content">
+            <div class="brand-name">Terre di Miele</div>
+            <div class="brand-sub">Apicoltura La Greca</div>
+
+            <div class="separator"></div>
+
+            <div class="person-name">SALVATORE LA GRECA</div>
+            <div class="person-title">Fondatore &amp; Apicoltore</div>
+        </div>
+
+        <div class="accent-bottom"></div>
+    </div>
+</body>
+</html>
