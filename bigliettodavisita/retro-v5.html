@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terre di Miele - Biglietto da Visita V5 (Retro)</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #c8c8c8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .label {
+            color: #666;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .card {
+            width: 85mm;
+            height: 55mm;
+            background: linear-gradient(135deg, #FFFDF5 0%, #FFF8E7 30%, #FFF3D6 60%, #FFEFC8 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 1px 3px rgba(0,0,0,0.08),
+                0 4px 12px rgba(0,0,0,0.1),
+                0 12px 40px rgba(0,0,0,0.12);
+            border-radius: 2.5mm;
+            padding: 4mm 4.5mm 3.5mm 5.5mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Dark brown accent strip on the left */
+        .accent-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 1.5mm;
+            background: linear-gradient(180deg, #B8860B, #8B6914, #5a4020, #8B6914, #B8860B);
+        }
+
+        /* Honeycomb hex mesh behind QR codes */
+        .hex-bg-top {
+            position: absolute;
+            top: -4mm;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.07;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hex-bg-bottom {
+            position: absolute;
+            bottom: -4mm;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.07;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .main-layout {
+            display: flex;
+            gap: 3.5mm;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .left-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6mm;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5mm;
+            margin-bottom: 1.8mm;
+        }
+
+        .header-brand {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 4.5mm;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .header-terre {
+            color: #2c1810;
+            letter-spacing: 0.2mm;
+        }
+
+        .header-di-miele {
+            font-style: italic;
+            background: linear-gradient(135deg, #8B6914 0%, #B8860B 50%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.2mm;
+        }
+
+        .header-sub {
+            font-size: 2.4mm;
+            font-weight: 400;
+            color: #8B6914;
+            letter-spacing: 0.15mm;
+        }
+
+        .description {
+            font-size: 2.3mm;
+            font-weight: 300;
+            color: #6b5a3e;
+            line-height: 1.5;
+            margin-bottom: 3mm;
+        }
+
+        .services {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 1.2mm;
+            margin-bottom: 1.5mm;
+            white-space: nowrap;
+        }
+
+        .service-tag {
+            font-size: 1.9mm;
+            font-weight: 600;
+            color: #8B6914;
+            letter-spacing: 0.05mm;
+        }
+
+        .service-dot {
+            width: 0.6mm;
+            height: 0.6mm;
+            background: #D4A017;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .divider {
+            width: 100%;
+            height: 0.3mm;
+            background: linear-gradient(90deg, #B8860B, rgba(184,134,11,0.15) 60%, transparent 100%);
+            margin-bottom: 1.5mm;
+        }
+
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2mm;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5mm;
+        }
+
+        .contact-icon {
+            width: 3mm;
+            height: 3mm;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            font-size: 2.2mm;
+            font-weight: 400;
+            color: #2c1810;
+            letter-spacing: 0.03mm;
+        }
+
+        .contact-text.highlight {
+            color: #8B6914;
+            font-weight: 500;
+        }
+
+        .contact-text.muted {
+            color: #6b5a3e;
+        }
+
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 3.5mm;
+            margin-top: 1mm;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2mm;
+        }
+
+        .social-icon {
+            width: 2.5mm;
+            height: 2.5mm;
+            flex-shrink: 0;
+        }
+
+        .social-text {
+            font-size: 1.9mm;
+            font-weight: 400;
+            color: #8B6914;
+            letter-spacing: 0.03mm;
+        }
+
+        .qr-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .qr-container {
+            width: 14mm;
+            height: 14mm;
+            background: #ffffff;
+            border-radius: 1.5mm;
+            padding: 1mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                0 0 0 0.2mm rgba(139,105,20,0.2),
+                0 0.5mm 3mm rgba(139,105,20,0.1),
+                0 0.3mm 1mm rgba(0,0,0,0.05);
+        }
+
+        .qr-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .qr-label {
+            font-size: 1.4mm;
+            color: #8B6914;
+            text-align: center;
+            margin-top: 1mm;
+            letter-spacing: 0.05mm;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.5mm;
+        }
+
+        .qr-label .globe-icon,
+        .qr-label .star-icon {
+            width: 1.8mm;
+            height: 1.8mm;
+            flex-shrink: 0;
+        }
+
+        .piva {
+            font-size: 1.4mm;
+            color: #B8996F;
+            letter-spacing: 0.05mm;
+            text-align: center;
+            position: absolute;
+            bottom: 2mm;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        @media print {
+            body {
+                background: none !important;
+                min-height: auto;
+                padding: 0;
+            }
+            .label { display: none; }
+            .card {
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="label">RETRO V5</div>
+    <div class="card">
+        <div class="accent-left"></div>
+
+        <div class="main-layout">
+            <div class="left-col">
+                <div class="header">
+                    <span class="header-brand">
+                        <span class="header-terre">Terre </span><span class="header-di-miele">di Miele</span>
+                    </span>
+                    <span class="header-sub">Apicoltura La Greca</span>
+                </div>
+
+                <div class="description">
+                    Miele artigianale siciliano, prodotto con<br>
+                    passione e rispetto per la natura.
+                </div>
+
+                <div class="services">
+                    <span class="service-tag">Miele Artigianale</span>
+                    <span class="service-dot"></span>
+                    <span class="service-tag">Apicoltura</span>
+                    <span class="service-dot"></span>
+                    <span class="service-tag">Prodotti dell'Alveare</span>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="contact-section">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z" fill="#B8860B"/>
+                        </svg>
+                        <span class="contact-text">+39 327 047 7030</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="9" stroke="#8B6914" stroke-width="1.8" fill="none"/>
+                            <ellipse cx="12" cy="12" rx="4" ry="9" stroke="#8B6914" stroke-width="1.5" fill="none"/>
+                            <line x1="3" y1="12" x2="21" y2="12" stroke="#8B6914" stroke-width="1.2"/>
+                        </svg>
+                        <span class="contact-text highlight">www.terredimiele.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="5" width="18" height="14" rx="2" stroke="#8B6914" stroke-width="1.8" fill="none"/>
+                            <path d="M3 7l9 6 9-6" stroke="#8B6914" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        <span class="contact-text highlight">info@terredimiele.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#B8996F" stroke-width="1.8" fill="none"/>
+                            <circle cx="12" cy="9" r="2.5" stroke="#B8996F" stroke-width="1.5" fill="none"/>
+                        </svg>
+                        <span class="contact-text muted" style="font-size: 1.95mm;">C.da Giangaragano, Campobello di Licata (AG)</span>
+                    </div>
+                </div>
+
+                <div class="social-row">
+                    <div class="social-item">
+                        <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="#8B6914"/>
+                        </svg>
+                        <span class="social-text">Terre di Miele</span>
+                    </div>
+                    <div class="social-item">
+                        <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="#B8860B" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="12" r="5" stroke="#B8860B" stroke-width="2" fill="none"/>
+                            <circle cx="17.5" cy="6.5" r="1.3" fill="#B8860B"/>
+                        </svg>
+                        <span class="social-text">@salvatore.la.greca</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <svg class="hex-bg-top" width="100" height="115" viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,3 95,28 95,87 50,112 5,87 5,28" fill="none" stroke="#D4A017" stroke-width="2"/>
+                </svg>
+                <svg class="hex-bg-bottom" width="100" height="115" viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,3 95,28 95,87 50,112 5,87 5,28" fill="none" stroke="#D4A017" stroke-width="2"/>
+                </svg>
+                <div class="qr-wrapper">
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.terredimiele.it&format=svg&color=3d2b0a&bgcolor=ffffff" alt="QR Code - www.terredimiele.it">
+                    </div>
+                    <span class="qr-label">
+                        <svg class="globe-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#8B6914" stroke-width="2" fill="none"/><line x1="12" y1="3" x2="12" y2="21" stroke="#8B6914" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="5" ry="9" stroke="#8B6914" stroke-width="1.5" fill="none"/></svg>
+                        terredimiele.it
+                    </span>
+                </div>
+                <div class="qr-wrapper" style="margin-top:1.6mm">
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://g.page/r/CUb_nfpSancaEBM/review&format=svg&color=3d2b0a&bgcolor=ffffff" alt="QR Code - Lascia una recensione">
+                    </div>
+                    <span class="qr-label">
+                        <svg class="star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#B8860B"/></svg>
+                        Lascia una recensione
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="piva">P.IVA: 02957500842</div>
+    </div>
+</body>
+</html>

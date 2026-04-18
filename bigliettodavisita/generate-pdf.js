@@ -105,6 +105,8 @@ async function main() {
         ['retro-v3.html', 'retro-v3.pdf'],
         ['fronte-v4.html', 'fronte-v4.pdf'],
         ['retro-v4.html', 'retro-v4.pdf'],
+        ['fronte-v5.html', 'fronte-v5.pdf'],
+        ['retro-v5.html', 'retro-v5.pdf'],
     ];
 
     for (let i = 0; i < files.length; i++) {
