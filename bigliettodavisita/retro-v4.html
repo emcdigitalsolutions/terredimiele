@@ -53,13 +53,25 @@
             background: linear-gradient(180deg, #F5C518, #D4A017, #B8860B, #D4A017, #F5C518);
         }
 
-        /* Subtle hex in bottom right */
-        .hex-bg {
+        /* Honeycomb hex mesh behind QR codes */
+        .hex-bg-top {
             position: absolute;
-            bottom: -5mm;
-            right: -3mm;
-            opacity: 0.04;
+            top: -4mm;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.05;
             pointer-events: none;
+            z-index: 0;
+        }
+
+        .hex-bg-bottom {
+            position: absolute;
+            bottom: -4mm;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .main-layout {
@@ -80,21 +92,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 6mm;
             flex-shrink: 0;
+            position: relative;
         }
 
         /* Header */
         .header {
             display: flex;
-            align-items: baseline;
-            gap: 1.5mm;
+            flex-direction: column;
+            gap: 0.5mm;
             margin-bottom: 1.8mm;
         }
 
         .header-brand {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 3.8mm;
+            font-size: 4.5mm;
             font-weight: 700;
             white-space: nowrap;
         }
@@ -246,13 +260,6 @@
                 0 0.3mm 1mm rgba(0,0,0,0.1);
         }
 
-        .qr-container.gold {
-            box-shadow:
-                0 0 0 0.3mm rgba(245,197,24,0.3),
-                0 0.5mm 3mm rgba(245,197,24,0.18),
-                0 0.3mm 1mm rgba(0,0,0,0.1);
-        }
-
         .qr-container img {
             width: 100%;
             height: 100%;
@@ -313,17 +320,12 @@
     <div class="card">
         <div class="accent-left"></div>
 
-        <svg class="hex-bg" width="100" height="115" viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,3 95,28 95,87 50,112 5,87 5,28" fill="none" stroke="#F5C518" stroke-width="2"/>
-        </svg>
-
         <div class="main-layout">
             <div class="left-col">
                 <div class="header">
                     <span class="header-brand">
                         <span class="header-terre">Terre </span><span class="header-di-miele">di Miele</span>
                     </span>
-                    <span class="header-sep">|</span>
                     <span class="header-sub">Apicoltura La Greca</span>
                 </div>
 
@@ -392,6 +394,12 @@
             </div>
 
             <div class="right-col">
+                <svg class="hex-bg-top" width="100" height="115" viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,3 95,28 95,87 50,112 5,87 5,28" fill="none" stroke="#F5C518" stroke-width="2"/>
+                </svg>
+                <svg class="hex-bg-bottom" width="100" height="115" viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,3 95,28 95,87 50,112 5,87 5,28" fill="none" stroke="#F5C518" stroke-width="2"/>
+                </svg>
                 <div class="qr-wrapper">
                     <div class="qr-container">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.terredimiele.it&format=svg&color=3d2b0a&bgcolor=FFF8E7" alt="QR Code - www.terredimiele.it">
@@ -401,9 +409,9 @@
                         terredimiele.it
                     </span>
                 </div>
-                <div class="qr-wrapper">
-                    <div class="qr-container gold">
-                        <img src="lasciaunarecensioneqrcode.png" alt="QR Code - Lascia una recensione">
+                <div class="qr-wrapper" style="margin-top:1.6mm">
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://g.page/r/CUb_nfpSancaEBM/review&format=svg&color=3d2b0a&bgcolor=FFF8E7" alt="QR Code - Lascia una recensione">
                     </div>
                     <span class="qr-label">
                         <svg class="star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F5C518"/></svg>
