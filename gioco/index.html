@@ -175,19 +175,24 @@ body {
   background:linear-gradient(135deg, #5a3d1a 0%, #8B4513 50%, #B8860B 100%);
   border:2px solid var(--gold-dark);
   box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 0 0 2px rgba(245,197,24,0.2);
-  position:relative;
 }
-.card-back svg { width:75%; height:75%; opacity:0.45; position:absolute; }
+.card-back svg { width:60%; height:60%; opacity:0.45; }
 .card-num {
-  position:relative; z-index:2;
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
   font-family:var(--font-h);
-  font-size:clamp(2rem, 8vw, 3.2rem);
+  font-size:clamp(1.8rem, 7vw, 2.8rem);
   font-weight:800;
   color:var(--cream);
   text-shadow:
     0 2px 6px rgba(0,0,0,0.5),
     0 0 20px rgba(245,197,24,0.3);
   line-height:1;
+  pointer-events:none;
 }
 .card-front {
   transform:rotateY(180deg);
