@@ -1,0 +1,21 @@
+{
+  "name": "Memory dei Mieli — Terre di Miele",
+  "short_name": "Memory Mieli",
+  "description": "Il giochino dei bambini di Terre di Miele",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#1A0F08",
+  "theme_color": "#1A0F08",
+  "lang": "it",
+  "categories": ["games", "kids", "education"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
