@@ -175,8 +175,20 @@ body {
   background:linear-gradient(135deg, #5a3d1a 0%, #8B4513 50%, #B8860B 100%);
   border:2px solid var(--gold-dark);
   box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 0 0 2px rgba(245,197,24,0.2);
+  position:relative;
 }
-.card-back svg { width:60%; height:60%; opacity:0.85; }
+.card-back svg { width:75%; height:75%; opacity:0.45; position:absolute; }
+.card-num {
+  position:relative; z-index:2;
+  font-family:var(--font-h);
+  font-size:clamp(2rem, 8vw, 3.2rem);
+  font-weight:800;
+  color:var(--cream);
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.5),
+    0 0 20px rgba(245,197,24,0.3);
+  line-height:1;
+}
 .card-front {
   transform:rotateY(180deg);
   background:linear-gradient(135deg, var(--cream) 0%, #F0DEB3 100%);
@@ -619,6 +631,7 @@ function buildBoard() {
           <polygon points="30,4 54,18 54,52 30,66 6,52 6,18" fill="#FFD700" opacity="0.4"/>
           <polygon points="30,16 44,24 44,46 30,54 16,46 16,24" fill="#FFF3CC" opacity="0.6"/>
         </svg>
+        <span class="card-num">${i + 1}</span>
       </div>
       <div class="card-face card-front">
         ${c.svg}
