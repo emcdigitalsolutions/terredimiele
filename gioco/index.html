@@ -401,6 +401,7 @@ body {
       </div>
     </div>
     <div style="display:flex;gap:8px">
+      <button class="icon-btn" id="reviewBtn" title="Lascia una recensione" aria-label="Recensione">⭐</button>
       <button class="icon-btn" id="leaderboardBtn" title="Classifica" aria-label="Classifica">🏆</button>
       <button class="icon-btn" id="muteBtn" title="Audio on/off" aria-label="Audio">🔊</button>
     </div>
@@ -518,6 +519,17 @@ body {
   <p style="font-size:0.75rem;color:var(--cream-muted);margin-top:14px;font-style:italic">
     La classifica è salvata solo su questo dispositivo.
   </p>
+</div>
+
+<!-- Overlay REVIEW (conferma rapida prima di aprire Google) -->
+<div class="overlay" id="overlayReview">
+  <h1>⭐ <span class="gold">Recensione</span></h1>
+  <div class="script">Grazie del cuore!</div>
+  <p class="lead">Se il nostro miele ti è piaciuto o se ti è piaciuto il giochino, lasciaci 5 stelle su Google. Ci aiuta tantissimo! 💛</p>
+  <div class="btn-row">
+    <a class="btn btn-gold" id="reviewGoBtn" href="https://g.page/r/CUb_nfpSancaEBM/review" target="_blank" rel="noopener">⭐ Apri Google</a>
+    <button class="btn btn-outline" id="reviewBackBtn">← Torna al gioco</button>
+  </div>
 </div>
 
 <!-- Toast -->
@@ -778,9 +790,26 @@ $('muteBtn').addEventListener('click', () => {
   $('muteBtn').classList.toggle('muted', muted);
 });
 $('leaderboardBtn').addEventListener('click', () => {
-  hide('overlayStart'); hide('overlayWin');
+  hide('overlayStart'); hide('overlayWin'); hide('overlayReview');
   renderLb();
   show('overlayLb');
+  resetIdleTimer();
+});
+
+$('reviewBtn').addEventListener('click', () => {
+  hide('overlayStart'); hide('overlayWin'); hide('overlayLb');
+  show('overlayReview');
+  resetIdleTimer();
+});
+$('reviewBackBtn').addEventListener('click', () => {
+  hide('overlayReview');
+  // Torna al contesto precedente: se c'era un game in corso lascia il board,
+  // altrimenti riapri lo start.
+  if (matchedPairs > 0 && matchedPairs < ITEMS.length && timerInterval) {
+    // gioco in corso → niente overlay, torna alla board
+  } else {
+    show('overlayStart');
+  }
   resetIdleTimer();
 });
 
