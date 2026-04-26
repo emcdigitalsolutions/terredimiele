@@ -183,6 +183,9 @@ body {
   display:flex;
   align-items:center;
   justify-content:center;
+  padding-bottom:6%;  /* compensa il baseline del font Playfair: il glyph numerico
+                         centrato col flex finisce ottico-basso, padding-bottom
+                         lo spinge su per centrarlo visivamente con l'esagono */
   z-index:2;
   font-family:var(--font-h);
   font-size:clamp(1.8rem, 7vw, 2.8rem);
