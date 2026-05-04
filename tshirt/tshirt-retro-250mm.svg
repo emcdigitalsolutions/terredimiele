@@ -103,13 +103,14 @@
   </g>
 
   <!-- ── Tag superiore: APICOLTURA LA GRECA ─────────────────────────── -->
+  <!-- Linee divider ESTERNE al testo (testo larghezza ~920u, half ~460u → margine sicurezza fino a ±520u) -->
   <g transform="translate(1250 230)">
-    <line x1="-380" y1="0" x2="-280" y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
-    <line x1="280"  y1="0" x2="380"  y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
-    <!-- Esagoni piccoli decorativi sui lati -->
-    <polygon points="-256,-9 -240,-1 -240,9 -256,17 -272,9 -272,-1" fill="#3d2b0a"/>
-    <polygon points="256,-9 272,-1 272,9 256,17 240,9 240,-1" fill="#3d2b0a"/>
-    <text text-anchor="middle" y="9" font-family="'DM Sans', Helvetica, sans-serif"
+    <line x1="-680" y1="0" x2="-540" y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
+    <line x1="540"  y1="0" x2="680"  y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
+    <!-- Esagoni piccoli decorativi adiacenti alle linee, lato testo -->
+    <polygon points="-516,-10 -498,-1 -498,9 -516,18 -534,9 -534,-1" fill="#3d2b0a"/>
+    <polygon points="516,-10 534,-1 534,9 516,18 498,9 498,-1" fill="#3d2b0a"/>
+    <text text-anchor="middle" y="14" font-family="'DM Sans', Helvetica, sans-serif"
           font-size="44" font-weight="700" fill="#3d2b0a" letter-spacing="14">
       APICOLTURA LA GRECA
     </text>
@@ -130,22 +131,27 @@
     <line x1="40"   y1="0" x2="380"  y2="0" stroke="#3d2b0a" stroke-width="2"/>
   </g>
 
-  <!-- ── Tagline corsivo Great Vibes ────────────────────────────────── -->
+  <!-- ── Tagline corsivo Great Vibes (BOLD: synthetic font-weight + stroke matching) ─ -->
+  <!-- Great Vibes ha solo il regular: per ottenere il "bold" applichiamo
+       paint-order=stroke fill così lo stroke ispessisce il glifo dall'esterno
+       senza alterare le forme interne. Risultato: peso visivo equivalente al bold. -->
   <g transform="translate(1250 770)">
     <text text-anchor="middle" font-family="'Great Vibes', cursive"
-          font-size="100" fill="#3d2b0a" font-style="italic">
+          font-size="110" fill="#3d2b0a" font-style="italic" font-weight="700"
+          stroke="#3d2b0a" stroke-width="3.2" paint-order="stroke fill"
+          stroke-linejoin="round">
       Miele Siciliano
     </text>
   </g>
 
-  <!-- ── Footer: località + sito ───────────────────────────────────── -->
+  <!-- ── Footer: località + sito (più grande e visibile) ───────────── -->
   <g transform="translate(1250 920)">
     <text text-anchor="middle" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="34" font-weight="600" fill="#3d2b0a" letter-spacing="4">
+          font-size="52" font-weight="700" fill="#3d2b0a" letter-spacing="5">
       SALVATORE LA GRECA
     </text>
-    <text text-anchor="middle" y="46" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="24" font-weight="400" fill="#3d2b0a" letter-spacing="6" opacity="0.85">
+    <text text-anchor="middle" y="64" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="36" font-weight="500" fill="#3d2b0a" letter-spacing="7">
       CAMPOBELLO DI LICATA  ·  www.terredimiele.it
     </text>
   </g>
