@@ -13,8 +13,8 @@
 
   Per vector puro: aprire in Inkscape → Path → Object to Path su tutti i <text>.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="80mm"
-     viewBox="0 0 900 800"
+<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="82mm"
+     viewBox="0 0 900 820"
      font-family="'Playfair Display', Georgia, serif">
 
   <defs>
@@ -127,12 +127,15 @@
     </text>
   </g>
 
-  <!-- ── Sub-tag: Miele Siciliano — INGRANDITO + BOLD pieno ─────────── -->
-  <g transform="translate(450 728)">
-    <text text-anchor="middle" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="32" font-weight="700" fill="#3d2b0a" letter-spacing="9"
-          stroke="#3d2b0a" stroke-width="0.5" paint-order="stroke fill">
-      MIELE SICILIANO
+  <!-- ── Tagline 'Miele Siciliano' (Great Vibes script, bold synthetic) ── -->
+  <!-- Stesso font del retro per coerenza di brand. Bold simulato con paint-order
+       stroke fill (Great Vibes ha solo regular). -->
+  <g transform="translate(450 758)">
+    <text text-anchor="middle" font-family="'Great Vibes', cursive"
+          font-size="68" fill="#3d2b0a" font-style="italic" font-weight="700"
+          stroke="#3d2b0a" stroke-width="2.2" paint-order="stroke fill"
+          stroke-linejoin="round">
+      Miele Siciliano
     </text>
   </g>
 
