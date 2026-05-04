@@ -71,8 +71,8 @@
   <!-- ── Sfondo decorativo molto sottile (tutta la superficie) ─────── -->
   <rect width="2500" height="1100" fill="url(#hexBgR)"/>
 
-  <!-- ── Ornamento sinistro: cluster esagoni ───────────────────────── -->
-  <g transform="translate(280 550)">
+  <!-- ── Ornamento sinistro: cluster esagoni (centrato con wordmark, più esterno) ── -->
+  <g transform="translate(220 400)">
     <!-- Esagono grande outline -->
     <polygon points="0,-200 174,-100 174,100 0,200 -174,100 -174,-100"
              fill="url(#hexEmblem)" stroke="#3d2b0a" stroke-width="6"/>
@@ -83,8 +83,8 @@
     <use href="#beeR" x="-110" y="-130" width="220" height="260"/>
   </g>
 
-  <!-- ── Ornamento destro: cluster esagoni decorativi ──────────────── -->
-  <g transform="translate(2220 550)">
+  <!-- ── Ornamento destro: cluster esagoni (centrato con wordmark, più esterno) ──── -->
+  <g transform="translate(2280 400)">
     <!-- Esagono grande outline -->
     <polygon points="0,-180 156,-90 156,90 0,180 -156,90 -156,-90"
              fill="url(#hexEmblem)" stroke="#3d2b0a" stroke-width="5"/>
@@ -124,8 +124,9 @@
     </text>
   </g>
 
-  <!-- ── Divider centrale con esagono ───────────────────────────────── -->
-  <g transform="translate(1250 660)">
+  <!-- ── Divider centrale con esagono (centrato fra wordmark e tagline) ── -->
+  <!-- Wordmark baseline ≈ y=510, tagline top ≈ y=660 → centro = 585 -->
+  <g transform="translate(1250 585)">
     <line x1="-380" y1="0" x2="-40"  y2="0" stroke="#3d2b0a" stroke-width="2"/>
     <polygon points="0,-16 20,-6 20,10 0,20 -20,10 -20,-6" fill="#3d2b0a"/>
     <line x1="40"   y1="0" x2="380"  y2="0" stroke="#3d2b0a" stroke-width="2"/>
