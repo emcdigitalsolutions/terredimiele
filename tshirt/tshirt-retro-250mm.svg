@@ -1,121 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Terre di Miele — Stampa MAGLIETTA RETRO
-  Larghezza fisica: 250 mm
-  Altezza fisica:   ~90 mm
-  Stampa: serigrafia o DTF/DTG. Composizione orizzontale tipo "banner schiena".
-  Per stampa pure-vector: aprire in Inkscape → Path → Object to Path su tutti i <text>
-  oppure in Illustrator → Type → Create Outlines, prima di esportare al fornitore.
-  Font usati: "Playfair Display" (serif), "DM Sans" (sans), "Great Vibes" (script).
-  Tutti Google Fonts free.
+  Terre di Miele — Stampa MAGLIETTA RETRO (centro schiena) — su TESSUTO GIALLO
+  Larghezza fisica: 250 mm  ·  Altezza fisica: 110 mm
+
+  Strategia di stampa: SOLO 2 COLORI.
+    1) #3d2b0a (marrone scuro)   — testi, contorni, ape, pattern
+    2) #FFFAF0 (bianco crema)    — ali ape e highlight occhi
+
+  Composizione: layout 3-fasce orizzontali con asse verticale centrale.
+  - Top:    APICOLTURA LA GRECA (tag principale)
+  - Middle: Wordmark "Terre di Miele" gigante con esagono+ape integrati ai lati
+  - Bottom: tagline "Miele Siciliano" + località/sito
+  - Pattern honeycomb molto leggero in tutto lo sfondo (decorativo)
+
+  Per vector puro: aprire in Inkscape → Path → Object to Path su tutti i <text>.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" width="250mm" height="90mm"
-     viewBox="0 0 2500 900"
-     xmlns:xlink="http://www.w3.org/1999/xlink"
+<svg xmlns="http://www.w3.org/2000/svg" width="250mm" height="110mm"
+     viewBox="0 0 2500 1100"
      font-family="'Playfair Display', Georgia, serif">
 
   <defs>
-    <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#F4C542"/>
-      <stop offset="50%"  stop-color="#D4A017"/>
-      <stop offset="100%" stop-color="#8B6914"/>
-    </linearGradient>
-    <linearGradient id="darkGold2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#8B4513"/>
-      <stop offset="35%"  stop-color="#B8860B"/>
-      <stop offset="55%"  stop-color="#D4A017"/>
-      <stop offset="80%"  stop-color="#B8860B"/>
-      <stop offset="100%" stop-color="#8B4513"/>
-    </linearGradient>
-
-    <!-- Cluster esagoni (ape decorativa sx + dx) -->
-    <pattern id="hexBgRetro" x="0" y="0" width="80" height="92" patternUnits="userSpaceOnUse">
-      <polygon points="40,4 76,24 76,68 40,88 4,68 4,24"
-               fill="none" stroke="#3d2b0a" stroke-width="1.4" opacity="0.13"/>
+    <!-- Pattern honeycomb sfondo (sottile, marrone scuro su giallo tessuto) -->
+    <pattern id="hexBgR" x="0" y="0" width="78" height="90" patternUnits="userSpaceOnUse">
+      <polygon points="39,3 75,23 75,67 39,87 3,67 3,23"
+               fill="none" stroke="#3d2b0a" stroke-width="1.2" opacity="0.10"/>
     </pattern>
+    <!-- Pattern honeycomb più denso dentro l'esagono dell'ape -->
+    <pattern id="hexEmblem" x="0" y="0" width="44" height="50" patternUnits="userSpaceOnUse">
+      <polygon points="22,3 41,13 41,37 22,47 3,37 3,13"
+               fill="none" stroke="#3d2b0a" stroke-width="1.4" opacity="0.32"/>
+    </pattern>
+
+    <!-- Symbol: ape (riuso definizione, scalata) -->
+    <symbol id="beeR" viewBox="-100 -120 200 240" overflow="visible">
+      <g stroke="#3d2b0a" stroke-width="3" stroke-linejoin="round">
+        <path d="M -8 -52 Q -56 -78 -86 -64 Q -98 -52 -90 -34 Q -72 -22 -42 -28 Q -22 -36 -8 -46 Z" fill="#FFFAF0"/>
+        <path d="M 8 -52 Q 56 -78 86 -64 Q 98 -52 90 -34 Q 72 -22 42 -28 Q 22 -36 8 -46 Z" fill="#FFFAF0"/>
+        <path d="M -10 -32 Q -46 -20 -62 -8 Q -66 8 -54 18 Q -34 18 -18 4 Q -10 -6 -10 -24 Z" fill="#FFFAF0"/>
+        <path d="M 10 -32 Q 46 -20 62 -8 Q 66 8 54 18 Q 34 18 18 4 Q 10 -6 10 -24 Z" fill="#FFFAF0"/>
+      </g>
+      <g stroke="#3d2b0a" stroke-width="1.2" fill="none" opacity="0.65">
+        <path d="M -22 -44 Q -50 -54 -76 -54"/>
+        <path d="M 22 -44 Q 50 -54 76 -54"/>
+        <path d="M -18 -28 Q -42 -22 -56 -10"/>
+        <path d="M 18 -28 Q 42 -22 56 -10"/>
+      </g>
+      <ellipse cx="0" cy="14" rx="40" ry="58" fill="none" stroke="#3d2b0a" stroke-width="5"/>
+      <path d="M -38 -8 Q 0 -18 38 -8 L 38 6 Q 0 -4 -38 6 Z" fill="#3d2b0a"/>
+      <path d="M -40 18 Q 0 8 40 18 L 38 32 Q 0 22 -38 32 Z" fill="#3d2b0a"/>
+      <path d="M -34 44 Q 0 36 34 44 L 28 58 Q 0 50 -28 58 Z" fill="#3d2b0a"/>
+      <circle cx="0" cy="-50" r="22" fill="#3d2b0a"/>
+      <ellipse cx="-9" cy="-52" rx="5.5" ry="6" fill="#FFFAF0"/>
+      <ellipse cx="9"  cy="-52" rx="5.5" ry="6" fill="#FFFAF0"/>
+      <circle cx="-8" cy="-52" r="2.5" fill="#3d2b0a"/>
+      <circle cx="10" cy="-52" r="2.5" fill="#3d2b0a"/>
+      <path d="M -8 -68 Q -18 -86 -28 -94" fill="none" stroke="#3d2b0a" stroke-width="3.2" stroke-linecap="round"/>
+      <circle cx="-28" cy="-94" r="3.5" fill="#3d2b0a"/>
+      <path d="M 8 -68 Q 18 -86 28 -94" fill="none" stroke="#3d2b0a" stroke-width="3.2" stroke-linecap="round"/>
+      <circle cx="28" cy="-94" r="3.5" fill="#3d2b0a"/>
+      <path d="M -5 70 L 0 84 L 5 70 Z" fill="#3d2b0a"/>
+      <g stroke="#3d2b0a" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M -30 4  Q -46 4  -54 14"/>
+        <path d="M  30 4  Q  46 4   54 14"/>
+        <path d="M -38 28 Q -56 32 -62 44"/>
+        <path d="M  38 28 Q  56 32  62 44"/>
+      </g>
+    </symbol>
   </defs>
 
-  <!-- ── Ornamento sinistro: cluster esagoni + ape ─────────────────── -->
-  <g transform="translate(180 450)">
-    <!-- Esagono grande sfondo -->
+  <!-- ── Sfondo decorativo molto sottile (tutta la superficie) ─────── -->
+  <rect width="2500" height="1100" fill="url(#hexBgR)"/>
+
+  <!-- ── Ornamento sinistro: cluster esagoni ───────────────────────── -->
+  <g transform="translate(280 550)">
+    <!-- Esagono grande outline -->
+    <polygon points="0,-200 174,-100 174,100 0,200 -174,100 -174,-100"
+             fill="url(#hexEmblem)" stroke="#3d2b0a" stroke-width="6"/>
+    <!-- Esagono medio dentro (cornice) -->
+    <polygon points="0,-170 148,-85 148,85 0,170 -148,85 -148,-85"
+             fill="none" stroke="#3d2b0a" stroke-width="2"/>
+    <!-- Ape grande al centro dell'esagono sx -->
+    <use href="#beeR" x="-110" y="-130" width="220" height="260"/>
+  </g>
+
+  <!-- ── Ornamento destro: cluster esagoni decorativi ──────────────── -->
+  <g transform="translate(2220 550)">
+    <!-- Esagono grande outline -->
     <polygon points="0,-180 156,-90 156,90 0,180 -156,90 -156,-90"
-             fill="url(#hexBgRetro)" opacity="0.6"/>
-    <!-- Esagono medio in primo piano -->
-    <polygon points="0,-110 95,-55 95,55 0,110 -95,55 -95,-55"
-             fill="url(#goldGrad2)" stroke="#3d2b0a" stroke-width="5"/>
-    <!-- Esagono piccolo dentro -->
-    <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45"
-             fill="#FFF3CC" opacity="0.45"/>
-
-    <!-- Ape al centro (più piccola e pulita per la dimensione) -->
-    <g transform="rotate(-10)">
-      <ellipse cx="-22" cy="-20" rx="24" ry="14" fill="#fff" opacity="0.92" stroke="#3d2b0a" stroke-width="1.8"/>
-      <ellipse cx="22"  cy="-20" rx="24" ry="14" fill="#fff" opacity="0.92" stroke="#3d2b0a" stroke-width="1.8"/>
-      <ellipse cx="0"   cy="0"   rx="40" ry="28" fill="#F4C542" stroke="#3d2b0a" stroke-width="3"/>
-      <rect x="-36" y="-10" width="72" height="9"  fill="#2c1810" rx="1"/>
-      <rect x="-36" y="8"   width="72" height="9"  fill="#2c1810" rx="1"/>
-      <circle cx="38" cy="-2" r="11" fill="#2c1810"/>
-      <circle cx="41" cy="-4" r="2.6" fill="#fff"/>
-      <path d="M 36 -12 Q 42 -22 50 -22" stroke="#2c1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <circle cx="50" cy="-22" r="2" fill="#2c1810"/>
-      <path d="M 41 -12 Q 50 -18 58 -18" stroke="#2c1810" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <circle cx="58" cy="-18" r="2" fill="#2c1810"/>
-    </g>
+             fill="url(#hexEmblem)" stroke="#3d2b0a" stroke-width="5"/>
+    <!-- Esagono interno con drop di miele stilizzato -->
+    <polygon points="0,-130 112,-65 112,65 0,130 -112,65 -112,-65"
+             fill="none" stroke="#3d2b0a" stroke-width="2"/>
+    <!-- Goccia di miele (silhouette marrone scuro al centro) -->
+    <path d="M 0 -70
+             Q 38 -10 38 30
+             Q 38 70 0 70
+             Q -38 70 -38 30
+             Q -38 -10 0 -70 Z"
+          fill="#3d2b0a"/>
+    <!-- Highlight goccia (bianco crema) -->
+    <ellipse cx="-10" cy="0" rx="8" ry="22" fill="#FFFAF0" opacity="0.85"/>
   </g>
 
-  <!-- ── Ornamento destro: cluster esagoni in stile "drip" ─────────── -->
-  <g transform="translate(2320 450)">
-    <polygon points="0,-150 130,-75 130,75 0,150 -130,75 -130,-75"
-             fill="url(#hexBgRetro)" opacity="0.55"/>
-    <polygon points="-30,-50 30,-15 30,55 -30,90 -90,55 -90,-15"
-             fill="url(#goldGrad2)" opacity="0.85" stroke="#3d2b0a" stroke-width="3"/>
-    <polygon points="40,40 80,63 80,109 40,132 0,109 0,63"
-             fill="#D4A017" opacity="0.7" stroke="#3d2b0a" stroke-width="2.5"/>
-    <polygon points="-20,75 12,93 12,129 -20,147 -52,129 -52,93"
-             fill="#F4C542" opacity="0.6" stroke="#3d2b0a" stroke-width="2"/>
-  </g>
-
-  <!-- ── WORDMARK CENTRALE — "Terre di Miele" ─────────────────────── -->
-  <g transform="translate(1250 360)">
-    <!-- Tag superiore "APICOLTORE SICILIANO" -->
-    <g transform="translate(0 -50)">
-      <line x1="-220" y1="0" x2="-110" y2="0" stroke="#B8860B" stroke-width="2"/>
-      <line x1="110"  y1="0" x2="220"  y2="0" stroke="#B8860B" stroke-width="2"/>
-      <text text-anchor="middle" y="6" font-family="'DM Sans', Helvetica, sans-serif"
-            font-size="26" font-weight="700" fill="#8B4513" letter-spacing="9">
-        APICOLTORE
-      </text>
-    </g>
-
-    <!-- Brand name big -->
-    <text text-anchor="middle" font-size="180" font-weight="700"
-          fill="#3d2b0a" letter-spacing="2" y="100">
-      <tspan>Terre </tspan><tspan font-style="italic" fill="url(#darkGold2)">di Miele</tspan>
+  <!-- ── Tag superiore: APICOLTURA LA GRECA ─────────────────────────── -->
+  <g transform="translate(1250 230)">
+    <line x1="-380" y1="0" x2="-280" y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
+    <line x1="280"  y1="0" x2="380"  y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
+    <!-- Esagoni piccoli decorativi sui lati -->
+    <polygon points="-256,-9 -240,-1 -240,9 -256,17 -272,9 -272,-1" fill="#3d2b0a"/>
+    <polygon points="256,-9 272,-1 272,9 256,17 240,9 240,-1" fill="#3d2b0a"/>
+    <text text-anchor="middle" y="9" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="44" font-weight="700" fill="#3d2b0a" letter-spacing="14">
+      APICOLTURA LA GRECA
     </text>
+  </g>
 
-    <!-- Divider con esagono -->
-    <g transform="translate(0 145)">
-      <line x1="-280" y1="0" x2="-32" y2="0" stroke="#B8860B" stroke-width="1.5"/>
-      <polygon points="-12,-12 12,-4 12,12 -12,20 -36,12 -36,-4"
-               fill="#D4A017" transform="translate(12 -4)"/>
-      <line x1="32" y1="0" x2="280" y2="0" stroke="#B8860B" stroke-width="1.5"/>
-    </g>
+  <!-- ── Wordmark gigante: Terre di Miele ──────────────────────────── -->
+  <g transform="translate(1250 510)">
+    <text text-anchor="middle" font-size="220" font-weight="700"
+          fill="#3d2b0a" letter-spacing="2">
+      <tspan>Terre </tspan><tspan font-style="italic">di Miele</tspan>
+    </text>
+  </g>
 
-    <!-- Tagline corsivo -->
+  <!-- ── Divider centrale con esagono ───────────────────────────────── -->
+  <g transform="translate(1250 660)">
+    <line x1="-380" y1="0" x2="-40"  y2="0" stroke="#3d2b0a" stroke-width="2"/>
+    <polygon points="0,-16 20,-6 20,10 0,20 -20,10 -20,-6" fill="#3d2b0a"/>
+    <line x1="40"   y1="0" x2="380"  y2="0" stroke="#3d2b0a" stroke-width="2"/>
+  </g>
+
+  <!-- ── Tagline corsivo Great Vibes ────────────────────────────────── -->
+  <g transform="translate(1250 770)">
     <text text-anchor="middle" font-family="'Great Vibes', cursive"
-          font-size="90" fill="#B8860B" y="240" font-style="italic">
+          font-size="100" fill="#3d2b0a" font-style="italic">
       Miele Siciliano
     </text>
   </g>
 
-  <!-- ── Footer: nome + sito ──────────────────────────────────────── -->
-  <g transform="translate(1250 770)">
+  <!-- ── Footer: località + sito ───────────────────────────────────── -->
+  <g transform="translate(1250 920)">
     <text text-anchor="middle" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="32" font-weight="600" fill="#3d2b0a" letter-spacing="3">
+          font-size="34" font-weight="600" fill="#3d2b0a" letter-spacing="4">
       SALVATORE LA GRECA
     </text>
-    <text text-anchor="middle" y="42" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="22" font-weight="400" fill="#6B4F0A" letter-spacing="5" opacity="0.85">
+    <text text-anchor="middle" y="46" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="24" font-weight="400" fill="#3d2b0a" letter-spacing="6" opacity="0.85">
       CAMPOBELLO DI LICATA  ·  www.terredimiele.it
     </text>
   </g>

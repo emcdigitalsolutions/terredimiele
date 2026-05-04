@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terre di Miele — Preview maglietta gialla</title>
+<style>
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a1a; color: #eee; }
+  header { padding: 20px 30px; background: #0e0e0e; border-bottom: 1px solid #333; }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 6px 0 0; color: #999; font-size: 13px; }
+  .controls { padding: 14px 30px; background: #0e0e0e; border-bottom: 1px solid #333; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .controls label { font-size: 13px; color: #ccc; }
+  .controls input[type=color] { vertical-align: middle; height: 30px; }
+
+  /* Container "maglietta gialla" — colore default Pantone giallo girasole */
+  .shirt {
+    background: var(--shirt-color, #F4C430);
+    padding: 60px 30px;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+  }
+  .shirt-section {
+    text-align: center;
+  }
+  .shirt-section h2 {
+    color: #3d2b0a;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 0 12px;
+    opacity: 0.7;
+    font-weight: 700;
+  }
+  .stamp {
+    background: rgba(0,0,0,0.05);
+    padding: 20px;
+    display: inline-block;
+    /* Outline tratteggiato leggero per simulare l'area di stampa */
+    outline: 1px dashed rgba(61, 43, 10, 0.3);
+    outline-offset: 4px;
+  }
+  .stamp object, .stamp img {
+    display: block;
+  }
+  /* Frontale: 90mm a scala 1:1 in CSS (90mm = ~340px @ 96dpi) */
+  .frontale .stamp object { width: 340px; height: 264px; }
+  /* Retro: 250mm = ~944px */
+  .retro .stamp object { width: 944px; height: 416px; max-width: 100%; height: auto; }
+
+  .info {
+    color: #3d2b0a;
+    font-size: 12px;
+    margin-top: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  @media (max-width: 1000px) {
+    .shirt { padding: 30px 12px; gap: 30px; }
+    .frontale .stamp object { width: 260px; height: 202px; }
+    .retro .stamp object { width: 100%; max-width: 700px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Terre di Miele — preview stampe maglietta gialla</h1>
+    <p>Simulazione del risultato di stampa. Cambia il colore del tessuto qui sotto per vedere come si comporta su tonalità diverse di giallo.</p>
+  </header>
+
+  <div class="controls">
+    <label>
+      Colore tessuto:
+      <input type="color" id="shirtColor" value="#F4C430">
+    </label>
+    <label>
+      Preset:
+      <select id="preset">
+        <option value="#F4C430">Giallo girasole (default)</option>
+        <option value="#FFD700">Giallo oro</option>
+        <option value="#F9DC5C">Giallo chiaro</option>
+        <option value="#E8B923">Giallo miele</option>
+        <option value="#FFFFFF">Bianco (test contrasto)</option>
+        <option value="#3d2b0a">Marrone scuro (versione invertita)</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="shirt" id="shirt">
+    <div class="shirt-section frontale">
+      <h2>Fronte — petto sinistro · 90 mm</h2>
+      <div class="stamp">
+        <object data="tshirt-fronte-90mm.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="info">90 × 70 mm</div>
+    </div>
+
+    <div class="shirt-section retro">
+      <h2>Retro — centro schiena · 250 mm</h2>
+      <div class="stamp">
+        <object data="tshirt-retro-250mm.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="info">250 × 110 mm</div>
+    </div>
+  </div>
+
+<script>
+  const colorInput = document.getElementById('shirtColor');
+  const preset = document.getElementById('preset');
+  const shirt = document.getElementById('shirt');
+  function apply(c) { shirt.style.setProperty('--shirt-color', c); colorInput.value = c; }
+  colorInput.oninput = () => apply(colorInput.value);
+  preset.onchange = () => apply(preset.value);
+</script>
+</body>
+</html>

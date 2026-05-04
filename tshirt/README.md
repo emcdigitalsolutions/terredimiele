@@ -1,58 +1,78 @@
 # Stampe maglietta — Terre di Miele
 
-Due file SVG vettoriali pronti per la stampa, derivati dallo stile del biglietto da visita v6.
+Stampe vettoriali progettate per **maglietta gialla**, derivate dallo stile del biglietto da visita v6.
 
-| File | Posizione maglietta | Larghezza | Altezza |
-|------|---------------------|-----------|---------|
-| `tshirt-fronte-90mm.svg` | Fronte (petto sinistro) | **90 mm** | ~60 mm |
-| `tshirt-retro-250mm.svg` | Retro (centro schiena) | **250 mm** | ~90 mm |
+| File | Posizione | Larghezza | Altezza |
+|------|-----------|-----------|---------|
+| `tshirt-fronte-90mm.svg` | Fronte (petto sinistro) | **90 mm** | 70 mm |
+| `tshirt-retro-250mm.svg` | Retro (centro schiena) | **250 mm** | 110 mm |
 
-## Indicazioni per lo stampatore
+## Strategia di design
 
-**Tipo di stampa consigliata**: serigrafia (3-4 colori) oppure DTF/DTG su tessuto chiaro.
+**Stampa a 2 colori** sul giallo della maglietta:
 
-**Colori esatti** (per matching Pantone):
+| Colore | HEX | Pantone vicino | Uso |
+|--------|-----|----------------|-----|
+| Marrone scuro | `#3d2b0a` | Pantone 476 C | Testi, contorni, ape, pattern, decorazioni |
+| Bianco crema | `#FFFAF0` | Pantone 11-0602 TPX (Bright White) | Ali ape, highlight occhi |
 
-| Ruolo | HEX | Pantone vicino |
-|-------|-----|----------------|
-| Marrone scuro (testo principale, contorni) | `#3d2b0a` | Pantone 476 C |
-| Marrone medio (accenti) | `#8B4513` | Pantone 4625 C |
-| Oro dorato (riempimenti) | `#D4A017` | Pantone 124 C |
-| Oro chiaro (highlight) | `#F4C542` | Pantone 1235 C |
-| Giallo ape (riempimento corpo ape) | `#F4C542` | Pantone 1235 C |
-| Nero strisce ape | `#2c1810` | Pantone Black 6 C |
-| Bianco ali ape | `#FFFFFF` | — |
+Il **giallo del tessuto** fa da riempimento naturale: il corpo dell'ape, l'interno dell'esagono e gli sfondi non vengono stampati — viene lasciato il tessuto. Risultato:
+- **Contrasto massimo** (marrone scuro su giallo è una delle coppie più leggibili).
+- **Costo serigrafia ridotto** (2 colori invece di 5+).
+- **Coerenza brand** (il giallo della maglietta = il giallo del miele).
 
-**I gradient** (`goldGrad`, `darkGold2`) sono ammessi nei file. Se la tipologia di stampa non li supporta:
-- Sostituisci con tinta piatta `#D4A017` (gradient oro) e `#8B4513` (gradient scritto "di Miele")
-- Lo stampatore può aprire l'SVG in Inkscape/Illustrator e fare flatten dei gradient
+## Composizione
+
+**Fronte (90×70 mm) — emblem verticale**
+1. Esagono grande con doppio bordo + pattern honeycomb decorativo
+2. Ape stilizzata heraldic al centro (ali bianche, corpo "trasparente" col giallo del tessuto)
+3. Wordmark "Terre di Miele" (Playfair Display)
+4. Divider linee + esagono pieno
+5. **APICOLTURA LA GRECA** (tag principale, DM Sans Bold)
+6. MIELE SICILIANO (sub-tag)
+
+**Retro (250×110 mm) — banner orizzontale 3-fasce**
+- **Sx**: cluster esagoni con ape grande dettagliata
+- **Centro top**: tag superiore APICOLTURA LA GRECA con linee divider e esagoni piccoli
+- **Centro mid**: wordmark gigante "Terre di Miele"
+- **Centro bottom**: tagline corsivo "Miele Siciliano" (Great Vibes)
+- **Centro footer**: SALVATORE LA GRECA · CAMPOBELLO DI LICATA · sito
+- **Dx**: cluster esagoni con goccia di miele (silhouette + highlight)
+- **Sfondo**: pattern honeycomb molto sottile (10% opacity) su tutta la superficie
 
 ## Convertire testi in path (raccomandato prima della stampa)
 
-Gli SVG usano i font **Playfair Display**, **DM Sans** e **Great Vibes** (Google Fonts). Per evitare che lo stampatore debba installarli:
+I file usano i font **Playfair Display**, **DM Sans** e **Great Vibes** (Google Fonts free). Per garantire che lo stampatore riproduca esattamente le lettere senza dover installare i font:
 
 **Inkscape** (gratis, https://inkscape.org):
 1. Apri il file SVG
 2. `Edit` → `Select All` (Ctrl+A)
 3. `Path` → `Object to Path` (Ctrl+Shift+C)
-4. `File` → `Save As` → mantieni formato SVG → salva con suffisso `-outlined.svg`
+4. `File` → `Save As` → mantieni formato SVG → suffisso `-outlined.svg`
 
 **Adobe Illustrator**:
 1. Apri il file SVG
 2. `Select` → `All` (Ctrl+A)
 3. `Type` → `Create Outlines` (Ctrl+Shift+O)
-4. `File` → `Save As` → SVG, attiva "Preserve Illustrator Editing Capabilities" se serve riapertura
+4. `File` → `Save As` → SVG, salva
 
 A quel punto il file è 100% vettoriale **senza dipendenze da font installati**.
 
-## Note di stampa
+## Note tecniche per lo stampatore
 
-- **Tessuto chiaro** (bianco, panna, beige): i colori funzionano direttamente.
-- **Tessuto scuro** (nero, marrone): consiglio di invertire — sostituisci il marrone scuro `#3d2b0a` con bianco `#FFFFFF` o panna `#FFF3CC`. Il giallo/oro mantiene leggibilità.
+- **Nessun gradient nella versione finale**: tinte piatte, ottimale per serigrafia.
+- **Nessun fill di sfondo**: il tessuto giallo si vede attraverso le aree "vuote" degli SVG. Quando importati in Illustrator/CorelDRAW, gli oggetti senza fill restano trasparenti.
+- **Stroke minimi**: 1.2 unit nel viewBox = ~0.12 mm. Per serigrafia consiglio di non scendere sotto 0.3 mm reali → eventualmente convertire le linee più sottili in path con thickness aumentato.
 - **Margine minimo dal bordo della maglietta**: 1 cm consigliato.
 - **Posizione petto sinistro (fronte)**: ~10 cm sotto il colletto, ~7 cm dalla cucitura della spalla.
 - **Posizione retro**: centrato in larghezza, ~12 cm sotto la cucitura del colletto.
 
 ## Anteprima
 
-Per vedere come appariranno: apri i file `.svg` direttamente con un browser (Chrome, Firefox, Edge). I gradient e le forme renderizzano fedelmente.
+Apri i file `.svg` direttamente con un browser (Chrome, Firefox, Edge) — il rendering è fedele alla stampa. Per simulare il risultato sulla maglietta gialla: imposta lo sfondo del browser a `#FFD700` (es. tramite Chrome DevTools → Elements → `<body>` → `style="background:#FFD700"`).
+
+## Varianti future (su richiesta)
+
+- **Versione 1 colore solo**: tutto marrone scuro, niente bianco crema sulle ali (ali in outline solo). Stampa più economica.
+- **Versione invertita** per maglietta marrone scuro: tutto in crema/oro chiaro, il colore scuro fa da fondo del tessuto.
+- **Composizione verticale** del retro per stampa su grembiule o totebag.
