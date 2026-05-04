@@ -26,6 +26,17 @@
                fill="none" stroke="#3d2b0a" stroke-width="1.4" opacity="0.28"/>
     </pattern>
 
+    <!-- Gradient marrone/bordeaux per la scritta "di Miele" — coerente col
+         biglietto v6 ma adattato alla palette mono+bordeaux (no oro perché
+         su tessuto giallo perderebbe contrasto). -->
+    <linearGradient id="honeyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#3d2b0a"/>
+      <stop offset="35%"  stop-color="#6B1218"/>
+      <stop offset="55%"  stop-color="#9E2A2B"/>
+      <stop offset="80%"  stop-color="#6B1218"/>
+      <stop offset="100%" stop-color="#3d2b0a"/>
+    </linearGradient>
+
     <!-- Symbol: ape stilizzata heraldic (corpo "trasparente": il giallo della
          maglietta lo riempie naturalmente attraverso fill=none) -->
     <symbol id="bee" viewBox="-100 -120 200 240" overflow="visible">
@@ -104,10 +115,9 @@
   <!-- paint-order=stroke fill aggiunge un mezzo-stroke che ispessisce ulteriormente
        i glifi per garantire impatto a 9 cm di larghezza reale anche a distanza. -->
   <g transform="translate(450 510)">
-    <text text-anchor="middle" font-size="100" font-weight="700" fill="#3d2b0a"
-          letter-spacing="1.5"
-          stroke="#3d2b0a" stroke-width="0.8" paint-order="stroke fill">
-      <tspan>Terre </tspan><tspan font-style="italic">di Miele</tspan>
+    <text text-anchor="middle" font-size="100" font-weight="700"
+          letter-spacing="1.5">
+      <tspan fill="#3d2b0a" stroke="#3d2b0a" stroke-width="0.8" paint-order="stroke fill">Terre </tspan><tspan font-style="italic" fill="url(#honeyGrad)" stroke="#3d2b0a" stroke-width="0.6" paint-order="stroke fill">di Miele</tspan>
     </text>
   </g>
 

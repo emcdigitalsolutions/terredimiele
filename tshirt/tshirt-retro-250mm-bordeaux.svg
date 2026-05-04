@@ -17,8 +17,8 @@
 
   Per vector puro: aprire in Inkscape → Path → Object to Path su tutti i <text>.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" width="250mm" height="110mm"
-     viewBox="0 0 2500 1100"
+<svg xmlns="http://www.w3.org/2000/svg" width="250mm" height="125mm"
+     viewBox="0 0 2500 1250"
      font-family="'Playfair Display', Georgia, serif">
 
   <defs>
@@ -32,6 +32,15 @@
       <polygon points="22,3 41,13 41,37 22,47 3,37 3,13"
                fill="none" stroke="#3d2b0a" stroke-width="1.4" opacity="0.32"/>
     </pattern>
+
+    <!-- Gradient marrone/bordeaux per la scritta "di Miele" -->
+    <linearGradient id="honeyGradR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#3d2b0a"/>
+      <stop offset="35%"  stop-color="#6B1218"/>
+      <stop offset="55%"  stop-color="#9E2A2B"/>
+      <stop offset="80%"  stop-color="#6B1218"/>
+      <stop offset="100%" stop-color="#3d2b0a"/>
+    </linearGradient>
 
     <!-- Symbol: ape (riuso definizione, scalata) -->
     <symbol id="beeR" viewBox="-100 -120 200 240" overflow="visible">
@@ -71,7 +80,7 @@
   </defs>
 
   <!-- ── Sfondo decorativo molto sottile (tutta la superficie) ─────── -->
-  <rect width="2500" height="1100" fill="url(#hexBgR)"/>
+  <rect width="2500" height="1250" fill="url(#hexBgR)"/>
 
   <!-- ── Ornamento sinistro: cluster esagoni (centrato con wordmark, più esterno) ── -->
   <g transform="translate(220 420)">
@@ -104,25 +113,24 @@
     <ellipse cx="-10" cy="0" rx="8" ry="22" fill="#FFFAF0" opacity="0.85"/>
   </g>
 
-  <!-- ── Tag superiore: APICOLTURA LA GRECA ─────────────────────────── -->
-  <!-- Linee divider ESTERNE al testo (testo larghezza ~920u, half ~460u → margine sicurezza fino a ±520u) -->
-  <g transform="translate(1250 230)">
-    <line x1="-680" y1="0" x2="-540" y2="0" stroke="#7A1B2C" stroke-width="2.5"/>
-    <line x1="540"  y1="0" x2="680"  y2="0" stroke="#7A1B2C" stroke-width="2.5"/>
-    <!-- Esagoni piccoli decorativi BORDEAUX adiacenti alle linee, lato testo -->
-    <polygon points="-516,-10 -498,-1 -498,9 -516,18 -534,9 -534,-1" fill="#7A1B2C"/>
-    <polygon points="516,-10 534,-1 534,9 516,18 498,9 498,-1" fill="#7A1B2C"/>
-    <text text-anchor="middle" y="14" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="44" font-weight="700" fill="#3d2b0a" letter-spacing="14">
+  <!-- ── Tag superiore: APICOLTURA LA GRECA — INGRANDITO + EXTRA BOLD ── -->
+  <!-- Testo font-size 56 + letter-spacing 14: half-width ~580u → linee da ±660 -->
+  <g transform="translate(1250 240)">
+    <line x1="-820" y1="0" x2="-660" y2="0" stroke="#7A1B2C" stroke-width="3.5"/>
+    <line x1="660"  y1="0" x2="820"  y2="0" stroke="#7A1B2C" stroke-width="3.5"/>
+    <polygon points="-636,-13 -614,-2 -614,12 -636,23 -658,12 -658,-2" fill="#7A1B2C"/>
+    <polygon points="636,-13 658,-2 658,12 636,23 614,12 614,-2" fill="#7A1B2C"/>
+    <text text-anchor="middle" y="18" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="56" font-weight="800" fill="#3d2b0a" letter-spacing="14"
+          stroke="#3d2b0a" stroke-width="0.8" paint-order="stroke fill">
       APICOLTURA LA GRECA
     </text>
   </g>
 
-  <!-- ── Wordmark gigante: Terre di Miele ──────────────────────────── -->
+  <!-- ── Wordmark gigante: Terre di Miele (con gradient su "di Miele") ─ -->
   <g transform="translate(1250 510)">
-    <text text-anchor="middle" font-size="220" font-weight="700"
-          fill="#3d2b0a" letter-spacing="2">
-      <tspan>Terre </tspan><tspan font-style="italic">di Miele</tspan>
+    <text text-anchor="middle" font-size="220" font-weight="700" letter-spacing="2">
+      <tspan fill="#3d2b0a" stroke="#3d2b0a" stroke-width="1.5" paint-order="stroke fill">Terre </tspan><tspan font-style="italic" fill="url(#honeyGradR)" stroke="#3d2b0a" stroke-width="1" paint-order="stroke fill">di Miele</tspan>
     </text>
   </g>
 
@@ -147,15 +155,25 @@
     </text>
   </g>
 
-  <!-- ── Footer: località + sito (più grande e visibile) ───────────── -->
+  <!-- ── Footer: 3 righe separate, ognuna grande e bold ─────────────── -->
   <g transform="translate(1250 920)">
+    <!-- Riga 1: SALVATORE LA GRECA -->
     <text text-anchor="middle" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="52" font-weight="700" fill="#3d2b0a" letter-spacing="5">
+          font-size="68" font-weight="800" fill="#3d2b0a" letter-spacing="6"
+          stroke="#3d2b0a" stroke-width="0.9" paint-order="stroke fill">
       SALVATORE LA GRECA
     </text>
-    <text text-anchor="middle" y="64" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="36" font-weight="500" fill="#3d2b0a" letter-spacing="7">
-      CAMPOBELLO DI LICATA  ·  www.terredimiele.it
+    <!-- Riga 2: CAMPOBELLO DI LICATA -->
+    <text text-anchor="middle" y="92" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="56" font-weight="700" fill="#3d2b0a" letter-spacing="8"
+          stroke="#3d2b0a" stroke-width="0.7" paint-order="stroke fill">
+      CAMPOBELLO DI LICATA
+    </text>
+    <!-- Riga 3: www.terredimiele.it -->
+    <text text-anchor="middle" y="178" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="56" font-weight="700" fill="#7A1B2C" letter-spacing="6"
+          stroke="#7A1B2C" stroke-width="0.7" paint-order="stroke fill">
+      www.terredimiele.it
     </text>
   </g>
 
