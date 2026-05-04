@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terre di Miele — Mockup maglietta</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    color: #eee;
+    min-height: 100vh;
+  }
+  header {
+    padding: 30px 40px 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  header h1 small {
+    display: block;
+    font-size: 13px;
+    color: #999;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .controls {
+    padding: 16px 40px;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid #333;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .controls label { font-size: 13px; color: #ccc; }
+  .controls input[type=color] { vertical-align: middle; height: 32px; border: none; background: none; cursor: pointer; }
+  .controls select { padding: 6px 10px; background: #2a2a2a; color: #eee; border: 1px solid #555; border-radius: 4px; }
+  .controls button {
+    padding: 8px 14px; background: #444; color: #eee; border: 1px solid #666;
+    border-radius: 4px; cursor: pointer; font-size: 12px;
+  }
+  .controls button.active { background: #7A1B2C; border-color: #9E2A2B; }
+
+  .shirts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .shirt-view {
+    text-align: center;
+  }
+  .shirt-view h2 {
+    margin: 0 0 18px;
+    font-size: 13px;
+    letter-spacing: 8px;
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Container relativo per posizionare i loghi sopra la maglia */
+  .shirt-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 540 / 660;
+    margin: 0 auto;
+  }
+  .shirt-container svg.tshirt {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+  }
+
+  /* Posizione del logo sul fronte: petto sinistro (lato dx visivamente
+     guardando maglia frontale = petto sx di chi la indossa, convenzione
+     stampa = a sinistra dell'osservatore). Misure proporzionali al
+     formato 540×660 = simulazione di 54cm × 66cm di pannello frontale. */
+  .print {
+    position: absolute;
+    display: block;
+  }
+  .print-front {
+    /* Logo fronte: 90mm reali → 90px = 16.6% della larghezza maglia */
+    width: 16.6%;
+    top: 22%;
+    left: 22%;
+    transform: rotate(-1deg);  /* leggera rotazione per realismo, simula tessuto */
+  }
+  .print-back {
+    /* Logo retro: 250mm reali → 250px = 46% della larghezza maglia.
+       Centrato, leggermente sotto colletto. */
+    width: 46%;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .info {
+    margin-top: 14px;
+    font-size: 11px;
+    color: #777;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .shirts { grid-template-columns: 1fr; }
+    header h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Terre di Miele
+      <small>Mockup maglietta — visualizzazione stile presentazione</small>
+    </h1>
+  </header>
+
+  <div class="controls">
+    <label>Colore tessuto: <input type="color" id="shirtColor" value="#F4C430"></label>
+    <label>Preset: <select id="preset">
+      <option value="#F4C430">Giallo girasole</option>
+      <option value="#FFD700">Giallo oro</option>
+      <option value="#F9DC5C">Giallo chiaro</option>
+      <option value="#E8B923">Giallo miele</option>
+      <option value="#F4D03F">Giallo limone</option>
+      <option value="#FFFFFF">Bianco</option>
+    </select></label>
+    <span style="border-left:1px solid #444;height:24px"></span>
+    <button id="btnBordeaux" class="active">Versione Bordeaux</button>
+    <button id="btnMono">Versione Mono</button>
+  </div>
+
+  <div class="shirts">
+    <!-- ───────────── FRONTE ───────────── -->
+    <div class="shirt-view">
+      <h2>Vista frontale</h2>
+      <div class="shirt-container">
+        <!-- Silhouette maglietta SVG (vista fronte: collare a "V" leggera) -->
+        <svg class="tshirt" viewBox="0 0 540 660" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shadeLeft" x1="0%" y1="0%" x2="20%" y2="0%">
+              <stop offset="0%" stop-color="rgba(0,0,0,0.18)"/>
+              <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+            </linearGradient>
+            <linearGradient id="shadeRight" x1="80%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+              <stop offset="100%" stop-color="rgba(0,0,0,0.18)"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Silhouette body con maniche (fill aggiornato via JS) -->
+          <path class="shirt-body" d="
+            M 200 50
+            Q 270 30 340 50
+            L 430 80
+            L 500 165
+            L 500 220
+            L 415 240
+            L 415 620
+            L 125 620
+            L 125 240
+            L 40 220
+            L 40 165
+            L 110 80
+            Z
+          " fill="#F4C430" stroke="#0a0a0a" stroke-width="1" stroke-linejoin="round"/>
+
+          <!-- Ombre laterali per profondità (light source da top-left) -->
+          <path d="M 200 50 Q 270 30 340 50 L 430 80 L 500 165 L 500 220 L 415 240 L 415 620 L 125 620 L 125 240 L 40 220 L 40 165 L 110 80 Z"
+                fill="url(#shadeLeft)"/>
+          <path d="M 200 50 Q 270 30 340 50 L 430 80 L 500 165 L 500 220 L 415 240 L 415 620 L 125 620 L 125 240 L 40 220 L 40 165 L 110 80 Z"
+                fill="url(#shadeRight)"/>
+
+          <!-- Colletto a V (fronte): bordo + interno -->
+          <path d="M 200 50 Q 270 110 340 50 Q 270 75 200 50 Z"
+                fill="rgba(0,0,0,0.2)"/>
+          <path d="M 200 50 Q 270 30 340 50 Q 270 80 200 50"
+                fill="none" stroke="rgba(0,0,0,0.45)" stroke-width="1.5"/>
+
+          <!-- Cuciture maniche -->
+          <path d="M 125 240 Q 130 235 140 232" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1" stroke-dasharray="2,3"/>
+          <path d="M 415 240 Q 410 235 400 232" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1" stroke-dasharray="2,3"/>
+
+          <!-- Cuciture spalle -->
+          <path d="M 200 50 L 110 80" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+          <path d="M 340 50 L 430 80" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+
+          <!-- Pieghe leggere sul corpo (texture wrinkle) -->
+          <path d="M 180 280 Q 200 350 195 450" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="2"/>
+          <path d="M 360 280 Q 340 350 345 450" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="2"/>
+          <path d="M 250 590 Q 270 600 290 590" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+
+          <!-- Cucitura inferiore -->
+          <path d="M 125 614 L 415 614" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+        </svg>
+
+        <!-- Stampa fronte: petto sinistro (sx visivamente) -->
+        <object class="print print-front" id="printFront" data="tshirt-fronte-90mm-bordeaux.svg" type="image/svg+xml" aria-label="Logo fronte"></object>
+      </div>
+      <div class="info">Fronte · 90 mm · petto sinistro</div>
+    </div>
+
+    <!-- ───────────── RETRO ───────────── -->
+    <div class="shirt-view">
+      <h2>Vista posteriore</h2>
+      <div class="shirt-container">
+        <svg class="tshirt" viewBox="0 0 540 660" xmlns="http://www.w3.org/2000/svg">
+          <!-- Silhouette retro: collare più alto e dritto -->
+          <path class="shirt-body" d="
+            M 215 45
+            Q 270 35 325 45
+            L 430 80
+            L 500 165
+            L 500 220
+            L 415 240
+            L 415 620
+            L 125 620
+            L 125 240
+            L 40 220
+            L 40 165
+            L 110 80
+            Z
+          " fill="#F4C430" stroke="#0a0a0a" stroke-width="1" stroke-linejoin="round"/>
+
+          <!-- Ombre laterali -->
+          <path d="M 215 45 Q 270 35 325 45 L 430 80 L 500 165 L 500 220 L 415 240 L 415 620 L 125 620 L 125 240 L 40 220 L 40 165 L 110 80 Z"
+                fill="url(#shadeLeft)"/>
+          <path d="M 215 45 Q 270 35 325 45 L 430 80 L 500 165 L 500 220 L 415 240 L 415 620 L 125 620 L 125 240 L 40 220 L 40 165 L 110 80 Z"
+                fill="url(#shadeRight)"/>
+
+          <!-- Colletto retro (banda): più alto, leggermente curvo -->
+          <path d="M 215 45 Q 270 65 325 45 Q 270 50 215 45 Z" fill="rgba(0,0,0,0.18)"/>
+          <path d="M 215 45 Q 270 35 325 45" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="1.5"/>
+          <path d="M 215 45 Q 270 60 325 45" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+
+          <!-- Cuciture maniche + spalle (uguali al fronte) -->
+          <path d="M 125 240 Q 130 235 140 232" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1" stroke-dasharray="2,3"/>
+          <path d="M 415 240 Q 410 235 400 232" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1" stroke-dasharray="2,3"/>
+          <path d="M 215 45 L 110 80" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+          <path d="M 325 45 L 430 80" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+
+          <!-- Pieghe leggere -->
+          <path d="M 180 280 Q 200 350 195 450" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="2"/>
+          <path d="M 360 280 Q 340 350 345 450" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="2"/>
+          <path d="M 250 590 Q 270 600 290 590" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+
+          <!-- Cucitura inferiore -->
+          <path d="M 125 614 L 415 614" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+        </svg>
+
+        <!-- Stampa retro: centro schiena -->
+        <object class="print print-back" id="printBack" data="tshirt-retro-250mm-bordeaux.svg" type="image/svg+xml" aria-label="Logo retro"></object>
+      </div>
+      <div class="info">Retro · 250 mm · centro schiena</div>
+    </div>
+  </div>
+
+<script>
+  const colorInput = document.getElementById('shirtColor');
+  const preset = document.getElementById('preset');
+  const printFront = document.getElementById('printFront');
+  const printBack = document.getElementById('printBack');
+  const btnBordeaux = document.getElementById('btnBordeaux');
+  const btnMono = document.getElementById('btnMono');
+
+  function applyColor(c) {
+    document.documentElement.style.setProperty('--shirt-color', c);
+    colorInput.value = c;
+    // Aggiorna fill su tutte le silhouettes (cross-browser safe)
+    document.querySelectorAll('.shirt-body').forEach(el => el.setAttribute('fill', c));
+  }
+  colorInput.oninput = () => applyColor(colorInput.value);
+  preset.onchange = () => applyColor(preset.value);
+  applyColor('#F4C430');
+
+  function setVariant(v) {
+    if (v === 'bordeaux') {
+      printFront.data = 'tshirt-fronte-90mm-bordeaux.svg';
+      printBack.data  = 'tshirt-retro-250mm-bordeaux.svg';
+      btnBordeaux.classList.add('active');
+      btnMono.classList.remove('active');
+    } else {
+      printFront.data = 'tshirt-fronte-90mm.svg';
+      printBack.data  = 'tshirt-retro-250mm.svg';
+      btnMono.classList.add('active');
+      btnBordeaux.classList.remove('active');
+    }
+  }
+  btnBordeaux.onclick = () => setVariant('bordeaux');
+  btnMono.onclick = () => setVariant('mono');
+</script>
+</body>
+</html>
