@@ -101,20 +101,21 @@
     <use href="#bee" x="-95" y="-110" width="190" height="220"/>
   </g>
 
-  <!-- ── Wordmark "Terre di Miele" — INGRANDITO al massimo (font 125) ─ -->
+  <!-- ── Wordmark "Terre di Miele" (font 115 — entra dentro il viewBox) ─ -->
   <g transform="translate(450 540)">
-    <text text-anchor="middle" font-size="125" font-weight="700" fill="#3d2b0a"
+    <text text-anchor="middle" font-size="115" font-weight="700" fill="#3d2b0a"
           letter-spacing="1"
           stroke="#3d2b0a" stroke-width="1" paint-order="stroke fill">
       <tspan>Terre </tspan><tspan font-style="italic">di Miele</tspan>
     </text>
   </g>
 
-  <!-- ── Divider con esagono ────────────────────────────────────────── -->
+  <!-- ── Divider con esagono — linee allineate al centro y dell'esagonino ─ -->
+  <!-- Esagono polygon: range y -15..21 → centro 3. Linee abbassate a y=3. -->
   <g transform="translate(450 590)">
-    <line x1="-280" y1="0" x2="-36" y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
+    <line x1="-280" y1="3" x2="-36" y2="3" stroke="#3d2b0a" stroke-width="2.5"/>
     <polygon points="0,-15 18,-5 18,11 0,21 -18,11 -18,-5" fill="#3d2b0a"/>
-    <line x1="36" y1="0" x2="280" y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
+    <line x1="36" y1="3" x2="280" y2="3" stroke="#3d2b0a" stroke-width="2.5"/>
   </g>
 
   <!-- ── Apicoltura La Greca — INGRANDITO + EXTRA BOLD ────────────── -->

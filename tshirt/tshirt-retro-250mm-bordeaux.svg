@@ -117,8 +117,9 @@
   <!-- ── Tag superiore: APICOLTURA LA GRECA — INGRANDITO + EXTRA BOLD ── -->
   <!-- Testo font-size 56 + letter-spacing 14: half-width ~580u → linee da ±660 -->
   <g transform="translate(1250 240)">
-    <line x1="-820" y1="0" x2="-660" y2="0" stroke="#7A1B2C" stroke-width="3.5"/>
-    <line x1="660"  y1="0" x2="820"  y2="0" stroke="#7A1B2C" stroke-width="3.5"/>
+    <!-- Esagonini centro y = 5 (range -13..23) → linee abbassate a y=5 -->
+    <line x1="-820" y1="5" x2="-660" y2="5" stroke="#7A1B2C" stroke-width="3.5"/>
+    <line x1="660"  y1="5" x2="820"  y2="5" stroke="#7A1B2C" stroke-width="3.5"/>
     <polygon points="-636,-13 -614,-2 -614,12 -636,23 -658,12 -658,-2" fill="#7A1B2C"/>
     <polygon points="636,-13 658,-2 658,12 636,23 614,12 614,-2" fill="#7A1B2C"/>
     <text text-anchor="middle" y="18" font-family="'DM Sans', Helvetica, sans-serif"
@@ -135,45 +136,42 @@
     </text>
   </g>
 
-  <!-- ── Divider centrale con esagono — BORDEAUX (accento) ───────────── -->
-  <!-- Wordmark baseline ≈ y=510, tagline top ≈ y=660 → centro = 585 -->
+  <!-- ── Divider centrale BORDEAUX — linee abbassate al centro esagono ── -->
+  <!-- Esagono centro y = 2 (range -16..20). Wordmark baseline ≈ y=510 → centro 585. -->
   <g transform="translate(1250 585)">
-    <line x1="-380" y1="0" x2="-40"  y2="0" stroke="#7A1B2C" stroke-width="2"/>
+    <line x1="-380" y1="2" x2="-40"  y2="2" stroke="#7A1B2C" stroke-width="2"/>
     <polygon points="0,-16 20,-6 20,10 0,20 -20,10 -20,-6" fill="#7A1B2C"/>
-    <line x1="40"   y1="0" x2="380"  y2="0" stroke="#7A1B2C" stroke-width="2"/>
+    <line x1="40"   y1="2" x2="380"  y2="2" stroke="#7A1B2C" stroke-width="2"/>
   </g>
 
-  <!-- ── Tagline corsivo Great Vibes (BOLD: synthetic font-weight + stroke matching) ─ -->
-  <!-- Great Vibes ha solo il regular: per ottenere il "bold" applichiamo
-       paint-order=stroke fill così lo stroke ispessisce il glifo dall'esterno
-       senza alterare le forme interne. Risultato: peso visivo equivalente al bold. -->
+  <!-- ── Tagline corsivo Great Vibes — INGRANDITA 110 → 130 ───────── -->
   <g transform="translate(1250 770)">
     <text text-anchor="middle" font-family="'Great Vibes', cursive"
-          font-size="110" fill="#3d2b0a" font-style="italic" font-weight="700"
-          stroke="#3d2b0a" stroke-width="3.2" paint-order="stroke fill"
+          font-size="130" fill="#3d2b0a" font-style="italic" font-weight="700"
+          stroke="#3d2b0a" stroke-width="3.6" paint-order="stroke fill"
           stroke-linejoin="round">
       Miele Siciliano
     </text>
   </g>
 
-  <!-- ── Footer: 3 righe separate, ognuna grande e bold ─────────────── -->
-  <g transform="translate(1250 920)">
-    <!-- Riga 1: SALVATORE LA GRECA -->
+  <!-- ── Footer: 3 righe ingrandite. SALVATORE in gradient (come 'di Miele') ── -->
+  <g transform="translate(1250 940)">
+    <!-- Riga 1: SALVATORE LA GRECA — gradient honeyGradR -->
     <text text-anchor="middle" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="68" font-weight="800" fill="#3d2b0a" letter-spacing="6"
-          stroke="#3d2b0a" stroke-width="0.9" paint-order="stroke fill">
+          font-size="80" font-weight="800" fill="url(#honeyGradR)" letter-spacing="6"
+          stroke="#3d2b0a" stroke-width="1" paint-order="stroke fill">
       SALVATORE LA GRECA
     </text>
-    <!-- Riga 2: CAMPOBELLO DI LICATA -->
-    <text text-anchor="middle" y="92" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="56" font-weight="700" fill="#3d2b0a" letter-spacing="8"
-          stroke="#3d2b0a" stroke-width="0.7" paint-order="stroke fill">
+    <!-- Riga 2: CAMPOBELLO DI LICATA — INGRANDITA 56 → 68 -->
+    <text text-anchor="middle" y="105" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="68" font-weight="800" fill="#3d2b0a" letter-spacing="9"
+          stroke="#3d2b0a" stroke-width="0.9" paint-order="stroke fill">
       CAMPOBELLO DI LICATA
     </text>
-    <!-- Riga 3: www.terredimiele.it -->
-    <text text-anchor="middle" y="178" font-family="'DM Sans', Helvetica, sans-serif"
-          font-size="56" font-weight="700" fill="#7A1B2C" letter-spacing="6"
-          stroke="#7A1B2C" stroke-width="0.7" paint-order="stroke fill">
+    <!-- Riga 3: www.terredimiele.it — INGRANDITA 56 → 68 -->
+    <text text-anchor="middle" y="200" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="68" font-weight="800" fill="#7A1B2C" letter-spacing="6"
+          stroke="#7A1B2C" stroke-width="0.9" paint-order="stroke fill">
       www.terredimiele.it
     </text>
   </g>

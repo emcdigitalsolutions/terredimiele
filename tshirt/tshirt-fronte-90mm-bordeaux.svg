@@ -116,17 +116,18 @@
        i glifi per garantire impatto a 9 cm di larghezza reale anche a distanza.
        y=540 (era 510) per dare margine all'esagono emblem sopra. -->
   <g transform="translate(450 540)">
-    <text text-anchor="middle" font-size="125" font-weight="700"
+    <text text-anchor="middle" font-size="115" font-weight="700"
           letter-spacing="1">
       <tspan fill="#3d2b0a" stroke="#3d2b0a" stroke-width="1" paint-order="stroke fill">Terre </tspan><tspan font-style="italic" fill="url(#honeyGrad)" stroke="#3d2b0a" stroke-width="0.8" paint-order="stroke fill">di Miele</tspan>
     </text>
   </g>
 
-  <!-- ── Divider con esagono — BORDEAUX (accento) ──────────────────── -->
+  <!-- ── Divider con esagono BORDEAUX — linee abbassate al centro esagonino ── -->
+  <!-- Esagono polygon centro y = 3 (range -15..21) -->
   <g transform="translate(450 590)">
-    <line x1="-280" y1="0" x2="-36" y2="0" stroke="#7A1B2C" stroke-width="2.5"/>
+    <line x1="-280" y1="3" x2="-36" y2="3" stroke="#7A1B2C" stroke-width="2.5"/>
     <polygon points="0,-15 18,-5 18,11 0,21 -18,11 -18,-5" fill="#7A1B2C"/>
-    <line x1="36" y1="0" x2="280" y2="0" stroke="#7A1B2C" stroke-width="2.5"/>
+    <line x1="36" y1="3" x2="280" y2="3" stroke="#7A1B2C" stroke-width="2.5"/>
   </g>
 
   <!-- ── Apicoltura La Greca — INGRANDITO + EXTRA BOLD ────────────── -->
