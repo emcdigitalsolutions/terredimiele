@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Terre di Miele — Stampa MAGLIETTA FRONTE (petto sinistro)
+  Larghezza fisica: 90 mm
+  Altezza fisica:   ~60 mm
+  Stampa: serigrafia o DTF/DTG. 2 colori principali (oro #D4A017 / marrone #3d2b0a).
+  Per stampa pure-vector: aprire in Inkscape → Path → Object to Path su tutti i <text>
+  oppure in Illustrator → Type → Create Outlines, prima di esportare al fornitore.
+  Font usati: "Playfair Display" (serif), "DM Sans" (sans). Entrambi Google Fonts free.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="60mm"
+     viewBox="0 0 900 600"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     font-family="'Playfair Display', Georgia, serif">
+
+  <defs>
+    <!-- Gradient oro caldo per il riempimento esagono principale -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#F4C542"/>
+      <stop offset="50%" stop-color="#D4A017"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+
+    <!-- Gradient più scuro per accenti -->
+    <linearGradient id="darkGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B8860B"/>
+      <stop offset="100%" stop-color="#6B4F0A"/>
+    </linearGradient>
+
+    <!-- Pattern honeycomb sottile (decorativo, dentro l'esagono) -->
+    <pattern id="hexBg" x="0" y="0" width="44" height="50" patternUnits="userSpaceOnUse">
+      <polygon points="22,2 42,13 42,37 22,48 2,37 2,13"
+               fill="none" stroke="#3d2b0a" stroke-width="1.2" opacity="0.18"/>
+    </pattern>
+  </defs>
+
+  <!-- ── Esagono principale (logo badge) ─────────────────────────── -->
+  <!-- Centro X 450, Y 200 — esagono "punte sopra/sotto" (flat-topped è troppo
+       largo per il fronte). Usiamo pointy-top hexagon. -->
+  <g transform="translate(450 215)">
+    <!-- Outer hexagon, gradient oro -->
+    <polygon points="0,-150 130,-75 130,75 0,150 -130,75 -130,-75"
+             fill="url(#goldGrad)" stroke="#3d2b0a" stroke-width="6"/>
+    <!-- Inner thin border -->
+    <polygon points="0,-128 112,-64 112,64 0,128 -112,64 -112,-64"
+             fill="url(#hexBg)" stroke="#3d2b0a" stroke-width="2" opacity="0.95"/>
+
+    <!-- ── Ape stilizzata centrale ──────────────────────────────── -->
+    <!-- corpo + strisce + ali + occhi -->
+    <g transform="translate(0 5) rotate(-12)">
+      <!-- Ali (dietro) -->
+      <ellipse cx="-26" cy="-28" rx="32" ry="18" fill="#fff" opacity="0.9" stroke="#3d2b0a" stroke-width="2"/>
+      <ellipse cx="26" cy="-28" rx="32" ry="18" fill="#fff" opacity="0.9" stroke="#3d2b0a" stroke-width="2"/>
+      <!-- Riflesso ala sx -->
+      <path d="M -45 -36 Q -32 -42 -18 -36" fill="none" stroke="#3d2b0a" stroke-width="1" opacity="0.4"/>
+      <path d="M 45 -36 Q 32 -42 18 -36" fill="none" stroke="#3d2b0a" stroke-width="1" opacity="0.4"/>
+      <!-- Corpo (ovale giallo) -->
+      <ellipse cx="0" cy="0" rx="50" ry="36" fill="#F4C542" stroke="#3d2b0a" stroke-width="3.5"/>
+      <!-- Strisce nere -->
+      <rect x="-44" y="-12" width="88" height="11" fill="#2c1810" rx="1"/>
+      <rect x="-44" y="10" width="88" height="11" fill="#2c1810" rx="1"/>
+      <!-- Testa -->
+      <circle cx="48" cy="-2" r="14" fill="#2c1810"/>
+      <!-- Occhio -->
+      <circle cx="52" cy="-5" r="3.5" fill="#fff"/>
+      <circle cx="53" cy="-5.5" r="1.4" fill="#2c1810"/>
+      <!-- Antenne -->
+      <path d="M 45 -14 Q 52 -28 60 -28" stroke="#2c1810" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <circle cx="60" cy="-28" r="2.3" fill="#2c1810"/>
+      <path d="M 50 -14 Q 60 -22 68 -22" stroke="#2c1810" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <circle cx="68" cy="-22" r="2.3" fill="#2c1810"/>
+      <!-- Pungiglione -->
+      <polygon points="-48,2 -56,0 -48,-2" fill="#2c1810"/>
+    </g>
+  </g>
+
+  <!-- ── Wordmark "Terre di Miele" (sotto l'esagono) ───────────────── -->
+  <g transform="translate(450 460)">
+    <text text-anchor="middle" font-size="62" font-weight="700" fill="#3d2b0a" letter-spacing="1">
+      <tspan>Terre </tspan><tspan font-style="italic" fill="url(#darkGold)">di Miele</tspan>
+    </text>
+  </g>
+
+  <!-- ── Tagline / categoria ───────────────────────────────────────── -->
+  <g transform="translate(450 510)">
+    <!-- Linea decorativa sx -->
+    <line x1="-160" y1="0" x2="-50" y2="0" stroke="#B8860B" stroke-width="1.5"/>
+    <!-- Esagono dot centrale -->
+    <polygon points="-32,-7 -22,-3 -22,7 -32,11 -42,7 -42,-3" fill="#D4A017" transform="translate(28 -3)"/>
+    <text text-anchor="middle" y="6" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="22" font-weight="600" fill="#8B4513" letter-spacing="6"
+          dx="0">MIELE SICILIANO</text>
+    <line x1="50" y1="0" x2="160" y2="0" stroke="#B8860B" stroke-width="1.5"/>
+  </g>
+
+  <!-- ── Sub-tag piccolo ───────────────────────────────────────────── -->
+  <g transform="translate(450 555)">
+    <text text-anchor="middle" font-family="'DM Sans', Helvetica, sans-serif"
+          font-size="16" font-weight="500" fill="#6B4F0A" letter-spacing="3" opacity="0.8">
+      APICOLTURA · LA GRECA
+    </text>
+  </g>
+
+</svg>
