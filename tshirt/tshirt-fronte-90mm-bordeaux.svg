@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Terre di Miele — Stampa MAGLIETTA FRONTE (petto sinistro) — su TESSUTO GIALLO
-  Larghezza fisica: 90 mm  ·  Altezza fisica: 70 mm
+  VERSIONE BORDEAUX: bordeaux come accento decorativo.
+  Larghezza fisica: 90 mm  ·  Altezza fisica: 78 mm
 
-  Strategia di stampa: SOLO 2 COLORI.
-    1) #3d2b0a (marrone scuro)   — testi, contorni, ape
-    2) #FFFAF0 (bianco crema)    — ali ape e highlight occhi
+  Strategia di stampa: 3 COLORI.
+    1) #3d2b0a (marrone scuro)   — testi, contorni esagono, ape principale
+    2) #7A1B2C (bordeaux/vinaccia) — strisce ape, divider, esagonino centrale
+    3) #FFFAF0 (bianco crema)    — ali ape e highlight occhi
 
   Il giallo del tessuto fa da "riempimento naturale" del corpo dell'ape e
   dell'interno dell'esagono. Niente sfondo da stampare → minor consumo di
@@ -49,13 +51,10 @@
       <!-- CORPO: solo contorno spesso marrone, il giallo della maglietta riempie -->
       <ellipse cx="0" cy="14" rx="40" ry="58" fill="none" stroke="#3d2b0a" stroke-width="5"/>
 
-      <!-- STRISCE: bande marrone scuro che attraversano il corpo -->
-      <!-- Striscia 1 (alta) -->
-      <path d="M -38 -8 Q 0 -18 38 -8 L 38 6 Q 0 -4 -38 6 Z" fill="#3d2b0a"/>
-      <!-- Striscia 2 (media) -->
-      <path d="M -40 18 Q 0 8 40 18 L 38 32 Q 0 22 -38 32 Z" fill="#3d2b0a"/>
-      <!-- Striscia 3 (bassa) -->
-      <path d="M -34 44 Q 0 36 34 44 L 28 58 Q 0 50 -28 58 Z" fill="#3d2b0a"/>
+      <!-- STRISCE: bande BORDEAUX che attraversano il corpo (accento) -->
+      <path d="M -38 -8 Q 0 -18 38 -8 L 38 6 Q 0 -4 -38 6 Z" fill="#7A1B2C"/>
+      <path d="M -40 18 Q 0 8 40 18 L 38 32 Q 0 22 -38 32 Z" fill="#7A1B2C"/>
+      <path d="M -34 44 Q 0 36 34 44 L 28 58 Q 0 50 -28 58 Z" fill="#7A1B2C"/>
 
       <!-- TESTA: cerchio marrone pieno -->
       <circle cx="0" cy="-50" r="22" fill="#3d2b0a"/>
@@ -112,11 +111,11 @@
     </text>
   </g>
 
-  <!-- ── Divider con esagono ────────────────────────────────────────── -->
+  <!-- ── Divider con esagono — BORDEAUX (accento) ──────────────────── -->
   <g transform="translate(450 565)">
-    <line x1="-280" y1="0" x2="-36" y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
-    <polygon points="0,-15 18,-5 18,11 0,21 -18,11 -18,-5" fill="#3d2b0a"/>
-    <line x1="36" y1="0" x2="280" y2="0" stroke="#3d2b0a" stroke-width="2.5"/>
+    <line x1="-280" y1="0" x2="-36" y2="0" stroke="#7A1B2C" stroke-width="2.5"/>
+    <polygon points="0,-15 18,-5 18,11 0,21 -18,11 -18,-5" fill="#7A1B2C"/>
+    <line x1="36" y1="0" x2="280" y2="0" stroke="#7A1B2C" stroke-width="2.5"/>
   </g>
 
   <!-- ── Apicoltura La Greca — INGRANDITO + EXTRA BOLD ────────────── -->

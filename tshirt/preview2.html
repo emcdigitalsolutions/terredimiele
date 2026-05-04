@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terre di Miele — Preview MONO vs BORDEAUX</title>
+<style>
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a1a; color: #eee; }
+  header { padding: 20px 30px; background: #0e0e0e; border-bottom: 1px solid #333; }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 6px 0 0; color: #999; font-size: 13px; }
+  .controls { padding: 14px 30px; background: #0e0e0e; border-bottom: 1px solid #333; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .controls label { font-size: 13px; color: #ccc; }
+  .controls input[type=color] { vertical-align: middle; height: 30px; }
+
+  .versions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .version {
+    background: var(--shirt-color, #F4C430);
+    padding: 50px 24px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    border-right: 2px solid #0e0e0e;
+  }
+  .version:last-child { border-right: none; }
+  .version-label {
+    background: #0e0e0e;
+    color: #fff;
+    padding: 14px 20px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  .version-label small { display: block; color: #999; font-weight: 400; letter-spacing: 1px; margin-top: 4px; font-size: 11px; }
+  .stamp-section { text-align: center; }
+  .stamp-section h2 {
+    color: #3d2b0a;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 0 12px;
+    opacity: 0.7;
+    font-weight: 700;
+  }
+  .stamp {
+    background: rgba(0,0,0,0.04);
+    padding: 16px;
+    display: inline-block;
+    outline: 1px dashed rgba(61, 43, 10, 0.3);
+    outline-offset: 4px;
+  }
+  .stamp object { display: block; }
+  .frontale .stamp object { width: 280px; height: 242px; }
+  .retro .stamp object { width: 100%; max-width: 600px; height: auto; }
+  .info { color: #3d2b0a; font-size: 12px; margin-top: 8px; font-weight: 600; letter-spacing: 1px; }
+
+  @media (max-width: 1100px) {
+    .versions { grid-template-columns: 1fr; }
+    .version { border-right: none; border-bottom: 4px solid #0e0e0e; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Terre di Miele — Mono vs Bordeaux</h1>
+    <p>Confronto fianco a fianco: <strong>monocromatico</strong> (marrone scuro) vs <strong>bordeaux come accento</strong> (strisce ape, divider, decorazioni). Cambia il colore tessuto qui sotto.</p>
+  </header>
+
+  <div class="controls">
+    <label>
+      Colore tessuto:
+      <input type="color" id="shirtColor" value="#F4C430">
+    </label>
+    <label>
+      Preset:
+      <select id="preset">
+        <option value="#F4C430">Giallo girasole</option>
+        <option value="#FFD700">Giallo oro</option>
+        <option value="#F9DC5C">Giallo chiaro</option>
+        <option value="#E8B923">Giallo miele</option>
+        <option value="#FFFFFF">Bianco</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- LABELS sopra le colonne -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div class="version-label">
+      Versione MONO
+      <small>2 colori — marrone scuro + crema</small>
+    </div>
+    <div class="version-label" style="background:#3d1015">
+      Versione BORDEAUX
+      <small>3 colori — marrone + bordeaux + crema</small>
+    </div>
+  </div>
+
+  <div class="versions" id="versions">
+    <!-- COL SX: MONO -->
+    <div class="version">
+      <div class="stamp-section frontale">
+        <h2>Fronte · 90 mm</h2>
+        <div class="stamp"><object data="tshirt-fronte-90mm.svg" type="image/svg+xml"></object></div>
+        <div class="info">90 × 78 mm</div>
+      </div>
+      <div class="stamp-section retro">
+        <h2>Retro · 250 mm</h2>
+        <div class="stamp"><object data="tshirt-retro-250mm.svg" type="image/svg+xml"></object></div>
+        <div class="info">250 × 110 mm</div>
+      </div>
+    </div>
+
+    <!-- COL DX: BORDEAUX -->
+    <div class="version">
+      <div class="stamp-section frontale">
+        <h2>Fronte · 90 mm</h2>
+        <div class="stamp"><object data="tshirt-fronte-90mm-bordeaux.svg" type="image/svg+xml"></object></div>
+        <div class="info">90 × 78 mm</div>
+      </div>
+      <div class="stamp-section retro">
+        <h2>Retro · 250 mm</h2>
+        <div class="stamp"><object data="tshirt-retro-250mm-bordeaux.svg" type="image/svg+xml"></object></div>
+        <div class="info">250 × 110 mm</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const colorInput = document.getElementById('shirtColor');
+  const preset = document.getElementById('preset');
+  const versions = document.getElementById('versions');
+  function apply(c) {
+    versions.querySelectorAll('.version').forEach(v => v.style.setProperty('--shirt-color', c));
+    colorInput.value = c;
+  }
+  colorInput.oninput = () => apply(colorInput.value);
+  preset.onchange = () => apply(preset.value);
+</script>
+</body>
+</html>
