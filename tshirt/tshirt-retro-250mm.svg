@@ -72,7 +72,7 @@
   <rect width="2500" height="1100" fill="url(#hexBgR)"/>
 
   <!-- ── Ornamento sinistro: cluster esagoni (centrato con wordmark, più esterno) ── -->
-  <g transform="translate(220 400)">
+  <g transform="translate(220 440)">
     <!-- Esagono grande outline -->
     <polygon points="0,-200 174,-100 174,100 0,200 -174,100 -174,-100"
              fill="url(#hexEmblem)" stroke="#3d2b0a" stroke-width="6"/>
@@ -84,7 +84,7 @@
   </g>
 
   <!-- ── Ornamento destro: cluster esagoni (centrato con wordmark, più esterno) ──── -->
-  <g transform="translate(2280 400)">
+  <g transform="translate(2280 440)">
     <!-- Esagono grande outline -->
     <polygon points="0,-180 156,-90 156,90 0,180 -156,90 -156,-90"
              fill="url(#hexEmblem)" stroke="#3d2b0a" stroke-width="5"/>
