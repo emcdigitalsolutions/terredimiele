@@ -139,14 +139,12 @@
     </text>
   </g>
 
-  <!-- ── Tagline 'Miele Siciliano' (Great Vibes script, bold synthetic) ── -->
-  <!-- Stesso font del retro per coerenza di brand. Bold simulato con paint-order
-       stroke fill (Great Vibes ha solo regular). -->
+  <!-- ── Tagline 'Miele Siciliano' — stesso font del wordmark (Playfair Display
+       italic bold, eredita da root). Coerenza tipografica con "di Miele". ── -->
   <g transform="translate(450 758)">
-    <text text-anchor="middle" font-family="'Great Vibes', cursive"
-          font-size="68" fill="#3d2b0a" font-style="italic" font-weight="700"
-          stroke="#3d2b0a" stroke-width="2.2" paint-order="stroke fill"
-          stroke-linejoin="round">
+    <text text-anchor="middle"
+          font-size="64" fill="#3d2b0a" font-style="italic" font-weight="700"
+          stroke="#3d2b0a" stroke-width="0.8" paint-order="stroke fill">
       Miele Siciliano
     </text>
   </g>

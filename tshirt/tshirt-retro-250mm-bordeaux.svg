@@ -144,12 +144,12 @@
     <line x1="40"   y1="2" x2="380"  y2="2" stroke="#7A1B2C" stroke-width="2"/>
   </g>
 
-  <!-- ── Tagline corsivo Great Vibes — INGRANDITA 110 → 130 ───────── -->
+  <!-- ── Tagline 'Miele Siciliano' — stesso font del wordmark Playfair Display
+       italic bold (eredita da root SVG). Coerenza tipografica con "di Miele". ── -->
   <g transform="translate(1250 770)">
-    <text text-anchor="middle" font-family="'Great Vibes', cursive"
-          font-size="130" fill="#3d2b0a" font-style="italic" font-weight="700"
-          stroke="#3d2b0a" stroke-width="3.6" paint-order="stroke fill"
-          stroke-linejoin="round">
+    <text text-anchor="middle"
+          font-size="100" fill="#3d2b0a" font-style="italic" font-weight="700"
+          stroke="#3d2b0a" stroke-width="1.2" paint-order="stroke fill">
       Miele Siciliano
     </text>
   </g>
