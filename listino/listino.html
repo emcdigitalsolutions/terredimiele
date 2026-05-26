@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Listino Prodotti — Terre di Miele · Apicoltura La Greca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+
+  :root {
+    --c-cream:        #FFF8E7;
+    --c-cream-2:      #FBEFC8;
+    --c-honey-light:  #F5C842;
+    --c-honey:        #E8A627;
+    --c-honey-dark:   #B27713;
+    --c-amber:        #8A4F0F;
+    --c-amber-deep:   #4A2A06;
+    --c-dark:         #1F1306;
+    --c-ink:          #2A1C08;
+    --c-muted:        #8B7855;
+    --c-line:         #E8D9B0;
+    --c-white:        #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #e8dcb8;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--c-ink);
+    -webkit-font-smoothing: antialiased;
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--c-cream);
+    margin: 12px auto;
+    box-shadow: 0 20px 60px rgba(74, 42, 6, .25);
+    overflow: hidden;
+    position: relative;
+    break-after: page;
+  }
+  .page:last-child { break-after: auto; }
+
+  @media print {
+    html, body { background: white; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: 210mm;
+      height: 297mm;
+    }
+  }
+
+  /* ==================================================================== */
+  /* ============= COPERTINA ============================================ */
+  /* ==================================================================== */
+
+  .cover {
+    background:
+      radial-gradient(circle at 80% 30%, rgba(245, 200, 66, .15) 0%, transparent 60%),
+      linear-gradient(135deg, var(--c-dark) 0%, #2c1a06 70%, var(--c-amber-deep) 100%);
+    color: var(--c-cream);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; right: -10%;
+    width: 60%; height: 200%;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 32px,
+      rgba(245,200,66,.04) 32px, rgba(245,200,66,.04) 34px
+    );
+    transform: rotate(-12deg);
+    pointer-events: none;
+  }
+
+  .cover-top {
+    padding: 18mm 22mm 0;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .cover-mark {
+    width: 22mm;
+    text-align: left;
+    color: var(--c-honey-light);
+  }
+  .cover-mark .yr {
+    font-family: 'Playfair Display', serif;
+    font-size: 28pt;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1;
+    color: var(--c-honey-light);
+    display: block;
+  }
+  .cover-mark .lbl {
+    font-size: 7pt;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--c-cream);
+    opacity: .65;
+    margin-top: 2mm;
+    display: block;
+  }
+  .cover-tag-right {
+    font-size: 7pt;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--c-honey-light);
+    text-align: right;
+    font-weight: 600;
+  }
+  .cover-tag-right span {
+    display: block;
+    color: var(--c-cream);
+    opacity: .7;
+    margin-top: 2mm;
+    letter-spacing: 2px;
+  }
+
+  .cover-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 18mm;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-hero-img {
+    width: 90mm; height: 90mm;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(0,0,0,.55),
+                0 0 0 4px rgba(245,200,66,.4),
+                0 0 0 9px rgba(245,200,66,.12);
+    margin-bottom: 10mm;
+  }
+  .cover-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .cover-eyebrow {
+    font-size: 8pt;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--c-honey-light);
+    margin-bottom: 5mm;
+    display: inline-flex;
+    align-items: center;
+    gap: 4mm;
+    font-weight: 600;
+  }
+  .cover-eyebrow::before, .cover-eyebrow::after {
+    content: '';
+    width: 14mm; height: 1px;
+    background: var(--c-honey);
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56pt;
+    font-weight: 700;
+    line-height: .95;
+    color: var(--c-white);
+    margin-bottom: 4mm;
+  }
+  .cover h1 em {
+    font-style: italic;
+    color: var(--c-honey-light);
+    font-weight: 500;
+  }
+  .cover .sub {
+    font-size: 13pt;
+    color: var(--c-cream);
+    font-weight: 500;
+    margin-bottom: 8mm;
+    opacity: .92;
+  }
+  .cover .sub strong { color: var(--c-honey-light); font-weight: 700; }
+  .cover .meta-row {
+    display: flex;
+    gap: 8mm;
+    color: var(--c-cream);
+    font-size: 8.5pt;
+    margin-top: 4mm;
+  }
+  .cover .meta-row div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1mm;
+  }
+  .cover .meta-row strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 14pt;
+    color: var(--c-honey-light);
+    font-weight: 700;
+  }
+  .cover .meta-row span {
+    font-size: 7.5pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: .7;
+  }
+
+  .cover-bottom {
+    padding: 6mm 22mm 14mm;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    border-top: 1px solid rgba(245,200,66,.15);
+  }
+  .cover-bottom .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16pt;
+    font-style: italic;
+    color: var(--c-honey-light);
+    margin-bottom: 1mm;
+  }
+  .cover-bottom .desc {
+    font-size: 9pt;
+    color: var(--c-cream);
+    opacity: .8;
+    max-width: 130mm;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .cover-bottom .yr-bot {
+    font-size: 8pt;
+    letter-spacing: 5px;
+    color: var(--c-honey-light);
+    margin-top: 4mm;
+    font-weight: 600;
+  }
+
+  /* gold strip */
+  .gold-strip {
+    height: 3mm;
+    background: linear-gradient(90deg,
+      var(--c-amber-deep) 0%, var(--c-honey) 35%,
+      var(--c-honey-light) 50%, var(--c-honey) 65%,
+      var(--c-amber-deep) 100%);
+  }
+
+  /* ==================================================================== */
+  /* ============= PAGINA PRODOTTO ====================================== */
+  /* ==================================================================== */
+
+  .prod-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--c-cream);
+  }
+
+  /* Top mini-header */
+  .ph-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6mm 16mm 5mm;
+    border-bottom: 1px solid var(--c-line);
+    color: var(--c-muted);
+    font-size: 7.5pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .ph-head .brand {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12pt;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--c-amber-deep);
+    font-weight: 600;
+  }
+  .ph-head .brand em { color: var(--c-honey); }
+  .ph-head .pagenum { color: var(--c-honey-dark); font-weight: 600; }
+
+  /* Hero photo */
+  .ph-hero {
+    height: 95mm;
+    position: relative;
+    overflow: hidden;
+    background: var(--c-cream-2);
+  }
+  .ph-hero img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .ph-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(31, 19, 6, .55));
+    pointer-events: none;
+  }
+  .ph-hero .floating-tag {
+    position: absolute;
+    top: 6mm; right: 16mm;
+    background: rgba(31, 19, 6, .85);
+    color: var(--c-honey-light);
+    padding: 2mm 5mm;
+    border-radius: 999px;
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(245,200,66,.3);
+    z-index: 3;
+  }
+  .ph-hero .floating-name {
+    position: absolute;
+    bottom: 6mm; left: 16mm; right: 16mm;
+    color: var(--c-white);
+    z-index: 3;
+  }
+  .ph-hero .floating-name .cat {
+    font-size: 7.5pt;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--c-honey-light);
+    margin-bottom: 1mm;
+    font-weight: 600;
+  }
+  .ph-hero .floating-name h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32pt;
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0,0,0,.4);
+  }
+  .ph-hero .floating-name h2 em {
+    font-style: italic;
+    color: var(--c-honey-light);
+    font-weight: 500;
+  }
+
+  /* Body */
+  .ph-body {
+    flex: 1;
+    padding: 7mm 16mm 4mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ph-intro {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--c-amber-deep);
+    line-height: 1.5;
+    text-align: center;
+    padding: 0 8mm;
+    margin-bottom: 6mm;
+    position: relative;
+  }
+  .ph-intro::before {
+    content: '“';
+    position: absolute;
+    top: -8mm; left: 0mm;
+    font-size: 38pt;
+    color: var(--c-honey);
+    opacity: .35;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+  .ph-intro::after {
+    content: '”';
+    position: absolute;
+    bottom: -16mm; right: 0mm;
+    font-size: 38pt;
+    color: var(--c-honey);
+    opacity: .35;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+
+  /* Info grid */
+  .ph-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm 6mm;
+    margin: 3mm 0 5mm;
+  }
+  .ph-info .info {
+    border-left: 2px solid var(--c-honey);
+    padding-left: 4mm;
+  }
+  .ph-info .info h4 {
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--c-honey-dark);
+    margin-bottom: 1.5mm;
+    font-weight: 700;
+  }
+  .ph-info .info p {
+    font-size: 9pt;
+    color: var(--c-ink);
+    line-height: 1.45;
+  }
+  .ph-info .info p strong { color: var(--c-amber-deep); font-weight: 600; }
+
+  /* Pricing strip */
+  .ph-prices {
+    margin-top: auto;
+    padding: 5mm 6mm;
+    background: linear-gradient(135deg, var(--c-cream-2) 0%, #f9e5b2 100%);
+    border-radius: 8px;
+    border: 1.5px solid var(--c-honey);
+    box-shadow: 0 2px 10px rgba(178, 119, 19, .12);
+  }
+  .ph-prices .ph-prices-title {
+    text-align: center;
+    font-size: 7.5pt;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--c-amber-deep);
+    margin-bottom: 3mm;
+    font-weight: 700;
+  }
+  .ph-prices .ph-prices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+  }
+  .ph-prices .price {
+    background: var(--c-white);
+    border-radius: 6px;
+    padding: 4mm 2mm;
+    text-align: center;
+    border: 1px solid var(--c-line);
+    box-shadow: 0 1px 3px rgba(74,42,6,.06);
+  }
+  .ph-prices .price .fmt {
+    font-size: 9pt;
+    color: var(--c-muted);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5mm;
+    display: block;
+  }
+  .ph-prices .price .pr {
+    font-family: 'Playfair Display', serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: var(--c-honey-dark);
+    line-height: 1;
+  }
+  .ph-prices .price.special .pr {
+    font-size: 13pt;
+    color: var(--c-amber-deep);
+    font-style: italic;
+    padding-top: 2mm;
+  }
+
+  /* Footer mini */
+  .ph-foot {
+    background: var(--c-amber-deep);
+    color: var(--c-cream);
+    padding: 4mm 16mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7.5pt;
+    letter-spacing: 1px;
+  }
+  .ph-foot .contact {
+    display: flex;
+    gap: 6mm;
+  }
+  .ph-foot .contact span {
+    color: var(--c-honey-light);
+    font-weight: 600;
+  }
+  .ph-foot .emc {
+    display: inline-flex;
+    align-items: center;
+    gap: 2mm;
+    opacity: .55;
+    font-size: 6.5pt;
+    color: rgba(255,248,231,.85);
+    text-decoration: none;
+  }
+
+  /* ==================================================================== */
+  /* ============= NOTE & CLOSING ======================================= */
+  /* ==================================================================== */
+
+  /* Specialità — variante "spec" su pagina prodotto:
+     stessa struttura ma con prezzo "su richiesta" al posto della griglia */
+  .ph-prices.on-request {
+    background: var(--c-white);
+    text-align: center;
+  }
+  .ph-prices.on-request .ph-prices-title {
+    margin-bottom: 1.5mm;
+  }
+  .ph-prices.on-request .on-request-msg {
+    font-family: 'Playfair Display', serif;
+    font-size: 16pt;
+    font-style: italic;
+    color: var(--c-amber-deep);
+    margin: 2mm 0;
+  }
+  .ph-prices.on-request .on-request-sub {
+    font-size: 8.5pt;
+    color: var(--c-muted);
+    margin-top: 1mm;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGINA 1 · COPERTINA                                          -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-mark">
+        <span class="yr">2026</span>
+        <span class="lbl">Edizione</span>
+      </div>
+      <div class="cover-tag-right">
+        Listino<br>Prodotti
+        <span>Catalogo Mieli</span>
+      </div>
+    </div>
+
+    <div class="cover-center">
+      <div class="cover-hero-img">
+        <img src="img/header-mark.jpg" alt="Barattoli di miele Terre di Miele">
+      </div>
+      <div class="cover-eyebrow">Apicoltura La Greca</div>
+      <h1>Terre <em>di Miele</em></h1>
+      <p class="sub">Miele Siciliano Artigianale · <strong>100% Sicilia</strong></p>
+
+      <div class="meta-row">
+        <div><strong>5</strong><span>Mieli</span></div>
+        <div><strong>3</strong><span>Formati</span></div>
+        <div><strong>2</strong><span>Specialità</span></div>
+        <div><strong>20+</strong><span>Anni</span></div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <p class="title">— Dalle nostre arnie alla vostra tavola —</p>
+      <p class="desc">
+        Una collezione di mieli artigianali e specialità apistiche,
+        prodotti tra gli eucalipti, la sulla e i fiori della terra siciliana
+        da Salvatore La Greca a Campobello di Licata.
+      </p>
+      <p class="yr-bot">CAMPOBELLO DI LICATA · AGRIGENTO · SICILIA</p>
+    </div>
+  </div>
+  <div class="gold-strip" style="position:absolute;bottom:0;left:0;right:0"></div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- PAGINA 2 · MIELE DI EUCALIPTO                                 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="prod-page">
+    <div class="ph-head">
+      <span>Miele Siciliano · 2026</span>
+      <span class="brand">Terre <em>di Miele</em></span>
+      <span class="pagenum">02 / 08</span>
+    </div>
+
+    <div class="ph-hero">
+      <img src="img/eucalipto.jpg" alt="Miele di Eucalipto">
+      <div class="floating-tag">Balsamico · Vie Respiratorie</div>
+      <div class="floating-name">
+        <div class="cat">Monoflora · Maggio-Giugno</div>
+        <h2>Miele di <em>Eucalipto</em></h2>
+      </div>
+    </div>
+
+    <div class="ph-body">
+      <p class="ph-intro">
+        Il miele dei nostri apiari tra gli eucalipti siciliani: balsamico, intenso, dal carattere fresco e aromatico. Il rimedio naturale che le nonne mettevano nel tè quando arrivava l'inverno.
+      </p>
+
+      <div class="ph-info">
+        <div class="info">
+          <h4>Origine Botanica</h4>
+          <p>Nettare raccolto sui fiori di <strong>eucalipto</strong> nelle zone costiere e nelle pinete della Sicilia centro-meridionale. Fioritura tra <strong>maggio e giugno</strong>.</p>
+        </div>
+        <div class="info">
+          <h4>Aspetto &amp; Cristallizzazione</h4>
+          <p>Colore <strong>ambrato chiaro</strong> allo stato liquido, tende a una <strong>cristallizzazione fine e compatta</strong> di tonalità beige-dorata nel tempo.</p>
+        </div>
+        <div class="info">
+          <h4>Note Degustative</h4>
+          <p>Profumo intenso e mentolato. Gusto deciso con sentori di <strong>malto, liquirizia e foglie di eucalipto</strong>; finale leggermente balsamico.</p>
+        </div>
+        <div class="info">
+          <h4>Abbinamenti</h4>
+          <p>Tisane calde, latte, yogurt, formaggi piccanti, marinature di carne bianca. <strong>Cucchiaino al giorno</strong> per le vie respiratorie.</p>
+        </div>
+      </div>
+
+      <div class="ph-prices">
+        <div class="ph-prices-title">— Prezzi per Formato —</div>
+        <div class="ph-prices-grid">
+          <div class="price"><span class="fmt">170 g</span><span class="pr">€ 3,50</span></div>
+          <div class="price"><span class="fmt">500 g</span><span class="pr">€ 8,50</span></div>
+          <div class="price"><span class="fmt">1 kg</span><span class="pr">€ 15,00</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph-foot">
+      <div class="contact">
+        <div><span>TEL</span> +39 327 047 7030</div>
+        <div><span>WEB</span> terredimiele.it</div>
+      </div>
+      <span class="emc">Apicoltura La Greca · Campobello di Licata (AG)</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- PAGINA 3 · MIELE MILLEFIORI                                   -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="prod-page">
+    <div class="ph-head">
+      <span>Miele Siciliano · 2026</span>
+      <span class="brand">Terre <em>di Miele</em></span>
+      <span class="pagenum">03 / 08</span>
+    </div>
+
+    <div class="ph-hero">
+      <img src="img/millefiori.jpg" alt="Miele Millefiori">
+      <div class="floating-tag">Versatile · Bouquet Floreale</div>
+      <div class="floating-name">
+        <div class="cat">Poliflora · Primavera-Estate</div>
+        <h2>Miele <em>Millefiori</em></h2>
+      </div>
+    </div>
+
+    <div class="ph-body">
+      <p class="ph-intro">
+        Il miele che racconta una stagione intera: ogni vasetto è una fotografia del territorio, una sintesi viva delle fioriture siciliane che le nostre api visitano da aprile a luglio.
+      </p>
+
+      <div class="ph-info">
+        <div class="info">
+          <h4>Origine Botanica</h4>
+          <p>Nettare da <strong>più fioriture spontanee</strong>: agrumi, sulla, trifoglio, fiori di campo. Composizione che <strong>varia con la stagione</strong>.</p>
+        </div>
+        <div class="info">
+          <h4>Aspetto &amp; Cristallizzazione</h4>
+          <p>Colore da <strong>ambrato chiaro a dorato</strong> in base alla raccolta. Cristallizzazione naturale media-fine, dal beige al miele tenue.</p>
+        </div>
+        <div class="info">
+          <h4>Note Degustative</h4>
+          <p>Bouquet floreale ricco ed equilibrato. <strong>Dolce e armonico</strong>, con note di fiori freschi, frutta matura e un finale lievemente erbaceo.</p>
+        </div>
+        <div class="info">
+          <h4>Abbinamenti</h4>
+          <p>Il miele <strong>più versatile</strong>: colazione, pane casereccio, ricotta fresca, frutta, tisane, dolci, gelato. <strong>Piace a tutti</strong>.</p>
+        </div>
+      </div>
+
+      <div class="ph-prices">
+        <div class="ph-prices-title">— Prezzi per Formato —</div>
+        <div class="ph-prices-grid">
+          <div class="price"><span class="fmt">170 g</span><span class="pr">€ 3,50</span></div>
+          <div class="price"><span class="fmt">500 g</span><span class="pr">€ 8,50</span></div>
+          <div class="price"><span class="fmt">1 kg</span><span class="pr">€ 15,00</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph-foot">
+      <div class="contact">
+        <div><span>TEL</span> +39 327 047 7030</div>
+        <div><span>WEB</span> terredimiele.it</div>
+      </div>
+      <span class="emc">Apicoltura La Greca · Campobello di Licata (AG)</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- PAGINA 4 · MIELE DI CASTAGNO                                  -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="prod-page">
+    <div class="ph-head">
+      <span>Miele Siciliano · 2026</span>
+      <span class="brand">Terre <em>di Miele</em></span>
+      <span class="pagenum">04 / 08</span>
+    </div>
+
+    <div class="ph-hero">
+      <img src="img/castagno.jpg" alt="Miele di Castagno">
+      <div class="floating-tag">Robusto · Carattere Forte</div>
+      <div class="floating-name">
+        <div class="cat">Monoflora · Giugno-Luglio</div>
+        <h2>Miele di <em>Castagno</em></h2>
+      </div>
+    </div>
+
+    <div class="ph-body">
+      <p class="ph-intro">
+        Per chi ama i sapori decisi: il miele scuro e nobile della montagna siciliana. Un miele che non si dimentica, ricco di sali minerali e di personalità.
+      </p>
+
+      <div class="ph-info">
+        <div class="info">
+          <h4>Origine Botanica</h4>
+          <p>Nettare dei <strong>fiori di castagno</strong> raccolto nelle aree boschive interne dell'isola. Fioritura tra <strong>fine giugno e luglio</strong>.</p>
+        </div>
+        <div class="info">
+          <h4>Aspetto &amp; Cristallizzazione</h4>
+          <p>Colore <strong>ambrato scuro</strong>, quasi mogano. Resta liquido a lungo, cristallizza tardi e a granuli grossi.</p>
+        </div>
+        <div class="info">
+          <h4>Note Degustative</h4>
+          <p>Aroma intenso e penetrante, sentori di <strong>legno e tannino</strong>. Gusto pieno con caratteristica <strong>nota amarognola</strong> di fondo.</p>
+        </div>
+        <div class="info">
+          <h4>Abbinamenti</h4>
+          <p>Re dei formaggi: <strong>pecorino stagionato, ricotta salata, gorgonzola</strong>. Salumi, frutta secca, dessert al cucchiaio, vini rossi strutturati.</p>
+        </div>
+      </div>
+
+      <div class="ph-prices">
+        <div class="ph-prices-title">— Prezzi per Formato —</div>
+        <div class="ph-prices-grid">
+          <div class="price"><span class="fmt">170 g</span><span class="pr">€ 3,50</span></div>
+          <div class="price"><span class="fmt">500 g</span><span class="pr">€ 8,50</span></div>
+          <div class="price"><span class="fmt">1 kg</span><span class="pr">€ 15,00</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph-foot">
+      <div class="contact">
+        <div><span>TEL</span> +39 327 047 7030</div>
+        <div><span>WEB</span> terredimiele.it</div>
+      </div>
+      <span class="emc">Apicoltura La Greca · Campobello di Licata (AG)</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- PAGINA 5 · MIELE BALSAMICO                                    -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="prod-page">
+    <div class="ph-head">
+      <span>Miele Siciliano · 2026</span>
+      <span class="brand">Terre <em>di Miele</em></span>
+      <span class="pagenum">05 / 08</span>
+    </div>
+
+    <div class="ph-hero">
+      <img src="img/balsamico.jpg" alt="Miele Balsamico">
+      <div class="floating-tag">Lenitivo · Aromatico</div>
+      <div class="floating-name">
+        <div class="cat">Composto Aromatico · Tardiva</div>
+        <h2>Miele <em>Balsamico</em></h2>
+      </div>
+    </div>
+
+    <div class="ph-body">
+      <p class="ph-intro">
+        Il nostro miele lenitivo per eccellenza: aromatico, complesso, perfetto da sciogliere in una tisana calda nelle sere d'autunno o quando l'inverno fa sentire la sua voce.
+      </p>
+
+      <div class="ph-info">
+        <div class="info">
+          <h4>Origine Botanica</h4>
+          <p>Miele composto da nettari di <strong>essenze aromatiche mediterranee</strong> e melate raccolte in fioriture tardive estive.</p>
+        </div>
+        <div class="info">
+          <h4>Aspetto &amp; Cristallizzazione</h4>
+          <p>Colore <strong>ambrato scuro e lucente</strong>. Cristallizzazione lenta e variabile a seconda della stagione di raccolta.</p>
+        </div>
+        <div class="info">
+          <h4>Note Degustative</h4>
+          <p>Gusto deciso con <strong>note erbacee mediterranee</strong>, leggermente balsamiche; finale lievemente amaro e persistente.</p>
+        </div>
+        <div class="info">
+          <h4>Abbinamenti</h4>
+          <p><strong>Tisane, infusi caldi, latte</strong>. Ottimo con ricotta fresca e dolci secchi. Cucchiaino al giorno come <strong>lenitivo per gola e tosse</strong>.</p>
+        </div>
+      </div>
+
+      <div class="ph-prices">
+        <div class="ph-prices-title">— Prezzi per Formato —</div>
+        <div class="ph-prices-grid">
+          <div class="price"><span class="fmt">170 g</span><span class="pr">€ 3,50</span></div>
+          <div class="price"><span class="fmt">500 g</span><span class="pr">€ 8,50</span></div>
+          <div class="price"><span class="fmt">1 kg</span><span class="pr">€ 15,00</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph-foot">
+      <div class="contact">
+        <div><span>TEL</span> +39 327 047 7030</div>
+        <div><span>WEB</span> terredimiele.it</div>
+      </div>
+      <span class="emc">Apicoltura La Greca · Campobello di Licata (AG)</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- PAGINA 6 · MIELE DI SULLA                                     -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="prod-page">
+    <div class="ph-head">
+      <span>Miele Siciliano · 2026</span>
+      <span class="brand">Terre <em>di Miele</em></span>
+      <span class="pagenum">06 / 08</span>
+    </div>
+
+    <div class="ph-hero">
+      <img src="img/sulla.jpg" alt="Miele di Sulla">
+      <div class="floating-tag">Delicato · Simbolo di Sicilia</div>
+      <div class="floating-name">
+        <div class="cat">Monoflora · Aprile-Maggio</div>
+        <h2>Miele di <em>Sulla</em></h2>
+      </div>
+    </div>
+
+    <div class="ph-body">
+      <p class="ph-intro">
+        Il miele simbolo della nostra terra: la sulla, pianta endemica siciliana, regala un miele chiaro, delicato, dolcissimo. Il preferito per la colazione, si sposa con tutto.
+      </p>
+
+      <div class="ph-info">
+        <div class="info">
+          <h4>Origine Botanica</h4>
+          <p>Nettare della <strong>sulla (Hedysarum coronarium)</strong>, leguminosa endemica della Sicilia. Fioritura tra <strong>aprile e maggio</strong>.</p>
+        </div>
+        <div class="info">
+          <h4>Aspetto &amp; Cristallizzazione</h4>
+          <p>Colore <strong>chiaro paglierino</strong>, talvolta quasi bianco. Cristallizza rapidamente in una <strong>massa fine e cremosa</strong>.</p>
+        </div>
+        <div class="info">
+          <h4>Note Degustative</h4>
+          <p>Sapore <strong>dolce e delicato</strong>, profumo fresco di campo fiorito; note vegetali tenui, nessuna acidità.</p>
+        </div>
+        <div class="info">
+          <h4>Abbinamenti</h4>
+          <p>Pane appena tostato, <strong>ricotta e formaggi freschi</strong>, tè verde, frutta, yogurt. Perfetto per dolcificare senza alterare i sapori.</p>
+        </div>
+      </div>
+
+      <div class="ph-prices">
+        <div class="ph-prices-title">— Prezzi per Formato —</div>
+        <div class="ph-prices-grid">
+          <div class="price"><span class="fmt">170 g</span><span class="pr">€ 3,50</span></div>
+          <div class="price"><span class="fmt">500 g</span><span class="pr">€ 8,50</span></div>
+          <div class="price"><span class="fmt">1 kg</span><span class="pr">€ 15,00</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ph-foot">
+      <div class="contact">
+        <div><span>TEL</span> +39 327 047 7030</div>
+        <div><span>WEB</span> terredimiele.it</div>
+      </div>
+      <span class="emc">Apicoltura La Greca · Campobello di Licata (AG)</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- PAGINA 7 · POLLINE D'API                                      -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="prod-page">
+    <div class="ph-head">
+      <span>Specialità Apistiche · 2026</span>
+      <span class="brand">Terre <em>di Miele</em></span>
+      <span class="pagenum">07 / 08</span>
+    </div>
+
+    <div class="ph-hero">
+      <img src="img/polline.jpg" alt="Polline d'api">
+      <div class="floating-tag">Superfood Naturale</div>
+      <div class="floating-name">
+        <div class="cat">Prodotto delle Api · Specialità</div>
+        <h2>Polline <em>d'Api</em></h2>
+      </div>
+    </div>
+
+    <div class="ph-body">
+      <p class="ph-intro">
+        Energia pura dalla natura: granuli colorati che le nostre api raccolgono fiore dopo fiore. Una piccola rivoluzione di vitamine, proteine e antiossidanti in un cucchiaino.
+      </p>
+
+      <div class="ph-info">
+        <div class="info">
+          <h4>Origine &amp; Lavorazione</h4>
+          <p>Raccolto direttamente all'<strong>ingresso delle arnie</strong> con trappole dedicate, essiccato a <strong>bassa temperatura</strong> per preservarne le proprietà.</p>
+        </div>
+        <div class="info">
+          <h4>Aspetto</h4>
+          <p>Granuli policromi: <strong>giallo, arancio, rosso, marrone</strong>, in base alla fioritura visitata. Profumo intenso, sapore floreale e leggermente amarognolo.</p>
+        </div>
+        <div class="info">
+          <h4>Composizione &amp; Proprietà</h4>
+          <p>Ricco di <strong>proteine vegetali</strong>, vitamine del gruppo B, sali minerali e antiossidanti. <strong>Ricostituente naturale</strong> e immunostimolante.</p>
+        </div>
+        <div class="info">
+          <h4>Modalità d'uso</h4>
+          <p><strong>1-2 cucchiaini al giorno</strong>, a stomaco vuoto o sciolto in yogurt, succo, smoothie, frutta. Cicli di 2-3 mesi nei cambi di stagione.</p>
+        </div>
+      </div>
+
+      <div class="ph-prices on-request">
+        <div class="ph-prices-title">— Disponibilità &amp; Prezzo —</div>
+        <p class="on-request-msg">Prezzo su richiesta</p>
+        <p class="on-request-sub">Confezioni e disponibilità variano in base alla raccolta stagionale.<br>Contattateci per dettagli e ordini personalizzati.</p>
+      </div>
+    </div>
+
+    <div class="ph-foot">
+      <div class="contact">
+        <div><span>TEL</span> +39 327 047 7030</div>
+        <div><span>WEB</span> terredimiele.it</div>
+      </div>
+      <span class="emc">Apicoltura La Greca · Campobello di Licata (AG)</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- PAGINA 8 · FAVO NATURALE                                      -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="prod-page">
+    <div class="ph-head">
+      <span>Specialità Apistiche · 2026</span>
+      <span class="brand">Terre <em>di Miele</em></span>
+      <span class="pagenum">08 / 08</span>
+    </div>
+
+    <div class="ph-hero">
+      <img src="img/favo.jpg" alt="Favo naturale">
+      <div class="floating-tag">Esperienza Sensoriale</div>
+      <div class="floating-name">
+        <div class="cat">Prodotto Integrale · Edizione Limitata</div>
+        <h2>Favo <em>Naturale</em></h2>
+      </div>
+    </div>
+
+    <div class="ph-body">
+      <p class="ph-intro">
+        Il miele nella sua forma più pura: ancora dentro il favo costruito dalle nostre api. Un'esperienza autentica, da assaporare lentamente, come si faceva una volta.
+      </p>
+
+      <div class="ph-info">
+        <div class="info">
+          <h4>Origine &amp; Lavorazione</h4>
+          <p>Favo <strong>integro e mai trattato</strong>, costruito dalle api con cera naturale durante le fioriture primaverili. <strong>Nessuna estrazione meccanica</strong>.</p>
+        </div>
+        <div class="info">
+          <h4>Aspetto</h4>
+          <p><strong>Cera dorata</strong> con celle esagonali ricolme di miele opercolato. Si presenta in porzioni rettangolari da gustare al cucchiaio o tagliate a quadretti.</p>
+        </div>
+        <div class="info">
+          <h4>Note Degustative</h4>
+          <p>Cera <strong>commestibile e profumata</strong>, si scioglie in bocca rilasciando miele non filtrato che conserva <strong>tutti gli enzimi naturali</strong>.</p>
+        </div>
+        <div class="info">
+          <h4>Suggerimenti</h4>
+          <p>Su <strong>tagliere di formaggi</strong> erborinati e stagionati, con pane caldo e olio, su dessert al cucchiaio o crackers. Ideale per regali e ricorrenze.</p>
+        </div>
+      </div>
+
+      <div class="ph-prices on-request">
+        <div class="ph-prices-title">— Disponibilità &amp; Prezzo —</div>
+        <p class="on-request-msg">Prezzo su richiesta</p>
+        <p class="on-request-sub">Produzione artigianale e limitata. Disponibile su prenotazione.<br>Perfetto per gift box, bomboniere ed eventi privati.</p>
+      </div>
+    </div>
+
+    <div class="ph-foot">
+      <div class="contact">
+        <div><span>TEL</span> +39 327 047 7030</div>
+        <div><span>WEB</span> terredimiele.it</div>
+      </div>
+      <a href="https://www.emcdigitalsolutions.it" class="emc">
+        <span style="opacity:.7">Progettato e Sviluppato da</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="12" viewBox="0 0 200 50" aria-hidden="true">
+          <defs>
+            <linearGradient id="emcBars" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#F5C842" />
+              <stop offset="100%" stop-color="#FFF8E7" />
+            </linearGradient>
+            <linearGradient id="emcText" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#F5C842" />
+              <stop offset="50%" stop-color="#E8A627" />
+              <stop offset="100%" stop-color="#FFF8E7" />
+            </linearGradient>
+          </defs>
+          <rect x="5" y="10" width="30" height="6" rx="2" fill="url(#emcBars)" />
+          <rect x="5" y="22" width="20" height="6" rx="2" fill="url(#emcBars)" />
+          <rect x="5" y="34" width="30" height="6" rx="2" fill="url(#emcBars)" />
+          <text x="48" y="33" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3" fill="url(#emcText)">EMC</text>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
