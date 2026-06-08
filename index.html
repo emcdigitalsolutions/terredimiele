@@ -789,6 +789,7 @@ input,textarea,select{font-family:var(--font-body)}
   .bento-grid{grid-template-columns:1fr 1fr}
 }
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Che tipi di miele producete?","acceptedAnswer":{"@type":"Answer","text":"Diverse varietà siciliane: Eucalipto, Millefiori, Castagno, Balsamico e Sulla, oltre a polline e miele in favo."}},{"@type":"Question","name":"Il miele è naturale e non pastorizzato?","acceptedAnswer":{"@type":"Answer","text":"Sì, è miele genuino di nostra produzione, lavorato a basse temperature per preservarne aromi e proprietà naturali."}},{"@type":"Question","name":"In quali formati è disponibile?","acceptedAnswer":{"@type":"Answer","text":"Nei formati da 170 g, 500 g e 1 kg secondo la varietà. Polline e favo in confezioni dedicate."}},{"@type":"Question","name":"Si può acquistare e ricevere a casa?","acceptedAnswer":{"@type":"Answer","text":"Sì: contattaci per disponibilità e ordini, organizziamo la consegna. Trovi tutte le referenze nel nostro listino."}},{"@type":"Question","name":"I vostri mieli sono adatti come regalo?","acceptedAnswer":{"@type":"Answer","text":"Certo: prepariamo confezioni regalo con le nostre varietà di miele, un’idea genuina e tutta siciliana."}},{"@type":"Question","name":"Dove siete?","acceptedAnswer":{"@type":"Answer","text":"Apicoltura La Greca — Terre di Miele, a Campobello di Licata (AG), in Sicilia."}}]}</script>
 </head>
 <body>
 
@@ -1482,6 +1483,36 @@ input,textarea,select{font-family:var(--font-body)}
 </section>
 
 <!-- ========== FOOTER ========== -->
+
+<!-- FAQ (EMC) -->
+<section class="emcfaq-sec" id="faq">
+  <div class="emcfaq-wrap">
+    <p class="emcfaq-eye">FAQ</p>
+    <h2 class="emcfaq-title">Domande frequenti</h2>
+    <div class="emcfaq-list">
+      <details><summary>Che tipi di miele producete?</summary><p>Diverse varietà siciliane: Eucalipto, Millefiori, Castagno, Balsamico e Sulla, oltre a polline e miele in favo.</p></details>
+      <details><summary>Il miele è naturale e non pastorizzato?</summary><p>Sì, è miele genuino di nostra produzione, lavorato a basse temperature per preservarne aromi e proprietà naturali.</p></details>
+      <details><summary>In quali formati è disponibile?</summary><p>Nei formati da 170 g, 500 g e 1 kg secondo la varietà. Polline e favo in confezioni dedicate.</p></details>
+      <details><summary>Si può acquistare e ricevere a casa?</summary><p>Sì: contattaci per disponibilità e ordini, organizziamo la consegna. Trovi tutte le referenze nel nostro listino.</p></details>
+      <details><summary>I vostri mieli sono adatti come regalo?</summary><p>Certo: prepariamo confezioni regalo con le nostre varietà di miele, un’idea genuina e tutta siciliana.</p></details>
+      <details><summary>Dove siete?</summary><p>Apicoltura La Greca — Terre di Miele, a Campobello di Licata (AG), in Sicilia.</p></details>
+    </div>
+  </div>
+</section>
+<style>
+.emcfaq-sec{background:#faf6ee;padding:72px 20px;font-family:'DM Sans',sans-serif}
+.emcfaq-wrap{max-width:820px;margin:0 auto}
+.emcfaq-eye{text-align:center;text-transform:uppercase;letter-spacing:.2em;font-size:13px;font-weight:700;color:#b8860b;margin:0 0 8px}
+.emcfaq-title{text-align:center;font-family:'Playfair Display',Georgia,serif;font-size:34px;color:#2c1810;margin:0 0 30px}
+.emcfaq-list details{background:#ffffff;border:1px solid #ece0cb;border-radius:14px;margin-bottom:12px;padding:0 22px}
+.emcfaq-list summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:700;color:#2c1810;display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:17px}
+.emcfaq-list summary::-webkit-details-marker{display:none}
+.emcfaq-list summary::after{content:"+";font-size:24px;font-weight:400;color:#D4A017;transition:.2s;flex-shrink:0}
+.emcfaq-list details[open] summary::after{transform:rotate(45deg)}
+.emcfaq-list details p{padding:0 0 18px;margin:0;color:#6a5a48;line-height:1.65}
+@media(max-width:600px){.emcfaq-title{font-size:27px}}
+</style>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
