@@ -1455,8 +1455,9 @@ input,textarea,select{font-family:var(--font-body)}
     </div>
 
     <div class="contact-form-centered anim anim-up" style="--stagger:4">
-      <form id="contactForm" action="https://script.google.com/macros/s/AKfycbwxKTAWGGT6kIvghY1sE_pzC_02sZKkFnXMpMxVfQ_ROzTVSuGxCdDh0OjEYB7pVV3U/exec" method="POST">
+      <form id="contactForm" novalidate>
         <input type="hidden" name="site" value="terredimiele">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="form-group">
           <label for="form-name">Nome *</label>
           <input type="text" id="form-name" name="name" placeholder="Il tuo nome" required autocomplete="name">
@@ -1472,6 +1473,10 @@ input,textarea,select{font-family:var(--font-body)}
         <div class="form-group">
           <label for="form-message">Messaggio *</label>
           <textarea id="form-message" name="message" placeholder="Scrivi il tuo messaggio..." required rows="5"></textarea>
+        </div>
+        <div class="form-group form-privacy" style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.5">
+          <input type="checkbox" id="form-privacy" required style="width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:#C9A227">
+          <label for="form-privacy" style="margin:0;font-weight:400">Ho letto e accetto la <a href="privacy.html" target="_blank" style="color:#C9A227;font-weight:600">Privacy Policy</a>. Autorizzo il trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR). *</label>
         </div>
         <div class="form-submit">
           <button type="submit" class="btn-gold" style="width:100%">Invia Messaggio</button>
@@ -1922,9 +1927,11 @@ input,textarea,select{font-family:var(--font-body)}
     var form=document.getElementById('contactForm');
     if(!form) return;
     var feedback=document.getElementById('formFeedback');
+    var API='https://script.google.com/macros/s/AKfycbxLCgN0-mHN86Dk37a5m-p2A3DgMjc8b__aCO_9oBA_amLUn5MlipebKalo5qNIoSWl/exec';
     var OK='Messaggio inviato con successo! Ti risponderemo al più presto.';
     var ERR='Si è verificato un errore. Riprova o contattaci direttamente su WhatsApp.';
     var REQ='Compila i campi obbligatori (nome, email e messaggio).';
+    var PRIV='Per inviare, accetta la Privacy Policy.';
     function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
     function showToast(msg,type){var t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.className=type;setTimeout(function(){t.classList.add('show');},10);clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},6000);}
     function showFeedback(type,msg){if(feedback){feedback.textContent=msg;feedback.className='form-feedback '+(type==='ok'?'success':'error');}showToast(msg,type);try{if(feedback)feedback.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}}
@@ -1932,10 +1939,14 @@ input,textarea,select{font-family:var(--font-body)}
     var btnLabel=btn?btn.textContent:'';
     form.addEventListener('submit',function(e){
       e.preventDefault();
+      var honey=form.querySelector('[name="_honey"]');
+      if(honey&&honey.value) return;
       if(!val('form-name')||!val('form-email')||!val('form-message')){showFeedback('err',REQ);return;}
+      var privacy=document.getElementById('form-privacy');
+      if(privacy&&!privacy.checked){showFeedback('err',PRIV);return;}
       if(btn){btn.disabled=true;btn.textContent='Invio in corso...';}
       if(feedback){feedback.className='form-feedback';feedback.style.display='none';}
-      fetch(form.action,{method:'POST',body:new FormData(form)})
+      fetch(API,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({site:'terredimiele',name:val('form-name'),email:val('form-email'),phone:val('form-phone'),message:val('form-message')})})
       .then(function(){showFeedback('ok',OK);form.reset();})
       .catch(function(){showFeedback('err',ERR);})
       .finally(function(){if(btn){btn.disabled=false;btn.textContent=btnLabel;}});
