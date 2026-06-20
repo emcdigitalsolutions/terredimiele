@@ -1467,7 +1467,7 @@ input,textarea,select{font-family:var(--font-body)}
         </div>
         <div class="form-group">
           <label for="form-phone">Telefono <span style="opacity:.5">(facoltativo)</span></label>
-          <input type="tel" id="form-phone" name="phone" placeholder="Il tuo numero di telefono" autocomplete="tel">
+          <input type="tel" id="form-phone" name="phone" inputmode="numeric" pattern="[0-9+ ]*" maxlength="20" oninput="this.value=this.value.replace(/[^0-9+ ]/g,'')" placeholder="Il tuo numero di telefono" autocomplete="tel">
         </div>
         <div class="form-group">
           <label for="form-message">Messaggio *</label>
@@ -1793,33 +1793,7 @@ input,textarea,select{font-family:var(--font-body)}
     window.scrollTo({top:0, behavior:'smooth'});
   });
 
-/* ===== Contact form submission ===== */
-  var form = document.getElementById('contactForm');
-  var feedback = document.getElementById('formFeedback');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var submitBtn = form.querySelector('button[type="submit"]');
-    var originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Invio in corso...';
-    submitBtn.disabled = true;
-    feedback.className = 'form-feedback';
-    feedback.style.display = 'none';
-
-    fetch(form.action, { method: 'POST', body: new FormData(form) })
-    .then(function(){
-      feedback.textContent = 'Messaggio inviato con successo! Ti risponderemo al più presto.';
-      feedback.className = 'form-feedback success';
-      form.reset();
-    })
-    .catch(function(){
-      feedback.textContent = 'Si \u00e8 verificato un errore. Riprova o contattaci direttamente su WhatsApp.';
-      feedback.className = 'form-feedback error';
-    })
-    .finally(function(){
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    });
-  });
+  /* contact form: gestione in <script> ISOLATO in fondo al body */
 
   /* ===== Cookie banner ===== */
   var cookieBanner = document.getElementById('cookieBanner');
@@ -1932,6 +1906,42 @@ input,textarea,select{font-family:var(--font-body)}
     });
   });
 
+})();
+</script>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<style>
+#toast{position:fixed;left:50%;top:16px;transform:translate(-50%,-24px);max-width:92%;padding:15px 22px;border-radius:14px;font-size:15px;font-weight:700;color:#fff;text-align:center;box-shadow:0 14px 38px rgba(0,0,0,.28);z-index:99999;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toast.ok{background:#1e9e5a}#toast.err{background:#c0392b}
+</style>
+<!-- Contact form: script ISOLATO e indipendente (usa l'endpoint Apps Script dedicato di Terre di Miele). -->
+<script>
+(function(){
+  function init(){
+    var form=document.getElementById('contactForm');
+    if(!form) return;
+    var feedback=document.getElementById('formFeedback');
+    var OK='Messaggio inviato con successo! Ti risponderemo al più presto.';
+    var ERR='Si è verificato un errore. Riprova o contattaci direttamente su WhatsApp.';
+    var REQ='Compila i campi obbligatori (nome, email e messaggio).';
+    function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+    function showToast(msg,type){var t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.className=type;setTimeout(function(){t.classList.add('show');},10);clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},6000);}
+    function showFeedback(type,msg){if(feedback){feedback.textContent=msg;feedback.className='form-feedback '+(type==='ok'?'success':'error');}showToast(msg,type);try{if(feedback)feedback.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}}
+    var btn=form.querySelector('button[type="submit"]');
+    var btnLabel=btn?btn.textContent:'';
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!val('form-name')||!val('form-email')||!val('form-message')){showFeedback('err',REQ);return;}
+      if(btn){btn.disabled=true;btn.textContent='Invio in corso...';}
+      if(feedback){feedback.className='form-feedback';feedback.style.display='none';}
+      fetch(form.action,{method:'POST',body:new FormData(form)})
+      .then(function(){showFeedback('ok',OK);form.reset();})
+      .catch(function(){showFeedback('err',ERR);})
+      .finally(function(){if(btn){btn.disabled=false;btn.textContent=btnLabel;}});
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
 })();
 </script>
 
