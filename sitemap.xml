@@ -24,16 +24,4 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.terredimiele.it/privacy-policy.html</loc>
-    <lastmod>2026-04-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.terredimiele.it/cookie-policy.html</loc>
-    <lastmod>2026-04-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
 </urlset>
